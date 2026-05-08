@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="resolvepay_instance_action" model="ir.actions.act_window">
+            <field name="name">Resolvepay Instance</field>
+            <field name="res_model">resolvepay.instance</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record id="view_resolvepay_instance_tree" model="ir.ui.view">
+            <field name="name">resolvepay.instance.list</field>
+            <field name="model">resolvepay.instance</field>
+            <field name="arch" type="xml">
+                <list create="0">
+                    <field name="name"/>
+                </list></field>
+        </record>
+        <record id="view_resolvepay_instance_form" model="ir.ui.view">
+            <field name="name">resolvepay.instance.form</field>
+            <field name="model">resolvepay.instance</field>
+            <field name="arch" type="xml">
+                <form create="0" edit="1">
+                    <header>
+                        <button class="btn btn-primary" invisible="connect_state in 'confirm'" name="check_connect_access" string="Connect" type="object"/>
+                        <button class="btn btn-primary" invisible="connect_state in 'draft'" name="disconnect_access" string="Disconnect" type="object"/>
+                        <field name="connect_state" statusbar_visible="draft,confirm" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <widget bg_color="bg-success" invisible="connect_state != 'confirm'" name="web_ribbon" title="Connected"/>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="token" password="1" readonly="1"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="journal_id"/>
+                            <field name="template_id"/>
+                        </group>
+                    </sheet>
+                </form></field>
+        </record>
+        <record id="resolvepay_payout_transaction_action" model="ir.actions.act_window">
+            <field name="name">Payout Transaction</field>
+            <field name="res_model">resolvepay.payout.transaction</field>
+            <field name="view_mode">list</field>
+        </record>
+        <record id="view_resolvepay_payout_transaction_tree" model="ir.ui.view">
+            <field name="name">resolvepay.payout.transaction.list</field>
+            <field name="model">resolvepay.payout.transaction</field>
+            <field name="arch" type="xml">
+                <list create="0" edit="0">
+                    <field name="transaction_id"/>
+                    <field name="transaction_payout_id"/>
+                    <field name="transaction_type"/>
+                    <field name="move_id"/>
+                    <field name="transaction_invoice_id"/>
+                    <field name="transaction_invoice_number"/>
+                    <field name="transaction_amount_gross"/>
+                    <field name="transaction_amount_fee"/>
+                    <field name="transaction_amount_net"/>
+                </list></field>
+        </record>
+        <record id="resolvepay_payout_action" model="ir.actions.act_window">
+            <field name="name">Payouts</field>
+            <field name="res_model">resolvepay.payout</field>
+            <field name="view_mode">list</field>
+        </record>
+        <record id="view_resolvepay_payout_tree" model="ir.ui.view">
+            <field name="name">resolvepay.payout.list</field>
+            <field name="model">resolvepay.payout</field>
+            <field name="arch" type="xml">
+                <list create="0" edit="0">
+                    <field name="payout_id"/>
+                    <field name="payout_amount_gross"/>
+                    <field name="payout_amount_fee"/>
+                    <field name="payout_amount_net"/>
+                    <field name="payout_status"/>
+                    <field name="payout_retry_payout_id"/>
+                    <field name="payout_failed_at"/>
+                    <field name="payout_expected_by"/>
+                    <field name="payout_transactions_starting_at" optional="hide"/>
+                    <field name="payout_transactions_ending_at" optional="hide"/>
+                    <field name="payout_canceled_at"/>
+                    <field name="payout_created_at"/>
+                    <field name="payout_updated_at"/>
+                </list></field>
+        </record>
+        <record id="view_res_partner_resolvepay_tree_view_inherit" model="ir.ui.view">
+            <field name="name">view.res.partner.resolvepay.list.view.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='complete_name']" position="after">
+                    <field name="resolvepay_id"/>
+                </xpath></field>
+        </record>
+        <record id="action_resolvepay_view_customers" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('resolvepay_id','!=',False)]</field>
+            <field name="view_id" ref="view_res_partner_resolvepay_tree_view_inherit"/>
+        </record>
+        <record id="view_account_move_resolvepay_tree_view_inherit" model="ir.ui.view">
+            <field name="name">view.account.move.resolvepay.list.view.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="resolvepay_id"/>
+                </xpath></field>
+        </record>
+        <record id="action_resolvepay_view_invoices" model="ir.actions.act_window">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('resolvepay_id','!=',False)]</field>
+            <field name="view_id" ref="view_account_move_resolvepay_tree_view_inherit"/>
+        </record>
+        <menuitem id="menu_resolvepay_main" name="ResolvePay" web_icon="os_payment,payment_apps/resolve_pay/static/description/resolve-logo-open-graph.png" groups="os_payment.group_resolvepay_active"/>
+        <menuitem id="menu_resolvepay_config" name="Dashboard" parent="menu_resolvepay_main" sequence="1"/>
+        <menuitem action="resolvepay_instance_action" id="menu_instance_resolvepay_config" name="Instance" parent="menu_resolvepay_config" sequence="1"/>
+        <menuitem id="menu_resolvepay_parent_customers" name="Customers" parent="menu_resolvepay_main" sequence="4"/>
+        <menuitem action="action_resolvepay_view_customers" id="menu_resolvepay_customers" name="Customers" parent="menu_resolvepay_parent_customers"/>
+        <menuitem action="action_resolvepay_view_invoices" id="menu_resolvepay_invoices" name="Invoices" parent="menu_resolvepay_parent_customers"/>
+        <!--        <menuitem id="menu_resolvepay_payments"-->
+        <!--            parent="menu_resolvepay_parent_customers"-->
+        <!--            name="Customers" action="action_resolvepay_view_payments"/>-->
+        <menuitem action="resolvepay_payout_transaction_action" id="menu_payout_transaction_resolvepay" name="Payout Transactions" parent="menu_resolvepay_main"  groups="os_payment.group_resolvepay_active"/>
+        <menuitem action="resolvepay_payout_action" id="menu_payout_resolvepay" name="Payouts" parent="menu_resolvepay_main" groups="os_payment.group_resolvepay_active"/>
+    </data>
+</odoo>

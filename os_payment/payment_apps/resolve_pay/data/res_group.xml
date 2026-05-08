@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_resolvepay_active" model="res.groups">
+        <field name="name">ResolvePay Active</field>
+<!--        <field name="category_id" ref="base.module_category_accounting"/>-->
+    </record>
+</odoo>

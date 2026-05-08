@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <record id="action_shopify_product_mappings" model="ir.actions.act_window">
+            <field name="name">Shopify Product Mappings</field>
+            <field name="res_model">shopify.product.mappings</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem
+            name="Shopify Product Mappings"
+            id="shopify_product_mappings_menu"
+            sequence="20"
+            parent="os_marketplace.marketplace_configuration"
+            action="action_shopify_product_mappings"
+            groups="base.group_no_one"/>
+
+        <record model="ir.ui.view" id="shopify_product_mappings_view_tree">
+            <field name="name">shopify.product.mappings.view.list</field>
+            <field name="model">shopify.product.mappings</field>
+            <field name="arch" type="xml">
+                <list string="Shopify Product Mappings">
+                    <field name="name" />
+                    <field name="shopify_instance_id" />
+                    <field name="product_id" />
+                    <field name="product_tmpl_id" />
+                    <field name="shopify_id" />
+                    <field name="shopify_parent_id" />
+                    <field name="shopify_inventory_id" />
+                    <field name="default_code" />
+                </list>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="shopify_product_mappings_view_form">
+            <field name="name">shopify.product.mappings.view.form</field>
+            <field name="model">shopify.product.mappings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="shopify_instance_id" />
+                            <field name="product_id" />
+                            <field name="product_tmpl_id" />
+                            <field name="shopify_id" />
+                            <field name="shopify_parent_id" />
+                            <field name="shopify_inventory_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

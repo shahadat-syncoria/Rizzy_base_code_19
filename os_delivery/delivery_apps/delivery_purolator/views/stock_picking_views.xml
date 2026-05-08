@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_picking_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.purolator</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+<!--                <field invisible="1" name="message_main_attachment_id"/>-->
+                <!-- <button name="print_shipping_label" string="Print Shipping Label" groups="stock.group_stock_user" type="object" 
+                    attrs="{'invisible': [ '|', ('state', 'not in', ('done')),('delivery_type','not in',('purolator','canada_post'))  ]}"/>       -->
+                <button groups="stock.group_stock_user" invisible="state not in 'done' or delivery_type not in 'purolator'" name="purolator_shipping_label" string="Get Labels" type="object"/>
+                <!--                <button name="get_label_url" string="Label URL" groups="stock.group_stock_user" type="object"
+                                    attrs="{'invisible': [ '|', ('state', 'not in', ('done')),('delivery_type','not in',('purolator'))  ]}"/>    -->
+            </xpath>
+            <xpath expr="//field[@name='carrier_id']" position="after">
+                <field invisible="1" name="connector_label_url"/>
+                <field invisible="0" name="purolator_return_label_url"/>
+            </xpath></field>
+    </record>
+    <record id="view_picking_withcarrier_out_form_extend" model="ir.ui.view">
+        <field name="name">delivery.stock.picking_withcarrier.form.view.extend</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form/header/button[@name='send_to_shipper']" position="replace">
+                    <button invisible="delivery_type == 'purolator' or carrier_tracking_ref != False or delivery_type in ['fixed', 'base_on_rule'] or delivery_type == False or state not in 'done' or picking_type_code == 'incoming'" name="send_to_shipper" string="Send to Shipper" type="object"/>
+                </xpath>
+            </data></field>
+    </record>
+</odoo>

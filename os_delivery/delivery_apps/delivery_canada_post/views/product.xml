@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="name">product.product.form.</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='hs_code']" position="after">
+                <field name="country_of_origin"/>
+                <field name="province_of_origin"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_origins">
+        <field name="name">product.template.form.origins</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
+                <field name="country_of_origin"/>
+                <field name="province_of_origin"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_shopify_feed_customers_tree">
+            <field name="name">view.shopify.feed.customers.list</field>
+            <field name="model">shopify.feed.customers</field>
+            <field name="arch" type="xml">
+                <list string="shopify_feed_customers_tree" create="true" delete="true" edit="true">
+                    <field name="name" />
+                    <field name="instance_id" />
+                    <field name="shopify_id" />
+                    <field name="customer_name" />
+                    <field name="email" />
+                    <field name="state" />
+                </list>
+            </field>
+        </record>
+
+        <record id="view_shopify_feed_customers_form" model="ir.ui.view">
+            <field name="name">view.shopify.feed.customers.form</field>
+            <field name="model">shopify.feed.customers</field>
+            <field name="arch" type="xml">
+                <form string="Shopify Feed Customers" create="true" delete="true" edit="true">
+                    <header>
+                        <!-- <button string="Process Customers" class="btn btn-primary" name="process_feed_customer" type="object" attrs="{  'invisible': [('state','in',('queue'))]  }" />-->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,queue,processed,failed"/>
+                    </header>
+                    <sheet name="Shopify Feed Customers">
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" class="oe_inline" placeholder="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="instance_id" />
+                                <field name="shopify_id" />
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="customer_data" />
+                        </group>
+                    </sheet>
+                    <chatter/>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_shopify_feed_customers_search" model="ir.ui.view">
+            <field name="name">view.shopify.feed.customers.search</field>
+            <field name="model">shopify.feed.customers</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <search string="shopify_feed_customers_search">
+                    <field name="name" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_shopify_feed_customers" model="ir.actions.act_window">
+            <field name="name">Shopify Feed Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shopify.feed.customers</field>
+            <field name="view_id" ref="syncoria_shopify.view_shopify_feed_customers_tree"/>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Shopify Feed Customer.
+                </p>
+            </field>
+        </record>
+
+
+
+        <menuitem 
+            action="action_shopify_feed_customers"
+            id="shopify_feed_customers" 
+            name="Feed Customers" 
+            parent="shopify_feed_views" 
+            sequence="1"/>
+
+
+    </data>
+</odoo>

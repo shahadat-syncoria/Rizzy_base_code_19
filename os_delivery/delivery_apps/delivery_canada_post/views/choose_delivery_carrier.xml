@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="choose_delivery_carrier_view_canadapost" model="ir.ui.view">
+        <field name="name">choose.delivery.carrier.form.inherit.canadapost</field>
+        <field name="model">choose.delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.choose_delivery_carrier_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='carrier_id']" position="after">
+                <field invisible="delivery_type != 'canadapost'" name="canadapost_shipping_date" required="delivery_type == 'canadapost'"/>
+            </xpath>
+            <xpath expr="//group[1]" position="after">
+                <group>
+                    <field domain="[('active','=',True)]" invisible="carrier_id == False or delivery_type != 'canadapost'" name="canadapost_service_type" widget="radio"/>
+                    <!-- <field name="canadapost_get_service" widget="radio" invisible="True"/> -->
+                </group>
+            </xpath></field>
+    </record>
+</odoo>

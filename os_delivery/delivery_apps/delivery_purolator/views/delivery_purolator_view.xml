@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form_with_provider_purolator" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.purolator</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position="before">
+                <page invisible="delivery_type != 'purolator'" string="Purolator Credentials">
+                    <group>
+                        <group>
+                            <field name="token" readonly="1" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_billing_account" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_dropoff_type" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_default_packaging_id" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_service_type" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_service_type_us" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_service_type_int" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_payment_type" required="delivery_type == 'purolator'"/>
+                            <field invisible="purolator_payment_type != 'CreditCard'" name="purolator_creditcard_type" required="purolator_payment_type in 'CreditCard'"/>
+                            <field invisible="purolator_payment_type not in 'CreditCard'" name="purolator_creditcard_number" required="purolator_payment_type in 'CreditCard'"/>
+                            <field invisible="purolator_payment_type not in 'CreditCard'" name="purolator_creditcard_name" required="purolator_payment_type in 'CreditCard'"/>
+                            <field invisible="purolator_payment_type not in 'CreditCard'" name="purolator_creditcard_expirymonth" required="purolator_payment_type in 'CreditCard'"/>
+                            <field invisible="purolator_payment_type not in 'CreditCard'" name="purolator_creditcard_expiryyear" required="purolator_payment_type in 'CreditCard'"/>
+                            <field invisible="purolator_payment_type not in 'CreditCard'" name="purolator_creditcard_cvv" required="purolator_payment_type in 'CreditCard'"/>
+                            <field name="purolator_weight_unit" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_printer_type" required="delivery_type == 'purolator'"/>
+                            <field name="purolator_label_image_format" required="delivery_type == 'purolator'"/>
+                        </group>
+                        <group>
+                            <field name="purolator_notify_sender"/>
+                            <field name="purolator_notify_receiver"/>
+                        </group>
+                        <group invisible="purolator_shipment_type != 'domestic'">
+                            <b>
+                                Label Information
+                            </b>
+                            <field invisible="True" name="purolator_shipment_type"/>
+                            <field invisible="purolator_shipment_type != 'domestic'" name="purolator_from_onlabel"/>
+                            <field invisible="purolator_from_onlabel == False or purolator_shipment_type != 'domestic'" name="purolator_from_onlabel_info"/>
+                            <field invisible="purolator_from_onlabel_info == 'same' or purolator_shipment_type != 'domestic'" name="purolator_label_info"/>
+                        </group>
+                        <group invisible="purolator_shipment_type == 'domestic'">
+                            <b>
+                                International Information
+                            </b>
+                            <field name="purolator_buyer"/>
+                            <field invisible="purolator_buyer == 'same'" name="purolator_buyer_info"/>
+                            <field invisible="purolator_service_type != 'PurolatorGroundU.S.'" name="purolator_preferred_customs"/>
+                            <field name="purolator_duty_party"/>
+                            <field name="purolator_duty_currency"/>
+                            <field name="purolator_business_relation"/>
+                            <field name="purolator_nafta_document"/>
+                            <field name="purolator_fda_document"/>
+                            <field name="purolator_fcc_document"/>
+                            <field name="purolator_sender_is_producer"/>
+                            <field invisible="'U.S.' in purolator_service_type" name="purolator_textile_indicator"/>
+                            <field invisible="'U.S.' in purolator_service_type or purolator_textile_indicator == True" name="purolator_textile_manufacturer"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath></field>
+    </record>
+</odoo>

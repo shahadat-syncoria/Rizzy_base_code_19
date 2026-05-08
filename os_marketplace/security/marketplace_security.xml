@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="marketplace_account_rule" model="ir.rule">
+            <field name="name">Marketplace Account Company rule</field>
+            <field name="model_id" ref="model_marketplace_instance"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>

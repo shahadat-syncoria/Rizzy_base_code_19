@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="shopify_products_wiz_view_form" model="ir.ui.view">
+            <field name="name">shopify.products.wiz.view.form</field>
+            <field name="model">shopify.products.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Shopify Products Wiz">
+                    <sheet>
+                        <group>
+                            <field name="shopify_instance_ids" options="{'no_create': True}" widget="many2many_tags"/>
+                            <field name="product_id"
+                               invisible="context.get('active_model') != 'product.product'"/>
+
+                            <field name="product_tpml_id"
+                                  invisible="context.get('active_model') != 'product.template'"/>
+
+                        </group>
+                        <group>
+                            <field invisible="context.get('update_product')" name="note" no_label="1"/>
+                        </group>
+                        <footer>
+                            <button class="oe_highlight" name="action_create" string="Create" type="object"/>
+                            <button class="oe_highlight" name="action_update" string="Update" type="object"/>
+                            <button special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form></field>
+        </record>
+        <record id="action_shopify_products_wiz" model="ir.actions.act_window">
+            <field name="name">Create/Update Product/Variant Shopify</field>
+            <field name="res_model">shopify.products.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

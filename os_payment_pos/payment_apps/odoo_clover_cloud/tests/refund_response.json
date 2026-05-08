@@ -1,0 +1,74 @@
+{
+  'status': 'OK',
+  'data': {
+    'payment': {
+      'amount': 12000,
+      'cardTransaction': {
+        'authCode': '703391',
+        'captured': False,
+        'cardType': 'AMEX',
+        'cardholderName': '',
+        'currency': 'cad',
+        'entryType': 'EMV_CONTACTLESS',
+        'extra': {
+          'applicationLabel': '414D45524943414E2045585052455353',
+          'common': '{"LocalDateTime":"20240214192803","POSEntryMode":"071","POSID":"9726","MerchCustom1":"404500502345","TermEntryCapablt":"12","CardCaptCap":"1","STAN":"502345","POSCondCode":"00","TermLocInd":"0","PymtType":"Credit","MerchID":"RCTST0000008099","TermID":"00000001","TrnmsnDateTime":"20240214192803","TermCatCode":"12"}',
+          'func': 'CREDIT',
+          'authorizingNetworkName': 'AMEX',
+          'athNtwkId': '01',
+          'exp': '202412',
+          'cvmResult': 'NO_CVM_REQUIRED',
+          'applicationIdentifier': 'A000000025010402',
+          'card': '{"AmExTranID":"214192804570413","AmExPOSData":"51110X500301"}',
+          'tkntype': '1174'
+        },
+        'first6': '374245',
+        'last4': '1003',
+        'referenceId': '404500502345',
+        'state': 'CLOSED',
+        'transactionNo': '000450',
+        'type': 'AUTH'
+      },
+      'clientCreatedTime': 1707938883000,
+      'createdTime': 1707938883000,
+      'device': {
+        'id': '3fd10fdb-28a1-2268-dbe6-78048d379b2e'
+      },
+      'employee': {
+        'id': 'C977Z522P1ETM'
+      },
+      'externalPaymentId': 'INV/2024/00005-002',
+      'id': 'PBH2DGDG5X0NW',
+      'modifiedTime': 1707938886000,
+      'offline': False,
+      'order': {
+        'id': 'Z9S818XM1BNWY'
+      },
+      'result': 'SUCCESS',
+      'taxAmount': 0,
+      'tender': {
+        'id': 'G93W2GNZTRJQW',
+        'label': 'Credit Card',
+        'labelKey': 'com.clover.tender.credit_card',
+        'opensCashDrawer': False
+      },
+      'tipAmount': 0
+    },
+    'paymentId': 'PBH2DGDG5X0NW',
+    'refund': {
+      'amount': 12000,
+      'createdTime': 1707939570640,
+      'device': {
+        'id': '3fd10fdb-28a1-2268-dbe6-78048d379b2e'
+      },
+      'employee': {
+        'id': 'C977Z522P1ETM'
+      },
+      'id': '4RDM6C67H2W3T',
+      'payment': {
+        'id': 'PBH2DGDG5X0NW'
+      },
+      'taxAmount': 0
+    }
+  }
+}

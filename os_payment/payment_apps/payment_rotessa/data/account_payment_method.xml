@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="rotessa_payment_method" model="account.payment.method">
+            <field name="name">Rotessa</field>
+            <field name="code">rotessa</field>
+            <field name="payment_type">inbound</field>
+        </record>
+    </data>
+</odoo>
+

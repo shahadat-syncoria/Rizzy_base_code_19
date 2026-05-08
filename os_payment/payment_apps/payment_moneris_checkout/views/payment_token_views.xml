@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="payment_token_form_moneris_recurring" model="ir.ui.view">
+            <field name="name">payment.token.form.moneris.recurring</field>
+            <field name="model">payment.token</field>
+            <field name="inherit_id" ref="payment.payment_token_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="edit">true</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_details']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_method_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='provider_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='provider_ref']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//group[@name='general_information']" position="inside">
+                    <field name="provider_code" invisible="1"/>
+                    <field name="moneris_recurring" invisible="provider_code != 'monerischeckout'"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="payment_token_list_moneris_recurring" model="ir.ui.view">
+            <field name="name">payment.token.list.moneris.recurring</field>
+            <field name="model">payment.token</field>
+            <field name="inherit_id" ref="payment.payment_token_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//list/field[@name='provider_id']" position="after">
+                    <field name="moneris_recurring" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

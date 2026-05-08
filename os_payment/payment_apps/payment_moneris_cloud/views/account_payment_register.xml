@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_payment_register_form_inherited_moneris" model="ir.ui.view">
+            <field name="name">account_payment_invoice inherited moneris</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <!--                <xpath expr="//button[@name='action_create_payments']" position="replace">-->
+                <!--                    <button string="Create Payment" name="action_create_payments" type="object" class="oe_highlight"-->
+                <!--                        attrs="{'invisible':[('support_mcloud_terminal', '=', False) ]}" />-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//button[hasclass('btn-secondary')]" position="replace">-->
+                <!--                    <button string="Cancel" class="btn btn-secondary" special="cancel"-->
+                <!--                        attrs="{'invisible':[('support_mcloud_terminal', '=', True) ]}" />-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='amount']" position="after">-->
+                <!--                    <field name="id"/>-->
+                <!--                </xpath>-->
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field invisible="use_cloud_terminal == False" name="support_mcloud_terminal"/>
+                    <field invisible="use_cloud_terminal == False" required="use_cloud_terminal == True" name="moneris_device_id"/>
+                </xpath>
+                <xpath expr="//form" position="inside">
+                    <!--                     <field name="use_cloud_terminal" attrs="{'invisible':[ ('support_mcloud_terminal','=',False) ]}" />-->
+                    <field invisible="1" name="use_cloud_terminal" string=" Use"/>
+                    <field invisible="1" name="support_mcloud_terminal"/>
+                    <field invisible="1" name="payment_type_inbound"/>
+                    <field invisible="1" name="payment_type_outbound"/>
+                    <field invisible="1" name="compute_domain_moneris_account_payment"/>
+                </xpath>
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field invisible="use_cloud_terminal == False or payment_type == 'inbound'" name="moneris_account_payment" domain="[('id','in',compute_domain_moneris_account_payment)]"/>
+                    <field invisible="moneris_account_payment == False" name="moneris_refund_card_info" readonly="1"/>
+                    <field invisible="use_cloud_terminal == False or payment_type == 'inbound' or moneris_account_payment == False" name="moneris_refundable_amount" readonly="1"/>
+                    <field invisible="use_cloud_terminal == False"  name="moneris_is_manual_payment"/>
+                    <field invisible="use_cloud_terminal != True and payment_type_inbound != True" name="moneris_cloud_receiptid"/>
+                    <field invisible="use_cloud_terminal != True and payment_type_inbound != True" name="moneris_cloud_transid"/>
+                </xpath>
+                <!--                <xpath expr="//footer" position="inside">-->
+                <!--                    <div attrs="{'invisible':[('use_cloud_terminal','=',False)]}" >-->
+                <!--                        <button name="terminal_message" string="Payment request pending"-->
+                <!--                            id="terminal_message"-->
+                <!--                            class="btn" -->
+                <!--                            attrs="{'invisible':[('support_mcloud_terminal','=',False),('payment_type_inbound','=',False),('payment_type_outbound','=',False)]}"-->
+                <!--                            style="width: 200px;" disabled="1"-->
+                <!--                        />-->
+                <!--                        <button name="action_create_payment_semi" string="SEND" title="Send Payment Request" -->
+                <!--                            class="btn btn-primary send_payment_request_inv" -->
+                <!--                            t-att-data-cid='line.cid' -->
+                <!--                            attrs="{'invisible':['|',('payment_type_outbound','=',True),('support_mcloud_terminal','=',False), ('payment_type_inbound','=',False),]}" -->
+                <!--                            style="width: 60px;"-->
+                <!--                        />-->
+                <!--                        <button name="action_create_refund_semi" string="REFUND" title="Send Refund Request" -->
+                <!--                            class="btn btn-primary send_refund_request" -->
+                <!--                            t-att-data-cid='line.cid' -->
+                <!--                            attrs="{'invisible':['|',('payment_type_inbound','=',True),('support_mcloud_terminal','=',False),('payment_type_outbound','=',False)]}" -->
+                <!--                            style="width: 80px;"-->
+                <!--                        />-->
+                <!--                        <button string="Cancel" class="btn btn-secondary" id="btn-mon-cancel" special="cancel"-->
+                <!--                            attrs="{'invisible':[('use_cloud_terminal','=',True)]}" />-->
+                <!-- -->
+                <!--                    </div>-->
+                <!--                </xpath>--></field>
+        </record>
+    </data>
+</odoo>

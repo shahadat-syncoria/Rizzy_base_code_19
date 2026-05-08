@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+
+    <!-- Purolator Product Packagings -->
+    <!-- H,W,L (cm), Weight(Kg) -->
+    <!--  Purolator Ground Customer Packaging-->
+
+    <record id="purolator_packaging_PUROLATOR_GROUND_CUSTOMER_PACKAGING_CN" model="stock.package.type">
+        <field name="name">Custom Packaing(CN)-Purolaror Ground</field>
+        <field name="shipper_package_code">PurolatorGround</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="height">120</field>
+        <field name="width">120</field>
+        <field name="packaging_length">305</field>
+        <field name="max_weight">68</field>
+    </record>
+
+    <record id="purolator_packaging_PUROLATOR_GROUND_CUSTOMER_PACKAGING_US" model="stock.package.type">
+        <field name="name">Custom Packaing(US)-Purolaror Ground</field>
+        <field name="shipper_package_code">PurolatorGroundU.S.</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="height">70</field>
+        <field name="width">70</field>
+        <field name="packaging_length">274</field>
+        <field name="max_weight">68</field>
+    </record>
+
+    <!--  PurolatorExpress Customer Packaging-->
+
+    <record id="purolator_packaging_PUROLATOR_EXPRESS_CUSTOMER_PACKAGING_CN" model="stock.package.type">
+        <field name="name">Custom Packaing(CN)-Purolaror Express</field>
+        <field name="shipper_package_code">PurolatorExpress</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="height">54</field>
+        <field name="width">54</field>
+        <field name="packaging_length">200</field>
+        <field name="max_weight">68</field>
+    </record>
+
+    <record id="purolator_packaging_PUROLATOR_EXPRESS_CUSTOMER_PACKAGING_US" model="stock.package.type">
+        <field name="name">Custom Packaing(US)-Purolaror Express</field>
+        <field name="shipper_package_code">PurolatorExpressU.S.</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="height">70</field>
+        <field name="width">70</field>
+        <field name="packaging_length">196</field>
+        <field name="max_weight">68</field>
+    </record>
+
+    <record id="purolator_packaging_PUROLATOR_EXPRESS_CUSTOMER_PACKAGING_INT" model="stock.package.type">
+        <field name="name">Custom Packaing(INT.)-Purolaror Express</field>
+        <field name="shipper_package_code">PurolatorExpressU.S.</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="height">70</field>
+        <field name="width">70</field>
+        <field name="packaging_length">196</field>
+        <field name="max_weight">68</field>
+    </record>
+
+    <!--  Purolator Express Pack Domestic, US, International-->
+
+    <record id="purolator_packaging_PUROLATOR_EXPRESS_PACK" model="stock.package.type">
+        <field name="name">PUROLATOR EXPRESS PACK</field>
+        <field name="shipper_package_code">PurolatorExpressPack</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="width">31</field>
+        <field name="packaging_length">40</field>
+        <field name="max_weight">1.3</field>
+    </record>
+
+    <!--  Purolator Express ENVELOPE Domestic, US, International-->
+
+    <record id="purolator_packaging_PUROLATOR_ENVELOPE" model="stock.package.type">
+        <field name="name">PUROLATOR EXPRESS ENVELOPE</field>
+        <field name="shipper_package_code">PurolatorExpressEnvelope</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="width">31</field>
+        <field name="packaging_length">40</field>
+        <field name="max_weight">1.3</field>
+    </record>
+
+    <!--  Purolator Express Box Domestic, US, International-->
+
+    <record id="purolator_packaging_PUROLATOR_BOX" model="stock.package.type">
+        <field name="name">PUROLATOR EXPRESS BOX</field>
+        <field name="shipper_package_code">PurolatorExpressBox</field>
+        <field name="package_carrier_type">purolator</field>
+        <field name="height">9</field>
+        <field name="width">30</field>
+        <field name="packaging_length">45</field>
+        <field name="max_weight">32</field>
+    </record>
+
+
+</data>
+</odoo>
+

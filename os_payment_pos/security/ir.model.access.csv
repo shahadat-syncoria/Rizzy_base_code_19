@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+os_payment_pos.access_moneris_pos_preauth,access_moneris_pos_preauth,os_payment_pos.model_moneris_pos_preauth,base.group_user,1,1,1,1
+os_payment_pos.access_pos_force_done_card_name,access_pos_force_done_card_name,os_payment_pos.model_pos_force_done_card_name,base.group_user,1,1,1,1

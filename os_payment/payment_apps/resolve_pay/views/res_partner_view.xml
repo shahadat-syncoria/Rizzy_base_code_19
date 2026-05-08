@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="resolvepay_create_customer" model="ir.actions.server">
+            <field name="name">Export to ResolvePay</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="group_ids" eval="[(4, ref('os_payment.group_resolvepay_active'))]"/>
+            <field name="state">code</field>
+            <field name="code">if records:
+                records.create_customer_resolvepay()</field>
+        </record>
+
+        <record id="resolvepay_update_customer_to_resolve" model="ir.actions.server">
+            <field name="name">Update to ResolvePay</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="group_ids" eval="[(4, ref('os_payment.group_resolvepay_active'))]"/>
+            <field name="state">code</field>
+            <field name="code">if records:
+                records.update_customer_resolvepay()</field>
+        </record>
+
+        <record id="resolvepay_update_customer" model="ir.actions.server">
+            <field name="name">Update from ResolvePay</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="group_ids" eval="[(4, ref('os_payment.group_resolvepay_active'))]"/>
+            <field name="state">code</field>
+            <field name="code">if records:
+                records.fetch_customer_resolvepay()</field>
+        </record>
+
+        <record id="res_partner_resolvepay_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.resolvepay.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="ResolvePay" groups="os_payment.group_resolvepay_active">
+                        <group>
+                            <group>
+                                <field name="resolvepay_id" readonly="1"/>
+                                <field name="resolvepay_created_at" readonly="1"/>
+                                <field name="resolvepay_updated_at" readonly="1"/>
+                                <field name="resolvepay_source" readonly="1"/>
+                                <field name="resolvepay_business_address" readonly="1"/>
+                                <field name="resolvepay_business_city" readonly="1"/>
+                                <field name="resolvepay_business_state" readonly="1"/>
+                                <field name="resolvepay_business_zip" readonly="1"/>
+                                <field name="resolvepay_business_country" readonly="1"/>
+                                <field name="resolvepay_business_age_range" readonly="1"/>
+                                <field name="resolvepay_business_ap_email" readonly="1"/>
+                                <field name="resolvepay_business_ap_phone" readonly="1"/>
+                                <field name="resolvepay_business_name" readonly="1"/>
+                                <field name="resolvepay_business_trade_name" readonly="1"/>
+                                <field name="resolvepay_business_phone" readonly="1"/>
+                                <field name="resolvepay_email" readonly="1"/>
+                                <field name="resolvepay_personal_name_first" readonly="1"/>
+                                <field name="resolvepay_personal_name_last" readonly="1"/>
+                                <field name="resolvepay_personal_phone" readonly="1"/>
+
+                            </group>
+                            <group>
+                                <field name="resolvepay_amount_approved" readonly="1"/>
+                                <field name="resolvepay_amount_authorized" readonly="1"/>
+                                <field name="resolvepay_amount_available" readonly="1"/>
+                                <field name="resolvepay_amount_balance" readonly="1"/>
+                                <field name="resolvepay_amount_unapplied_payments" readonly="1"/>
+                                <field name="resolvepay_default_terms"/>
+                                <field name="resolvepay_advance_rate" readonly="1"/>
+                                <field name="resolvepay_credit_status" readonly="1"/>
+                                <field name="resolvepay_net_terms_status" readonly="1"/>
+                                <field name="resolvepay_net_terms_enrollment_url" readonly="1"/>
+                                <field name="resolvepay_net_terms_enrollment_expires_at" readonly="1"/>
+                                <field name="resolvepay_credit_check_requested_at" readonly="1"/>
+                                <field name="resolvepay_archived" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+	    </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="action_process_feed_products" model="ir.actions.server">
+            <field name="name">Process Feed Products</field>
+            <field name="model_id" ref="syncoria_shopify.model_shopify_feed_products"/>
+            <field name="binding_model_id" ref="syncoria_shopify.model_shopify_feed_products"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.process_feed_products()
+            </field>
+        </record>
+
+        <record id="action_process_feed_orders" model="ir.actions.server">
+            <field name="name">Process Feed Orders</field>
+            <field name="model_id" ref="syncoria_shopify.model_shopify_feed_orders"/>
+            <field name="binding_model_id" ref="syncoria_shopify.model_shopify_feed_orders"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.process_feed_orders()
+            </field>
+        </record>
+
+        <record id="action_process_feed_customers" model="ir.actions.server">
+            <field name="name">Process Feed Customers</field>
+            <field name="model_id" ref="syncoria_shopify.model_shopify_feed_customers"/>
+            <field name="binding_model_id" ref="syncoria_shopify.model_shopify_feed_customers"/>
+<!--            <field name="binding_view_types">list</field>-->
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.process_feed_customers()
+            </field>
+        </record>
+
+<!--        <record id="action_compute_shopify_price" model="ir.actions.server">-->
+<!--            <field name="name">Compute Shopify Price</field>-->
+<!--            <field name="model_id" ref="product.model_product_template"/>-->
+<!--            <field name="binding_model_id" ref="product.model_product_template"/>-->
+<!--            <field name="binding_view_types">list</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--                if records:-->
+<!--                    for rec in records:-->
+<!--                        rec.compute_shopify_price()-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="action_populate_shopify_order_number" model="ir.actions.server">
+            <field name="name">Populate Shopify Order number</field>
+            <field name="model_id" ref="syncoria_shopify.model_shopify_feed_orders"/>
+            <field name="binding_model_id" ref="syncoria_shopify.model_shopify_feed_orders"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.populate_shopify_order_number()
+            </field>
+        </record>
+
+        <record id="action_fix_delivery_addresses_list" model="ir.actions.server">
+            <field name="name">Fix Delivery Addresses</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    for rec in records:
+                        rec.fix_delivery_address()
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

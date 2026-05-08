@@ -1,0 +1,83 @@
+    .modal-content {
+     padding: 24px;
+        height: 700px;
+        width: 800px;
+    }
+  .clover_container {
+    background-color: #FFFFFF;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 0 6px 0 rgba(141,151,158,0.2);
+    padding: 24px;
+    height: 500px;
+    width: 700px;
+
+  }
+
+  .clover_container * {
+    font-size: 16px;
+  }
+
+  .clover_container .form-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .clover_container .form-row.top-row {
+    margin-top: 16px;
+  }
+
+  .input-errors {
+    font-size: 12px;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 54px;
+    color: red;
+  }
+
+  .clover_container .form-row .field {
+    box-sizing: border-box;
+    border: 1px solid #DEE0E1;
+    border-radius: 3px;
+    height: 55px;
+    margin-bottom: 30px;
+    padding: 14px;
+    width: 100%;
+  }
+
+  .clover_container .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .clover_container .button-container button {
+    background-color: #228800;
+    border: none;
+    border-radius: 3px;
+    color: #FFFFFF;
+    display: block;
+    height: 47px;
+    width: 300px;
+  }
+
+  #payment-request-button {
+    width: 85%;
+    height: 40px;
+    margin: 0 auto;
+  }
+
+
+  .clover-privacy-link {
+    font-family: Roboto, "Open Sans", sans-serif;
+    height: 500px;
+    width: 700px
+  }
+
+  .clover-footer {
+    height: 70px;
+    width: 650px;
+    margin: auto,
+  }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-name="os_payment_pos.PaymentScreenButtons" t-inherit="point_of_sale.PaymentScreenButtons" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('payment-buttons')]" position="inside">
+            <div class="d-flex flex-column gap-2 w-100">
+                <button class="button btn btn-light btn-lg w-100 text-center"
+                        t-att-class="{ 'highlight active text-action': currentOrder.gift_card_payment }"
+                        t-on-click="(e) => this.onClickSelectPreauthView(e)"
+                        style="display: flex; align-items: center; justify-content: center;">
+                    <span class="mx-2">Moneris Go Preauthorization</span>
+                </button>
+            </div>
+        </xpath>
+    </t>
+</templates>

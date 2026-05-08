@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_payment_form_linus_account_resolvepay" model="ir.ui.view">
+            <field name="name">view.account.payment.form.linus.account.resolve.pay</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='group2']" position="after">
+                    <group invisible="rp_payout_transaction_id == False" groups="os_payment.group_resolvepay_active">
+                        <field name="rp_payout_id" readonly="1"/>
+                        <field name="rp_payout_transaction_id" readonly="1"/>
+                        <field name="rp_payout_transaction_type" readonly="1"/>
+                        <field name="rp_payout_transaction_amount_fee" readonly="1"/>
+                        <field name="rp_payout_transaction_amount_gross" readonly="1"/>
+                        <field name="rp_payout_transaction_amount_net" readonly="1"/>
+                    </group>
+                </xpath></field>
+        </record>
+        <record id="account_move_resolvepay_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.resolvepay.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button class="oe_highlight" groups="os_payment.group_resolvepay_active" invisible="resolvepay_id == False" name="get_resolve_invoice_info" string="Fetch Resolve Info" type="object" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="resolvepay_id" groups="os_payment.group_resolvepay_active"/>
+                    <field name="resolvepay_amount_available" readonly="1" groups="os_payment.group_resolvepay_active"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page invisible="resolvepay_id == False" string="Resolve Pay" groups="os_payment.group_resolvepay_active">
+                        <group>
+                            <group>
+                                <field name="resolvepay_id"/>
+                                <field name="resolvepay_source" readonly="1"/>
+                                <field name="resolvepay_customer_id" readonly="1"/>
+                                <field name="resolvepay_order_number" readonly="1"/>
+                                <field name="resolvepay_number" readonly="1"/>
+                                <field name="resolvepay_po_number" readonly="1"/>
+                                <field name="resolvepay_notes" readonly="1"/>
+                                <field name="resolvepay_line_items" readonly="1"/>
+                                <field name="resolvepay_merchant_invoice_url" readonly="1"/>
+                                <field name="resolvepay_resolve_invoice_url" readonly="1"/>
+                                <field name="resolvepay_resolve_invoice_status" readonly="1"/>
+                                <field name="resolvepay_fully_paid_at" readonly="1"/>
+                                <field name="resolvepay_advanced" readonly="1"/>
+                                <field name="resolvepay_due_at" readonly="1"/>
+                                <field name="resolvepay_original_due_at" readonly="1"/>
+                                <field name="resolvepay_invoiced_at" readonly="1"/>
+                                <field name="resolvepay_advance_requested" readonly="1"/>
+                                <field name="resolvepay_terms" readonly="1"/>
+                                <field name="resolvepay_created_at" readonly="1"/>
+                                <field name="resolvepay_updated_at" readonly="1"/>
+                                <field name="resolvepay_archived" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="resolvepay_amount_payout_due" readonly="1"/>
+                                <field name="resolvepay_amount_payout_paid" readonly="1"/>
+                                <field name="resolvepay_amount_payout_pending" readonly="1"/>
+                                <field name="resolvepay_amount_payout_refunded" readonly="1"/>
+                                <field name="resolvepay_amount_payout_balance" readonly="1"/>
+                                <field name="resolvepay_payout_fully_paid" readonly="1"/>
+                                <field name="resolvepay_payout_fully_paid_at" readonly="1"/>
+                                <field name="resolvepay_amount_balance" readonly="1"/>
+                                <field name="resolvepay_amount_due" readonly="1"/>
+                                <field name="resolvepay_amount_refunded" readonly="1"/>
+                                <field name="resolvepay_amount_pending" readonly="1"/>
+                                <field name="resolvepay_amount_paid" readonly="1"/>
+                                <field name="resolvepay_amount_advance" readonly="1"/>
+                                <field name="resolvepay_amount_advance_fee" readonly="1"/>
+                                <field name="resolvepay_amount_advance_fee_refund" readonly="1"/>
+                                <field name="resolvepay_advance_rate" readonly="1"/>
+                                <field name="resolvepay_advanced_at" readonly="1"/>
+                                <field name="resolvepay_amount_customer_fee_total" readonly="1"/>
+                                <field name="resolvepay_amount_customer_fee_waived" readonly="1"/>
+                                <field name="resolvepay_amount_customer_fee_paid" readonly="1"/>
+                                <field name="resolvepay_amount_customer_fee_balance" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page invisible="resolvepay_id == False" string="RP Payout Transaction" groups="os_payment.group_resolvepay_active">
+                        <field mode="list" name="payout_transaction_ids">
+                            <list create="0" delete="0" editable="bottom">
+                                <field name="transaction_type" readonly="1" string="Type"/>
+                                <field name="transaction_customer_id" readonly="1"/>
+                                <field name="transaction_invoice_id" readonly="1"/>
+                                <field name="transaction_invoice_number" readonly="1"/>
+                                <field name="transaction_amount_gross" readonly="1"/>
+                                <field name="transaction_amount_fee" readonly="1"/>
+                                <field name="transaction_amount_net" readonly="1"/>
+                                <field name="transaction_order_id" readonly="1"/>
+                                <field name="transaction_created_at" optional="hide" readonly="1"/>
+                                <field name="transaction_updated_at" optional="hide" readonly="1"/>
+                            </list></field>
+                    </page>
+                </xpath></field>
+        </record>
+        <record id="resolvepay_fetch_invoice" model="ir.actions.server">
+            <field name="name">Update from Resolve Pay</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="group_ids" eval="[(4, ref('os_payment.group_resolvepay_active'))]"/>
+            <field name="state">code</field>
+            <field name="code">records.resolvepay_fetch_invoice_payments()</field>
+        </record>
+        <record id="resolvepay_export_invoice" model="ir.actions.server">
+            <field name="name">Export to Resolve Pay</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="group_ids" eval="[(4, ref('os_payment.group_resolvepay_active'))]"/>
+            <field name="state">code</field>
+            <field name="code">records.create_invoice_resolvepay()</field>
+        </record>
+        <record id="resolvepay_update_invoice" model="ir.actions.server">
+            <field name="name">Update to Resolve Pay</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="group_ids" eval="[(4, ref('os_payment.group_resolvepay_active'))]"/>
+            <field name="state">code</field>
+            <field name="code">records.update_invoice_resolvepay()</field>
+        </record>
+    </data>
+</odoo>

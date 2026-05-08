@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_sale_purolator" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sale.purolator</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='ups']" position="after">
+                <div class="col-xs-12 col-md-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="module_delivery_purolator" widget="upgrade_boolean"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="module_delivery_purolator"/>
+                        <div class="text-muted">
+                            Compute shipping costs and ship with PUROLATOR
+                        </div>
+                        <div class="content-group">
+                            <div id="sale_delivery_purolator"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath></field>
+    </record>
+    <!--    <record id="res_config_settings_view_form_for_purolator" model="ir.ui.view">-->
+    <!--        <field name="name">res.config.settings.view.form.inherit.stock.purolator</field>-->
+    <!--        <field name="model">res.config.settings</field>-->
+    <!--        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//div[@data-key='stock']/div[hasclass('row mt16 o_settings_container')][2]" position="inside">-->
+    <!--                <div class="col-xs-12 col-md-6 o_setting_box">-->
+    <!--                    <div class="o_setting_left_pane">-->
+    <!--                        <field name="module_delivery_purolator" widget="upgrade_boolean"/>-->
+    <!--                    </div>-->
+    <!--                    <div class="o_setting_right_pane">-->
+    <!--                        <label for="module_delivery_purolator"/>-->
+    <!--                        <div class="text-muted">-->
+    <!--                            Compute shipping costs and ship with PUROLATOR-->
+    <!--                        </div>-->
+    <!--                        <div class="content-group">-->
+    <!--                            <div id="stock_delivery_purolator"></div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </xpath>-->
+    <!--</field>-->
+    <!--    </record>-->
+    <record id="res_config_settings_view_form_sale" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.delivery.purolator.sale</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='sale_delivery_purolator']" position="after">
+                <div class="content-group">
+                    <div class="mt16" invisible="module_delivery_purolator == False">
+                        <button class="btn-link" context="{'search_default_delivery_type': 'purolator'}" icon="fa-arrow-right" name="%(delivery.action_delivery_carrier_form)d" string="Purolator Delivery Methods" type="action"/>
+                    </div>
+                </div>
+            </xpath></field>
+    </record>
+    <!--    <record id="res_config_settings_view_form_stock" model="ir.ui.view">-->
+    <!--        <field name="name">res.config.settings.view.form.inherit.delivery.purolator.stock</field>-->
+    <!--        <field name="model">res.config.settings</field>-->
+    <!--        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//div[@id='stock_delivery_purolator']" position="replace">-->
+    <!--                <div class="mt16" attrs="{'invisible': [('module_delivery_purolator', '=', False)]}">-->
+    <!--                    <button name="%(delivery.action_delivery_carrier_form)d" icon="fa-arrow-right" type="action" string="Purolator Delivery Methods" class="btn-link" context="{'search_default_delivery_type': 'purolator'}"/>-->
+    <!--                </div>-->
+    <!--            </xpath>-->
+    <!--</field>-->
+    <!--    </record>-->
+</odoo>

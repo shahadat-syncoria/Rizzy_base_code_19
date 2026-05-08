@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_shopify_feed_orders_tree" model="ir.ui.view">
+            <field name="name">view.shopify.feed.orders.list</field>
+            <field name="model">shopify.feed.orders</field>
+            <field name="arch" type="xml">
+                <list create="true" delete="true" edit="true" string="shopify_feed_orders_tree">
+                    <field name="shopify_order_number"/>
+                    <field name="name"/>
+                    <field name="instance_id"/>
+                    <field name="shopify_id"/>
+                    <field name="state"/>
+                    <field name="sale_id"/>
+                </list></field>
+        </record>
+        <record id="view_shopify_feed_orders_form" model="ir.ui.view">
+            <field name="name">view.shopify.feed.orders.form</field>
+            <field name="model">shopify.feed.orders</field>
+            <field name="arch" type="xml">
+                <form create="true" delete="true" edit="true" string="Shopify Feed Orders">
+                    <header>
+                        <button class="btn btn-primary" invisible="state in 'queue'" name="process_feed_order" string="Process Feed Order" type="object"/>
+                        <field name="state" statusbar_visible="draft,queue,processed,failed" widget="statusbar"/>
+                    </header>
+                    <sheet name="Shopify Feed Orders">
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name"/>
+                            <h1>
+                                <field class="oe_inline" name="name" placeholder="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="instance_id"/>
+                                <field name="shopify_id"/>
+                            </group>
+                            <group>
+                                <field name="shopify_webhook_call"/>
+                            </group>
+                            <group>
+                                <field name="shopify_app_id"/>
+                                <field name="shopify_confirmed"/>
+                                <field name="shopify_contact_email"/>
+                                <field name="shopify_currency"/>
+                                <field name="shopify_customer_name"/>
+                                <field name="shopify_customer_id"/>
+                            </group>
+                            <group>
+                                <field name="shopify_gateway"/>
+                                <field name="shopify_order_number"/>
+                                <field name="shopify_financial_status"/>
+                                <field name="shopify_fulfillment_status"/>
+                                <field name="shopify_line_items"/>
+                                <field name="shopify_user_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="order_data"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+
+                </form></field>
+        </record>
+        <record id="view_shopify_feed_orders_search" model="ir.ui.view">
+            <field name="name">view.shopify.feed.orders.search</field>
+            <field name="model">shopify.feed.orders</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <search string="shopify_feed_orders_search">
+                    <field name="name"/>
+                </search></field>
+        </record>
+        <record id="action_shopify_feed_orders" model="ir.actions.act_window">
+            <field name="name">Shopify Feed Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shopify.feed.orders</field>
+            <field name="view_id" ref="syncoria_shopify.view_shopify_feed_orders_tree"/>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Shopify Feed Order.
+                </p></field>
+        </record>
+        <menuitem action="action_shopify_feed_orders" id="shopify_feed_orders" name="Feed Orders" parent="shopify_feed_views" sequence="1"/>
+    </data>
+</odoo>

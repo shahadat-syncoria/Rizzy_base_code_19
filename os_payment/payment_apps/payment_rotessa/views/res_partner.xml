@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_form_rotessa" model="ir.ui.view">
+            <field name="name">Rotessa Partner Form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page name="rotessa_info" string="Rotessa" invisible="not is_rotessa_active">
+                        <group name="Rotessa Information">
+                            <field name="rotessa_cust_id"/>
+                            <field name="rotessa_bank_id"/>
+                            <field name="rotessa_cust_identf_number"/>
+                            <field name="rotessa_authorization_type"/>
+                        </group>
+                        <group name="rotessa_bank_info" string="Rotessa Bank Info">
+                            <field name="rotessa_bank_id"/>
+                            <field name="rotessa_institution_number"/>
+                            <field name="rotessa_transit_number"/>
+                        </group>
+                        <group name="operations" string="Operations">
+                            <button class="btn btn-primary" invisible="rotessa_cust_id != False" name="action_create_rotessa_customer" string="Create Rotessa Customer" type="object"/>
+                            <button class="btn btn-primary" invisible="rotessa_cust_id == False" name="action_update_rotessa_customer" string="Update Rotessa Customer" type="object"/>
+                        </group>
+                    </page>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

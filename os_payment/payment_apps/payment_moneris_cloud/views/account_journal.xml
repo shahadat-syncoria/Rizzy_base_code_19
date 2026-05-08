@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_journal_form_moneris" model="ir.ui.view">
+            <field name="name">account.journal.form.inherit.moneris</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" context="{}" icon="fa-mobile" invisible="use_cloud_terminal != True" name="%(moneris_device_view_tree_all)d" string="Moneris Devices" type="action"/>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="after">
+                    <field invisible="type != 'bank'" name="use_cloud_terminal"/>
+                </xpath>
+                <xpath expr="//notebook[last()]" position="inside">
+                    <page invisible="use_cloud_terminal != True" string="Moneris Cloud Configuration">
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                                <field invisible="use_cloud_terminal != True" name="cloud_store_id" placeholder="gwcaXXXXXX" required="use_cloud_terminal == True"/>
+                                <field invisible="use_cloud_terminal != True" name="cloud_api_token" placeholder="HhmXXXXXXXXXXXXXkBA" required="use_cloud_terminal == True"/>
+                                <field invisible="use_cloud_terminal != True" name="cloud_terminal_id" placeholder="P1503XXX" required="use_cloud_terminal == True"/>
+                                <field invisible="use_cloud_terminal != True" name="cloud_pairing_token" placeholder="123456 (6 Digits)" required="use_cloud_terminal == True"/>
+                                <field invisible="use_cloud_terminal != True" name="cloud_integration_method"/>
+                                <field invisible="use_cloud_terminal != True or cloud_integration_method in ['polling']" name="cloud_postback_url" required="cloud_integration_method == 'postbackurl'"/>
+                                <field invisible="use_cloud_terminal != True" name="cloud_cloud_environment" widget="radio"/>
+                                <field invisible="use_cloud_terminal != True" name="account_id"/>
+                                <field invisible="use_cloud_terminal != True" name="is_moneris_go_cloud" readonly="1"/>
+                                <field invisible="use_cloud_terminal != True" name="token"/>
+                                <field invisible="use_cloud_terminal != True" name="cloud_cloud_paired"/>
+                                <button class="oe_highlight" groups="base.group_erp_manager" invisible="use_cloud_terminal != True or (cloud_cloud_environment == 'disabled' or cloud_cloud_paired == True)" name="cloud_terminal_pair" string="Pair" type="object"/>
+                                <br/>
+                                <button class="oe_highlight" groups="base.group_erp_manager" invisible="use_cloud_terminal != True or (cloud_cloud_environment == 'disabled' or cloud_cloud_paired == False)" name="cloud_terminal_init" string="Initilization" type="object"/>
+                                <button class="oe_highlight" groups="base.group_erp_manager" invisible="use_cloud_terminal != True or (cloud_cloud_environment == 'disabled' or cloud_cloud_paired == False)" name="cloud_terminal_unpair" string="Unpair" type="object"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

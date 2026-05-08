@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_payment_register_form_inherited" model="ir.ui.view">
+            <field name="name">account_payment_invoice inherited</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="use_clover_terminal" invisible="support_clover_terminal == False" />
+                    <field name="clover_device_id"
+                           invisible="use_clover_terminal != True"
+                           domain="[('journal_id', '=', journal_id), ('is_sale', '=', True)]" />
+                    <field name="clover_x_pos_id" invisible="use_clover_terminal != True"/>
+                </xpath>
+                <xpath expr="//field[@name='amount']" position="after">
+                    <field name="id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='amount']" position="attributes">
+                    <attribute name="readonly">False</attribute>
+                </xpath>
+                <xpath expr="//form" position="inside">
+                    <field name="use_clover_terminal" invisible="1"/>
+                    <field name="support_clover_terminal" invisible="1"/>
+                    <field name="payment_type_inbound" invisible="1"/>
+                    <field name="payment_type_outbound" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field invisible="use_clover_terminal == False or payment_type == 'inbound'" name="clover_account_payment" domain="[('id','in',compute_domain_clover_account_payment)]"/>
+                    <field name="clover_refundable_amount"
+                           readonly="1"
+                           invisible="use_clover_terminal == False or payment_type == 'inbound' or clover_account_payment == False"/>
+                    <field name="clover_payment_card_info"
+                           readonly="1"
+                           invisible="use_clover_terminal == False or payment_type == 'inbound' or clover_account_payment == False"/>
+                    <field name="clover_payment_card_type"
+                           readonly="1"
+                           invisible="use_clover_terminal == False or payment_type == 'inbound' or clover_account_payment == False"/>
+                    <field name="clover_order_id" readonly="1" invisible="use_clover_terminal != True or payment_type_inbound == True"/>
+                    <field name="clover_payment_id" readonly="1" invisible="use_clover_terminal != True or payment_type_inbound == True" />
+                </xpath>
+                <xpath expr="//field[@name='payment_token_id']" position="replace">
+                    <field name="payment_token_id" invisible="use_clover_terminal == True" />
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

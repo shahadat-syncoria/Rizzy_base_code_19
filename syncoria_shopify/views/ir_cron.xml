@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="inherit_shopify_view_ir_cron_form" model="ir.ui.view">
+            <field name="name">view.ir.cron.form</field>
+            <field name="model">ir.cron</field>
+            <field name="inherit_id" ref="base.ir_cron_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='interval_type']" position="after">
+                    <field invisible="xml_id != 'syncoria_shopify.ir_cron_update_product_quantity_ir_actions_server'" name="shopify_stock_limit" groups="!base.group_no_one"/>
+                    <field invisible="xml_id != 'syncoria_shopify.ir_cron_update_product_quantity_ir_actions_server'" name="shopify_time_limit" groups="!base.group_no_one"/>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="force_done_card_visa" model="pos.force.done.card.name">
+        <field name="sequence">10</field>
+        <field name="name">Visa</field>
+        <field name="code">VISA</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+    <record id="force_done_card_mastercard" model="pos.force.done.card.name">
+        <field name="sequence">20</field>
+        <field name="name">Mastercard</field>
+        <field name="code">MASTERCARD</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+    <record id="force_done_card_amex" model="pos.force.done.card.name">
+        <field name="sequence">30</field>
+        <field name="name">American Express</field>
+        <field name="code">AMEX</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+    <record id="force_done_card_discover" model="pos.force.done.card.name">
+        <field name="sequence">40</field>
+        <field name="name">Discover</field>
+        <field name="code">DISCOVER</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+    <record id="force_done_card_interac" model="pos.force.done.card.name">
+        <field name="sequence">50</field>
+        <field name="name">Interac Debit</field>
+        <field name="code">INTERAC</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+    <record id="force_done_card_jcb" model="pos.force.done.card.name">
+        <field name="sequence">60</field>
+        <field name="name">JCB</field>
+        <field name="code">JCB</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+    <record id="force_done_card_diners" model="pos.force.done.card.name">
+        <field name="sequence">70</field>
+        <field name="name">Diner's Club</field>
+        <field name="code">DINERSCLUB</field>
+        <field name="terminal">clover_cloud</field>
+    </record>
+
+    <record id="force_done_card_moneris_visa" model="pos.force.done.card.name">
+        <field name="sequence">10</field>
+        <field name="name">Visa</field>
+        <field name="code">VISA</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+    <record id="force_done_card_moneris_mastercard" model="pos.force.done.card.name">
+        <field name="sequence">20</field>
+        <field name="name">Mastercard</field>
+        <field name="code">MASTERCARD</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+    <record id="force_done_card_moneris_amex" model="pos.force.done.card.name">
+        <field name="sequence">30</field>
+        <field name="name">American Express</field>
+        <field name="code">AMEX</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+    <record id="force_done_card_moneris_discover" model="pos.force.done.card.name">
+        <field name="sequence">40</field>
+        <field name="name">Discover</field>
+        <field name="code">DISCOVER</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+    <record id="force_done_card_moneris_interac" model="pos.force.done.card.name">
+        <field name="sequence">50</field>
+        <field name="name">Interac Debit</field>
+        <field name="code">INTERAC</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+    <record id="force_done_card_moneris_jcb" model="pos.force.done.card.name">
+        <field name="sequence">60</field>
+        <field name="name">JCB</field>
+        <field name="code">JCB</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+    <record id="force_done_card_moneris_diners" model="pos.force.done.card.name">
+        <field name="sequence">70</field>
+        <field name="name">Diner's Club</field>
+        <field name="code">DINERSCLUB</field>
+        <field name="terminal">moneris_cloud</field>
+    </record>
+
+    <record id="force_done_card_moneris_go_visa" model="pos.force.done.card.name">
+        <field name="sequence">10</field>
+        <field name="name">Visa</field>
+        <field name="code">VISA</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+    <record id="force_done_card_moneris_go_mastercard" model="pos.force.done.card.name">
+        <field name="sequence">20</field>
+        <field name="name">Mastercard</field>
+        <field name="code">MASTERCARD</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+    <record id="force_done_card_moneris_go_amex" model="pos.force.done.card.name">
+        <field name="sequence">30</field>
+        <field name="name">American Express</field>
+        <field name="code">AMEX</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+    <record id="force_done_card_moneris_go_discover" model="pos.force.done.card.name">
+        <field name="sequence">40</field>
+        <field name="name">Discover</field>
+        <field name="code">DISCOVER</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+    <record id="force_done_card_moneris_go_interac" model="pos.force.done.card.name">
+        <field name="sequence">50</field>
+        <field name="name">Interac Debit</field>
+        <field name="code">INTERAC</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+    <record id="force_done_card_moneris_go_jcb" model="pos.force.done.card.name">
+        <field name="sequence">60</field>
+        <field name="name">JCB</field>
+        <field name="code">JCB</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+    <record id="force_done_card_moneris_go_diners" model="pos.force.done.card.name">
+        <field name="sequence">70</field>
+        <field name="name">Diner's Club</field>
+        <field name="code">DINERSCLUB</field>
+        <field name="terminal">moneris_cloud_go</field>
+    </record>
+</odoo>
+

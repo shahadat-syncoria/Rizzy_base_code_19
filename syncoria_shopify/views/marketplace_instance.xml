@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_instance_tree_shopify" model="ir.ui.view">
+            <field name="name">shopify.instance.list</field>
+            <field name="model">marketplace.instance</field>
+            <field name="inherit_id" ref="os_marketplace.list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='marketplace_instance_type']" position="after">
+                    <field name="name"/>
+                    <field name="warehouse_id"/>
+                    <field name="marketplace_state"/>
+                </xpath></field>
+        </record>
+        <record id="view_instance_form_shopify" model="ir.ui.view">
+            <field name="name">shopify.instance.form</field>
+            <field name="model">marketplace.instance</field>
+            <field name="inherit_id" ref="os_marketplace.view_instance_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button class="btn btn-primary"
+                            name="action_shopify_authorize"
+                            string="Authorize Shopify"
+                            type="object"
+                            invisible="marketplace_is_shopify == False"/>
+                    <button class="btn btn-primary" invisible="marketplace_state in 'confirm'" name="action_check_access" string="Connect" type="object"/>
+                    <button class="btn btn-primary" invisible="marketplace_state in 'draft'" name="action_cancel_state" string="Disconnect" type="object"/>
+                    <!-- <button string="Activate Webhook" class="btn btn-primary" name="action_activate_webhook" type="object" attrs="{  'invisible': [('marketplace_state','in',('draft'))]  }" /> -->
+                    <field name="marketplace_state" statusbar_visible="draft,confirm" widget="statusbar"/>
+                </xpath>
+                <xpath expr="//field[@name='marketplace_instance_type']" position="after">
+                    <field invisible="1" name="marketplace_is_shopify"/>
+                </xpath>
+                <xpath expr="//sheet" position="inside">
+                    <notebook invisible="marketplace_is_shopify == False">
+                        <page string="Credentials">
+                            <group invisible="shopify_auth_mode != 'direct_oauth'">
+                                <div class="o_form_label">Connect your store</div>
+                                <div class="text-muted">
+                                    Add your app’s Client ID and Secret from the Shopify Partners dashboard.
+                                    You have to give API access permission and distribute your app.
+                                    Paste the redirect URL below into the app’s “Allowed redirection URL(s)” (once per Odoo site).
+                                    Enter your store slug (e.g. <strong>mystore</strong>) or full <strong>mystore.myshopify.com</strong> domain — OAuth will fill the domain again after you approve.
+                                    Then click <strong>Authorize Shopify</strong>, approve access, and click <strong>Connect</strong>.
+                                </div>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="shopify_auth_mode" invisible="1"/>
+                                    <field name="shopify_is_oauth_connected" readonly="1"/>
+                                    <field name="token" password="true" readonly="1"/>
+                                    <field name="shopify_oauth_token" password="true" readonly="1"/>
+                                    <field name="account_id" readonly="1"/>
+                                    <field name="marketplace_host"
+                                           string="Store name/Store domain"
+                                           placeholder="mystore or mystore.myshopify.com"/>
+                                    <field name="shopify_oauth_callback_url"
+                                           string="Redirect URL for Shopify app"
+                                           readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="marketplace_api_key" string="Client ID" placeholder="Shopify app Client ID"/>
+                                    <field name="marketplace_secret_key" string="Secret" password="true" placeholder="Shopify app Client Secret"/>
+                                    <field name="marketplace_api_version"/>
+                                    <field name="use_graphql" readonly="1"/>
+                                    <!-- <field name="marketplace_app_id" readonly="1"/> -->
+                                </group>
+                            </group>
+                        </page>
+                        <page string="General Information">
+                            <group>
+                                <group>
+                                    <field name="company_id"/>
+                                    <field name="warehouse_id" required="1" domain="[('company_id', 'in', (False, company_id))]"/>
+                                    <field name="user_id" domain="[('company_id', 'in', (False, company_id))]"/>
+                                    <field name="sales_team_id" domain="[('company_id', 'in', (False, company_id))]"/>
+                                </group>
+                                <group>
+                                    <field name="language_id"/>
+                                    <field name="fiscal_position_id" domain="[('company_id', 'in', (False, company_id))]"/>
+                                    <field name="pricelist_id" required="1" domain="[('company_id', 'in', (False, company_id))]"/>
+                                    <field name="payment_term_id" domain="[('company_id', 'in', (False, company_id))]"/>
+                                    <field name="default_invoice_policy" widget="radio"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Product Export Operations">
+                            <group>
+                                <group>
+                                    <field help="Allow to set price when pushing new products to Shopify or updating product prices" name="set_price"/>
+                                    <field name="set_stock"/>
+                                    <field help="Allow to set image when pushing new products to Shopify or updating product images" name="set_image"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Product Import Operation">
+                            <group>
+                                <group>
+                                    <field name="sync_product_image"/>
+                                </group>
+                                <group>
+<!--                                    <field name="is_sku" string="Is product mapping by SKU?"/>-->
+                                    <field name="product_mapping" string="Product Mapping"/>
+                                </group>
+<!--                                <group>-->
+<!--                                    <field name="sync_price"/>-->
+<!--                                </group>-->
+                                <group>
+                                    <field name="is_product_create"/>
+                                </group>
+                            </group>
+                        </page>
+                        <!--                        <page string="Product Information">-->
+                        <!--                            <group>-->
+                        <!--                                <group>-->
+                        <!--                                    <field name="calculate_discount"/>-->
+                        <!--                                </group>-->
+                        <!--                                <group>-->
+                        <!--                                </group>-->
+                        <!--                            </group>-->
+                        <!--                        </page>-->
+                        <page string="Payment Information">
+                            <group>
+                                <group>
+                                    <field name="shopify_payment_method_mappings" domain="[('company_id', 'in', (False, company_id))]"><list editable="bottom">
+                                            <field name="name"/>
+                                            <field name="company_id" column_invisible="True"/>
+                                            <field name="journal_id" domain="[('company_id', 'in', (False, company_id))]"/>
+                                        </list></field>
+                                    <field name="shopify_refund_payment_method_mappings"><list editable="bottom">
+                                            <field name="name"/>
+                                            <field name="company_id" column_invisible="True"/>
+                                            <field name="journal_id" />
+                                        </list></field>
+                                </group>
+                                <group>
+<!--                                    <field name="marketplace_journal_id" domain="[('company_id', 'in', (False, company_id))]"/>-->
+                                    <field name="apply_tax"/>
+                                    <!--                                    <field name="marketplace_payment_journal_id" required="1"-->
+                                    <!--                                           domain="[('type','in',('bank','cash'))]"/>-->
+<!--                                    <field domain="[('type','in',('bank','cash')),('company_id', 'in', (False, company_id))]" name="marketplace_refund_journal_id" required="1"/>-->
+                                    <field name="marketplace_inbound_method_id" required="1"/>
+                                    <field name="marketplace_outbound_method_id" required="1"/>
+                                    <field name="refund_discrepancy_account_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Order Information">
+                            <group>
+                                <group>
+                                    <field name="auto_create_product"/>
+                                    <field name="notify_customer"/>
+                                    <field name="default_res_partner_id"/>
+                                </group>
+                                <group>
+                                    <field name="auto_create_invoice"/>
+                                    <field name="auto_create_fulfilment"/>
+                                    <field name="analytic_account_id"/>
+                                    <!--                                    <field name="order_tracking_ref"/>-->
+                                    <field name="order_prefix"/>
+                                    <field help="Automatically use pricelist price, otherwise use default price" name="compute_pricelist_price"/>
+                                    <field name="delivery_product_id" domain="[('type', 'in', ('service', 'consu'))]"/>
+                                    <field name="tax_group_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Shipping Methods">
+                            <group>
+                                <field name="shopify_shipping_method_mappings">
+                                    <list editable="bottom">
+                                        <field name="name" />
+                                        <field name="carrier_id" />
+                                        <field name="product_id" />
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

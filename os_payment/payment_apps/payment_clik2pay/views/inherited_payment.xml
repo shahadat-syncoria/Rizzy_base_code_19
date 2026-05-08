@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="clik2pay_payment_inherited" model="ir.ui.view">
+        <field name="name">clik2pay.account.payment</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account_payment.view_account_payment_form_inherit_payment"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_transaction_id']" position="after">
+                <field name="is_clik2pay_sync_button_visible" invisble="1"/>
+
+            </xpath>
+            <xpath expr="//button[@name='action_refund_wizard']" position="after">
+                <button name="update_payment_refund_status" type="object" string="Sync Clik2Pay Refund Status"
+                        invisible="is_clik2pay_sync_button_visible==False"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

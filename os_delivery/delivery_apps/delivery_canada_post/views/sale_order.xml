@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale_shipping']" position="inside">
+                <field invisible="1" name="canadapost_service"/>
+                <field name="canadapost_domestic_sale"/>
+                <field invisible="canadapost_domestic_sale == True" name="canadapost_export_reason"/>
+                <field invisible="canadapost_domestic_sale == True" name="canadapost_other_reason" required="canadapost_export_reason == 'OTH'"/>
+            </xpath></field>
+    </record>
+</odoo>

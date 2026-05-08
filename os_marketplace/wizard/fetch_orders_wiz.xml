@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="orders_fetch_wiz" model="ir.ui.view">
+            <field name="name">Fetch Orders Wizard</field>
+            <field name="model">order.fetch.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group id="range_condition">
+                                <field name="date_from" widget="date"/>
+                                <field name="date_to" widget="date"/>
+
+                            </group>
+                            <group>
+                                <field name="instance_id" options="{'no_create': True}" required="1"/>
+                                <field name="order_status" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <p>The operation may take some time to complete. It depends on the number of records.
+                            Please wait patiently.</p>
+                        <footer>
+                            <button string='Fetch Orders' name="fetch_orders"
+                                    type="object" class="btn-primary" />
+                            <button string="Cancel" class="btn-default" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fetch_orders" model="ir.actions.act_window">
+            <field name="name">Fetch Orders</field>
+            <field name="res_model">order.fetch.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('orders_fetch_wiz')})
+                          ]"
+            />
+        </record>
+
+        <menuitem 
+            name="Fetch Orders" 
+            id="fetch_orders" 
+            parent="synchronize" 
+            action="action_fetch_orders"/>
+    </data>
+</odoo>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="moneris_pos_preauth_form_view" model="ir.ui.view">
+            <field name="name">moneris_preauth.form</field>
+            <field name="model">moneris.pos.preauth</field>
+            <field name="arch" type="xml">
+                <form string="Moneris POS Preauth" delete="0" create="0" edit="0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Title"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="order_date" readonly="1"/>
+                                <field name="order_id" readonly="1"/>
+                                <field name="transaction_id" readonly="1"/>
+                                <field name="terminal_id" readonly="1"/>
+                                <field name="moneris_go_payment_method" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="customer_id" readonly="1"/>
+                                <field name="total_amount" readonly="1"/>
+                                <field name="status" readonly="1"/>
+                            </group>
+                        </group>
+
+<!--                        <notebook>-->
+<!--                            <page string="Settled Order Information"-->
+<!--                                  invisible="status != 'settled'">-->
+<!--                                <group>-->
+<!--                                    <field name="moneris_settled_order_id" readonly="1"/>-->
+<!--                                </group>-->
+<!--                            </page>-->
+<!--                        </notebook>-->
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="moneris_preauth_tree_view" model="ir.ui.view">
+            <field name="name">ProjectName.moneris_preauth.list</field>
+            <field name="model">moneris.pos.preauth</field>
+            <field name="arch" type="xml">
+                <list string="Moneris GO Preauth" delete="0" create="0" edit="0">
+                    <field name="name"/>
+                    <field name="customer_id"/>
+                    <field name="order_date"/>
+                    <field name="order_id"/>
+                    <field name="terminal_id"/>
+                    <field name="total_amount"/>
+                    <field name="status"/>
+                </list>
+            </field>
+        </record>
+
+
+
+        <record id="moneris_preauth_search_view" model="ir.ui.view">
+            <field name="name">ProjectName.moneris_preauth.search</field>
+            <field name="model">moneris.pos.preauth</field>
+            <field name="arch" type="xml">
+                <search string="Moneris GO Preauth">
+                    <group>
+                        <filter string="Status" name="status" domain="[]"
+                                context="{'group_by':'status'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="moneris_preauth_act_window" model="ir.actions.act_window">
+            <field name="name">Moneris GO Preauth</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">moneris.pos.preauth</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Moneris GO Preauth.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Moneris Go Preauth" id="moneris_preauth_menu" parent="point_of_sale.menu_point_config_product" action="moneris_preauth_act_window" sequence="20"/>
+
+    </data>
+</odoo>

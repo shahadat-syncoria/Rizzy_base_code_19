@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="shopify_discount" model="product.product">
+            <field name="name">Discount</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">service</field>
+            <field name="categ_id"  eval="ref('product.product_category_expenses', raise_if_not_found=False)"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
+            <field name="default_code">DISCOUNTS01</field>
+            <field name="purchase_ok">False</field>
+            <field name="invoice_policy">order</field>
+            <field name="taxes_id" eval="[]"/>
+        </record>
+
+        <record id="shopify_shipping" model="product.product">
+            <field name="name">Delivery</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="delivery.product_category_deliveries"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
+            <field name="default_code">DELIVERYS01</field>
+            <field name="purchase_ok">False</field>
+            <field name="invoice_policy">order</field>
+            <field name="taxes_id" eval="[]"/>
+        </record>
+
+        <record id="shopify_tip" model="product.product">
+            <field name="name">Tip</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">service</field>
+            <field name="categ_id"  eval="ref('product.product_category_expenses', raise_if_not_found=False)"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
+            <field name="default_code">TIPS01</field>
+            <field name="purchase_ok">False</field>
+            <field name="invoice_policy">order</field>
+            <field name="taxes_id" eval="[]"/>
+        </record>
+
+        <record id="shopify_refund_discrepancy" model="product.product">
+            <field name="name">Refund Discrepancy</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">service</field>
+            <field name="categ_id"  eval="ref('product.product_category_expenses', raise_if_not_found=False)"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
+            <field name="default_code">DISCREPANCYS01</field>
+            <field name="purchase_ok">False</field>
+            <field name="invoice_policy">order</field>
+            <field name="taxes_id" eval="[]"/>
+        </record>
+    </data>
+</odoo>

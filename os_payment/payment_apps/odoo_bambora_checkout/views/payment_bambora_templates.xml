@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="bamborachk_inline_form">
+			<div class="bamborachk_form">
+				<input type="hidden" name="data_set" value="/payment/bamborachk/s2s/create_json_3ds"/>
+				<input type="hidden" name="sale_order_id" t-att-value="request.session.get('sale_order_id')" />
+				<input type="hidden" name="website_routing" t-att-value="request.website_routing" />
+				<input type="hidden" name="sale_last_order_id" t-att-value="request.session.get('sale_last_order_id')" />
+				<input type="hidden" name="website_sale_current_pl" t-att-value="request.session.get('website_sale_current_pl')" />
+				<input type="hidden" id="provider_id" name="provider_id" t-att-value="provider_id" />
+				<t t-set="pm" t-value="request.env['payment.method'].sudo()._get_from_code('bamborachk')" />
+				<input type="hidden" id="payment_method" name="pay_method" t-att-value="pm.id" />
+				<t t-set="acq" t-value="request.env['payment.provider'].sudo().browse(provider_id)" />
+					<input type="hidden" id="provider_state" name="state" t-att-value="acq.state" />
+					<input type="hidden" id="provider" name="provider" t-att-value="acq.code" />
+					<input type="hidden" id="bamborachk_transaction_type" name="bamborachk_merchant_id" t-att-value="acq.bamborachk_merchant_id" />
+					<input type="hidden" id="bamborachk_merchant_id" name="bamborachk_merchant_id" t-att-value="acq.bamborachk_merchant_id" />
+					<input type="hidden" id="bamborachk_payment_api" name="bamborachk_payment_api" t-att-value="acq.bamborachk_payment_api" />
+					<input type="hidden" id="bamborachk_profile_api" name="bamborachk_profile_api" t-att-value="acq.bamborachk_profile_api" />
+				<input type="hidden" name="request" t-att-value="request" />
+				<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+				<input t-if="return_url" type="hidden" name="return_url" t-att-value="return_url" />
+				<input t-if="partner_id" type="hidden" name="partner_id" t-att-value="partner_id" />
+				<input type="hidden" name="order_id" t-att-value="request.session.get('sale_order_id')" />
+				<input type="hidden" id="window_href" name="window_href" t-att-value="request.httprequest" />
+				<!-- <t t-esc="request.session"/> -->
+				<!-- <t t-if="'/my/payment_method' not in window_href">
+					<input type="hidden" id="move_id" name="move_id" t-att-value="acq.bamborachk_url_info(window_href)" />
+				</t> -->
+				
+				<input type="hidden" name="data_key" />
+				<input type="hidden" name="request" t-att-value="request" />
+				<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+				<input t-if="return_url" type="hidden" name="return_url" t-att-value="return_url" />
+				<input t-if="partner_id" type="hidden" name="partner_id" t-att-value="partner_id" />
+				<t t-if="order_id">
+					<t t-set="order" t-value="request.env['sale.order'].sudo().browse(order_id)" />
+					<input type="hidden" id="access_token" name="access_token" t-att-value="order.access_token" />
+				</t>
+				<script src="https://libs.na.bambora.com/customcheckout/1/customcheckout.js"/>
+			</div>
+		</template>
+
+
+
+		<template id="payment_tokens_list_inherit" name="Payment Token Inherit" inherit_id="payment.form">
+			<xpath expr="//form[hasclass('o_payment_form')]" position="before">
+
+				<t t-if="'/my/payment_method' in request.httprequest.url or '/my/orders/' in request.httprequest.url or '/my/invoices' in request.httprequest.url or '/my/subscription' in request.httprequest.url" >
+					<div class="float-right mt-2">
+<!--						<button name="o_payment_submit_button"-->
+<!--								type="submit"-->
+<!--								class="btn btn-primary btn-lg mb8 mt8"-->
+<!--								disabled="true"-->
+<!--								t-att-data-icon-class="icon_class">-->
+<!--							<i t-attf-class="fa {{icon_class}}"/> <t t-esc="label"/>-->
+<!--						</button>-->
+					</div>
+					<div id="bamboraModal" class="modal fade bambora-modal" role="dialog">
+						<div class="modal-dialog bambora-dialog">
+							<div class="modal-content bambora-modal-content">
+								<div class="row" style="row-gap: 10px;">
+									<div class="col-11">
+									</div>
+									<div class="col-1">
+										<button type="button float-right" id="bamboraCancel" class="close" data-dismiss="modal" style="text-align: right;padding-top: 5px;padding-right:10px;font-size:16px;">
+											<span class="close">
+												&amp;times;
+											</span>
+										</button>
+									</div>
+								</div>
+								<div class="modal-body">
+									<div class="container-bambora" id="container_bambora">
+										<form id="checkout-form" class="form-inline  text-center">
+											<div class="row">
+												<div class="col-1" >
+													<img id="card_logo" src="/os_payment/static/src/img/bambora_checkout/card.png" alt="Card" style="width:32px;height:32px;margin-top:4px;" />
+												</div>
+												<div class="col-11" style="width:100%;padding-bottom:20px;">
+													<div class="form-group col-xs-6 has-feedback .card-number-class" id="card-number-bootstrap">
+														<div id="card-number" class="form-control" style="width:100%;">
+														</div>
+													</div>
+												</div>
+												<div class="col-1">
+													<img id="cvv_logo" src="/os_payment/static/src/img/bambora_checkout/cvv.png" alt="Card Logo" style="width:32px;height:32px;margin-top:4px;" />
+												</div>
+												<div class="col-5">
+													<div class="form-group col-xs-2 has-feedback" id="card-cvv-bootstrap">
+														<div id="card-cvv" class="form-control">
+														</div>
+													</div>
+												</div>
+												<div class="col-1">
+													<img id="expiry_logo" src="/os_payment/static/src/img/bambora_checkout/expiry.png" alt="Expiry" style="width:26px;height:26px;margin-top:4px;" />
+												</div>
+												<div class="col-5">
+													<div class="form-group col-xs-2 has-feedback" id="card-expiry-bootstrap">
+														<div id="card-expiry" class="form-control">
+														</div>
+													</div>
+												</div>
+												<div class="col-12">
+													<div class="text-center">
+														<button id="pay-button" class="btn btn-primary disabled" disabled="true" style="width: 100%; margin-top: 20px;">
+															<t t-if="'/my/payment_method' in request.httprequest.url">
+																Add Card
+															</t>
+															<t t-if="'/shop/payment' in request.httprequest.url or '/my/orders' in request.httprequest.url or '/my/invoices' in request.httprequest.url or '/my/subscription' in request.httprequest.url">
+																Pay
+															</t>
+														</button>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-lg-12 text-center">
+													<div id="feedback">
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</t>
+			</xpath>
+
+		</template>
+
+		<template id="portal_invoice_page_inherit_bambora" name="Invoice Portal Template Inherit" inherit_id="account.portal_invoice_page">
+			<xpath expr="//div[hasclass('o_portal_invoice_sidebar')]" position="inside">
+				<div id="bamboraModal" class="modal fade bambora-modal" role="dialog">
+					<div class="modal-dialog bambora-dialog">
+						<div class="modal-content bambora-modal-content">
+							<div class="row" style="row-gap: 10px;">
+								<div class="col-11">
+								</div>
+								<div class="col-1">
+									<button type="button float-right" class="close" id="bamboraCancel" data-dismiss="modal" style="text-align: right;padding-top: 5px;padding-right:10px;font-size:16px;">
+										<span class="close">
+											&amp;times;
+										</span>
+									</button>
+								</div>
+							</div>
+							<div class="modal-body">
+								<div class="container-bambora" id="container_bambora">
+									<form id="checkout-form" class="form-inline  text-center">
+										<div class="row">
+											<div class="col-1" >
+												<img id="card_logo" src="/os_payment/static/src/img/bambora_checkout/card.png" alt="Card" style="width:32px;height:32px;margin-top:4px;" />
+											</div>
+											<div class="col-11" style="width:100%;padding-bottom:20px;">
+												<div class="form-group col-xs-6 has-feedback .card-number-class" id="card-number-bootstrap">
+													<div id="card-number" class="form-control" style="width:100%;">
+													</div>
+												</div>
+											</div>
+											<div class="col-1">
+												<img id="cvv_logo" src="/os_payment/static/src/img/bambora_checkout/cvv.png" alt="Card Logo" style="width:32px;height:32px;margin-top:4px;" />
+											</div>
+											<div class="col-5">
+												<div class="form-group col-xs-2 has-feedback" id="card-cvv-bootstrap">
+													<div id="card-cvv" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="col-1">
+												<img id="expiry_logo" src="/os_payment/static/src/img/bambora_checkout/expiry.png" alt="Expiry" style="width:26px;height:26px;margin-top:4px;" />
+											</div>
+											<div class="col-5">
+												<div class="form-group col-xs-2 has-feedback" id="card-expiry-bootstrap">
+													<div id="card-expiry" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="text-center">
+													<button id="pay-button" class="btn btn-primary disabled" disabled="true" style="width: 100%; margin-top: 20px;">
+														<t t-if="'/my/payment_method' in request.httprequest.url">
+															Add Card
+														</t>
+														<t t-if="'/shop/payment' in request.httprequest.url or '/my/invoices' in request.httprequest.url">
+															Pay
+														</t>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-12 text-center">
+												<div id="feedback">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</xpath>
+		</template>
+
+		<template id="sale_order_portal_template_bambora" inherit_id="sale.sale_order_portal_template">
+			<xpath expr="//div[hasclass('o_portal_sale_sidebar')]" position="inside">
+				<div id="bamboraModal" class="modal fade bambora-modal" role="dialog">
+					<div class="modal-dialog bambora-dialog">
+						<div class="modal-content bambora-modal-content">
+							<div class="row" style="row-gap: 10px;">
+								<div class="col-11">
+								</div>
+								<div class="col-1">
+									<button type="button float-right" id="bamboraCancel"  data-dismiss="modal" style="text-align: right;padding-top: 5px;padding-right:10px;font-size:16px;">
+										<span class="close">
+											&amp;times;
+										</span>
+									</button>
+								</div>
+							</div>
+							<div class="modal-body">
+								<div class="container-bambora" id="container_bambora">
+									<form id="checkout-form" class="form-inline  text-center">
+										<div class="row">
+											<div class="col-1" >
+												<img id="card_logo" src="/os_payment/static/src/img/bambora_checkout/card.png" alt="Card" style="width:32px;height:32px;margin-top:4px;" />
+											</div>
+											<div class="col-11" style="width:100%;padding-bottom:20px;">
+												<div class="form-group col-xs-6 has-feedback .card-number-class" id="card-number-bootstrap">
+													<div id="card-number" class="form-control" style="width:100%;">
+													</div>
+												</div>
+											</div>
+											<div class="col-1">
+												<img id="cvv_logo" src="/os_payment/static/src/img/bambora_checkout/cvv.png" alt="Card Logo" style="width:32px;height:32px;margin-top:4px;" />
+											</div>
+											<div class="col-5">
+												<div class="form-group col-xs-2 has-feedback" id="card-cvv-bootstrap">
+													<div id="card-cvv" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="col-1">
+												<img id="expiry_logo" src="/os_payment/static/src/img/bambora_checkout/expiry.png" alt="Expiry" style="width:26px;height:26px;margin-top:4px;" />
+											</div>
+											<div class="col-5">
+												<div class="form-group col-xs-2 has-feedback" id="card-expiry-bootstrap">
+													<div id="card-expiry" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="text-center">
+													<button id="pay-button" class="btn btn-primary disabled" disabled="true" style="width: 100%; margin-top: 20px;">
+														<t t-if="'/my/payment_method' in request.httprequest.url">
+															Add Card
+														</t>
+														<t t-if="'/shop/payment' in request.httprequest.url or '/my/orders' in request.httprequest.url">
+															Pay
+														</t>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-12 text-center">
+												<div id="feedback">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</xpath>
+		</template>
+
+	</data>
+</odoo>

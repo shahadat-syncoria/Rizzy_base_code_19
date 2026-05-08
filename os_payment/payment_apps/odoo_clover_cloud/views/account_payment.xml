@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_account_payment_form" model="ir.ui.view">
+            <field name="name">account.payment.form inherited</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form" />
+            <field name="arch" type="xml">
+<!--                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">-->
+<!--                    &lt;!&ndash; Payment stat button &ndash;&gt;-->
+<!--                    <button name="button_open_payments" type="object" class="oe_stat_button" icon="fa-credit-card"-->
+<!--                        attrs="{'invisible': [('reconciled_payments_count','=', 0)]}">-->
+<!--                        <field name="reconciled_payments_count"/>-->
+<!--                        <span attrs="{'invisible': [('reconciled_payments_count','&gt;', 1)]}">Refund</span>-->
+<!--                        <span attrs="{'invisible': [('reconciled_payments_count','&lt;=', 1)]}">Refunds</span>-->
+<!--                    </button>-->
+<!--                </xpath>-->
+
+                <xpath expr="//form//sheet" position="inside">
+                    <field name="clover_payment_id" />
+                    <field name="currency_id" invisible="1"/>
+                    <notebook>
+                        <page string="Clover Details" invisible="clover_payment_id==False" >
+                            <group>
+                                <group>
+                                    <field name="clover_is_samecard"
+                                        invisible="clover_payment_id == False and payment_type == 'inbound'"/>
+                                    <field name="clover_success"/>
+                                    <field name="clover_result"/>
+                                    <field name="clover_payment_id"/>
+                                    <field name="clover_order_id"/>
+                                    <field name="clover_tender_id"/>
+
+                                    <field name="clover_amount"/>
+                                    <field name="clover_ext_id"/>
+                                    <field name="clover_emp_id"/>
+                                    <field name="clover_created_time"/>
+                                    <field name="clover_payment_result"/>
+                                </group>
+                                <group>
+                                    <!-- <field name="clover_card_type"/> -->
+                                    <field name="clover_entry_type"/>
+                                    <field name="clover_type"/>
+                                    <field name="clover_auth_code"/>
+                                    <field name="clover_reference_id"/>
+                                    <field name="clover_transaction_no"/>
+                                    <field name="clover_state"/>
+                                    <field name="clover_last_digits"/>
+                                    <!-- <field name="cardholder_name"/> -->
+                                    <field name="clover_expiry_date"/>
+                                    <field name="clover_token"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+     <record id="account_payment_view_clover" model="ir.ui.view">
+         <field name="name">account.payment.list.clover</field>
+         <field name="model">account.payment</field>
+         <field name="type">list</field>
+         <field name="priority" eval="16" />
+         <field name="active" eval="True" />
+         <field name="arch" type="xml">
+             <list string="Account Payment Clover" create="true" delete="true" edit="true">
+                <field name="date" />
+                <field name="name" />
+                <field name="journal_id" />
+                <field name="payment_method_id" />
+                <field name="partner_id" />
+                <field name="clover_is_samecard" />
+                <field name="amount" />
+                <field name="state" />
+                <field name="has_payments" />
+                <field name="reconciled_payments_count" />
+             </list>
+         </field>
+     </record>
+     
+    </data>
+</odoo>

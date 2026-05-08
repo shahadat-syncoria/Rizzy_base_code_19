@@ -1,0 +1,18 @@
+<odoo>
+    <data noupdate="1">
+        <record id="discount_err" model="shopify.err.tag">
+            <field name="name">Discount Error</field>
+            <field name="color">1</field>
+        </record>
+
+        <record id="refund_err" model="shopify.err.tag">
+            <field name="name">Refund Error</field>
+            <field name="color">2</field>
+        </record>
+
+        <record id="partially_refunded" model="shopify.err.tag">
+            <field name="name">Partially Refunded</field>
+            <field name="color">3</field>
+        </record>
+    </data>
+</odoo>

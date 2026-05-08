@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="provider_form_moneris" model="ir.ui.view">
+            <field name="name">payment.provider.form.inherit.moneris</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment.payment_provider_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[@name="provider_credentials"]' position="inside">
+                    <group invisible="code != 'monerischeckout'" string="Checkout Credentials">
+                        <field name="moneris_transaction_type"/>
+                        <field name="moneris_token"/>
+                    </group>
+                    <group invisible="code != 'monerischeckout'" string="Payment Security">
+                        <field name="moneris_avs"/>
+                        <field invisible="moneris_avs == False" name="moneris_avs_zip"/>
+                        <field name="moneris_cvv"/>
+                        <field name="moneris_3d_secure"/>
+                        <field name="moneris_kount"/>
+                    </group>
+                    <group invisible="code != 'monerischeckout'" string="Sale Order">
+                        <field name="moneris_lock_order"/>
+                    </group>
+                    <group invisible="code != 'monerischeckout'" string="Recurring Payments">
+                        <field name="moneris_recurring_invoice_scope"/>
+                    </group>
+                </xpath>
+                <xpath expr='//group[@name="payment_followup"]' invisible="code != 'monerischeckout'" position="after">
+                    <group invisible="code != 'monerischeckout'" name="payment_token_moneris" string="Payment Token">
+                        <field name="allow_token_delete"/>
+                    </group>
+                </xpath></field>
+        </record>
+        <record id="transaction_form_moneris" model="ir.ui.view">
+            <field name="name">provider.transaction.form.moneris</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.payment_transaction_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page id="moneris_details" invisible="provider_code != 'monerischeckout'" string="Moneris Checkout Details">
+                            <group>
+                                <group>
+                                    <field name="moneris_card_type"/>
+                                    <field invisible="moneris_card_type in 'Card'" name="moneris_customer_id"/>
+                                    <field name="moneris_receipt_id"/>
+                                    <field name="moneris_response_code"/>
+                                    <field invisible="moneris_card_type == 'Card'" name="moneris_credit_card"/>
+                                    <field invisible="moneris_card_type != 'Card'" name="moneris_card_name"/>
+                                    <field invisible="moneris_card_type != 'Card'" name="moneris_expiry_date"/>
+                                </group>
+                                <group>
+                                    <field name="moneris_card_amount"/>
+                                    <field name="moneris_transaction_time"/>
+                                    <field name="moneris_transaction_date"/>
+                                    <field name="moneris_transaction_id"/>
+                                    <field name="moneris_payment_type"/>
+                                    <field name="moneris_reference_no"/>
+                                    <field name="moneris_bank_approval"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field invisible="provider_code != 'monerischeckout'" name="moneris_fraud_lines" readonly="1">
+                                    <list>
+                                        <field name="transaction_type"/>
+                                        <field name="decision_origin"/>
+                                        <field name="result"/>
+                                        <field name="condition"/>
+                                        <field name="status"/>
+                                        <field name="code"/>
+                                        <field invisible="1" name="transaction_id"/>
+                                    </list></field>
+                            </group>
+                            <group>
+                                <field invisible="provider_code != 'monerischeckout' or moneris_card_type in 'card'" name="gift_lines">
+                                    <list>
+                                        <field name="balance_remaining"/>
+                                        <field name="order_no"/>
+                                        <field name="reference_no"/>
+                                        <field name="response_code"/>
+                                        <field name="transaction_amount"/>
+                                        <field name="transaction_no"/>
+                                        <field invisible="1" name="gift_id"/>
+                                    </list></field>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

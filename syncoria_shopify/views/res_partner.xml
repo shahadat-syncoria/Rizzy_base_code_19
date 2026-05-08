@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_inherited_view_shopify" model="ir.ui.view">
+            <field name="name">view.res.partner.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Shopify">
+                        <group>
+                            <group>
+                                <field name="marketplace_type" string="Marketplace"/>
+                                <field name="marketplace_instance_id" options="{'no_open': True,'no_create': True}"/>
+                                <!-- <field name="property_payment_method_id" /> -->
+                            </group>
+                        </group>
+                        <group invisible="marketplace_type != 'shopify'">
+                            <group>
+                                <h3>
+                                    Shopify IDS
+                                </h3>
+                                <field name="shopify_id" string="Shopify Id"/>
+                                <field name="shopify_add_id" readonly="1" string="Shopify Address Id"/>
+                                <field name="shopify_warehouse_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="shopify_accepts_marketing"/>
+                                <field name="multipass_identifier"/>
+                                <field name="shopify_state" widget="radio"/>
+                                <field name="shopify_verified_email"/>
+                            </group>
+                            <group>
+                                <h3>
+                                    Customer Profile
+                                </h3>
+                                <field name="shopify_last_order_id" readonly="1"/>
+                                <field name="shopify_last_order_name" readonly="1"/>
+                                <field name="orders_count" readonly="1"/>
+                                <field name="shopify_total_spent" readonly="1"/>
+                                <field name="shopify_company_name" readonly="1"/>
+                            </group>
+                            <group>
+                                <h3>
+                                    Tax Exempt
+                                </h3>
+                                <field name="shopify_tax_exempt"/>
+                                <field name="shopify_tax_exemptions_ids"/>
+                                <field name="shopify_tax_settings"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <!-- Form view for "model" -->
+        <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">view.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="shopify_id"/>
+                    <field name="marketplace_instance_id"/>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

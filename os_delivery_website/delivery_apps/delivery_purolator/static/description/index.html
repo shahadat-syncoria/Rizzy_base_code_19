@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Odoo Purolator Connector</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="oe_styling_v8">
+    <section class="oe_container pt16 mt16" style="margin-left:calc(-42vw + 50%); width:84vw">
+        <div class="row o_equal_col_sm"
+             style="max-width:1540px; margin:30px auto 0 auto; background-color:#cbddeb; border-top:1px solid #c5d1da; padding-bottom:120px; border-radius:15px 15px 4px 4px;">
+            <div style="display:block; margin:0 auto; text-align: center">
+
+                <img class="img img-responsive mt24 mb8" src="images/logo.png"
+                     style="display:block; margin:43px auto 0 auto!important; max-width: 100%;">
+
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <section class="oe_container bg-transparent fixed-top position-relative" style="margin:-5rem 0 0">
+            <div class="o_equal_col_sm">
+                <div class="shadow bg-white px-2"
+                     style="box-shadow:-40px 40px 160px 0 rgba(0, 0, 0, 0.08), -8px 8px 15px 0 rgba(120, 120, 120, 0.04), 3px 3px 30px 0 rgba(0, 0, 0, 0.04) !important; border-radius:15px; padding-top: 32px; padding-bottom: 60px; border-top:2px solid #a8b8c4;">
+                    <h3 class="oe_slogan"
+                        style="color:#254a67; font-family:'Roboto', arial, sans-serif; font-weight:500; text-align:center;opacity:1; font-size:38px;line-height: 45px; margin-bottom:10px; margin-top:18px">
+                        Odoo Purolator Connector
+                    </h3>
+                    <h4 class="oe_slogan"
+                        style="padding-bottom:30px;color:#536e82; font-family:'Roboto', arial, sans-serif; font-weight: 400; text-align:center; font-size:18px;line-height: 24px;margin-top: 0!important;margin-bottom: 0!important;">
+                        Ship your sales order through Purolator and sync them in Odoo.
+
+                    </h4>
+                    <p style="padding: 0 40px 10px 40px; text-align: center;font-family:'Roboto', arial, sans-serif;  font-weight:normal; color:#444; font-size:15px; line-height: 24px; ">
+                        Odoo's Purolator Connector is the bridge that will connect your Odoo Enterprise and Purolator
+                        logistic system. By permitting you to quickly and easily sync all of the information of every
+                        package shipped through Purolator, it’ll make logistic simpler.
+
+                    </p>
+
+
+                </div>
+            </div>
+        </section>
+        <section class="oe_container pb-5">
+
+            <h2 style="color:#254a67;font-family:'Roboto', arial, sans-serif;  text-align:center; margin:75px auto 45px auto;"
+                class="oe_slogan">
+                <strong>Highlights</strong>
+            </h2>
+            <div class="row  justify-content-center">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="shadow"
+                         style="border-radius:6px;  margin-bottom: 30px; text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-01.jpg"
+                                 style="max-width: 100%; display: block; margin: auto;">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Maximize Efficiency</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0; margin: 0;line-height: 22px; font-size:13px;">
+                                Easily sync your online stores data with Purolator efficiently.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div style="border-radius:6px;  margin-bottom: 30px; text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-02.jpg"
+                                 style="max-width: 100%; display: block;margin: auto;"></div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Get Shipping Labels</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0; margin: 0;line-height: 22px; font-size:13px;">
+                                Select your orders and generate the shipping labels with all the Purolator services
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div style="border-radius:6px; margin-bottom: 30px;  text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-03.jpg"
+                                 style="max-width: 100%; display: block;margin: auto;"></div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Update Tracking Number</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0 15px; margin: 0;line-height: 22px; font-size:13px;">
+                                Track your orders and delivery status with Purolator tracking number
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div style="border-radius:6px;  margin-bottom: 30px; text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-04.jpg"
+                                 style="max-width: 100%; display: block;margin: auto;"></div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Fetch Shipping Cost</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0; margin: 0;line-height: 22px; font-size:13px;">
+                                Get the shipping rate of carriers in one click and choose the best option</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div style="border-radius:6px;  margin-bottom: 30px; text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-05.jpg"
+                                 style="max-width: 100%; display: block;margin: auto;"></div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Scale your business</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0; margin: 0;line-height: 22px; font-size:13px;">
+                                Manage growing order volume without worrying about courier integration
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div style="border-radius:6px;  margin-bottom: 30px; text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-07.jpg"
+                                 style="max-width: 100%; display: block;margin: auto;"></div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Multiple Account</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0; margin: 0;line-height: 22px; font-size:13px;">
+                                Integrate multiple Purolator post accounts with single Odoo environment
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div style="border-radius:6px; margin-bottom: 30px; text-align: center; padding:15px 5px 35px 5px; box-shadow: 0 0 5px #cdcbd6; border:1px solid #ddd;">
+                        <div class="col-12">
+                            <img class="img img-responsive" src="images/V1_R2-06.jpg"
+                                 style="max-width: 100%; display: block;margin: auto;"></div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3 style="padding-top:10px; font-family:'Roboto', arial, sans-serif; font-weight:700; line-height: 24px; font-size:16px;  color: #254a67;">
+                                Save Time</h3>
+                            <p style="color:#555; font-weight:400; font-family:'Roboto', arial, sans-serif; padding: 0; margin: 0;line-height: 22px; font-size:13px;">
+                                Just enter your credentials and get ready to ship
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="oe_container mb32" style="margin-left:calc(-42vw + 50%); width:84vw">
+            <div id="loempia_tabs" class="row"
+                 style="max-width:1540px; margin:0 auto; padding-bottom:0; border-radius:15px">
+                <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs"
+                    style="border:none; background-color:unset; margin:0 auto">
+                    <li class="nav-item"
+                        style="border-top-right-radius:10px; border-top-left-radius:10px; background-color:#e6f6ff; margin-right:10px; border:1px solid #ddd; border-bottom:0">
+                        <a href="#ept_features" data-toggle="tab" aria-expanded="true" class="show active"
+                           style="font-family:'Roboto', arial, sans-serif; text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:11px 20px; border-top-left-radius:10px; border-top-right-radius:10px; color:#2b2b2b; border:1px solid transparent">
+                            Features</a></li>
+
+                    <li class="nav-item"
+                        style="border-top-right-radius:10px; border-top-left-radius:10px; background-color:#e6f6ff; margin-right:10px; border:1px solid #ddd; border-bottom:0">
+                        <a href="#user_guide" data-toggle="tab" aria-expanded="true" class="show"
+                           style="font-family:'Roboto', arial, sans-serif; text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:11px 20px; border-top-left-radius:10px; border-top-right-radius:10px; color:#2b2b2b; border:1px solid transparent">
+                            Support</a></li>
+                    <li class="nav-item"
+                        style="border-top-right-radius:10px; border-top-left-radius:10px; background-color:#e6f6ff; margin-right:10px; border:1px solid #ddd; border-bottom:0">
+                        <a href="#faqs" data-toggle="tab" aria-expanded="true" class="show"
+                           style="font-family:'Roboto', arial, sans-serif; text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:11px 20px; border-top-left-radius:10px; border-top-right-radius:10px; color:#2b2b2b; border:1px solid transparent">
+                            FAQs</a>
+                    </li>
+                </ul>
+                <div id="loempia_tabs_content_ept" class="container-fluid"
+                     style="border:1px solid #eee; padding-left: 0; padding-right: 0;">
+                    <div class="tab-content" id="tabs_content">
+                        <!-- Features Tabs -->
+                        <div class="tab-pane active show" id="ept_features"
+                             style="background-color: #f7f7f7; padding:40px 30px;">
+                            <div class="container mt48">
+                                <section style="background-color: #f7f7f7!important;">
+
+
+                                    <div style="margin-bottom: 50px;">
+                                        <h3 style="border-radius: 6px 6px 0 0; font-size: 22px; line-height:30px;font-family:'Roboto', arial, sans-serif; font-weight:500; color:#000; background-color: #d2d5dc; text-align: center;  padding: 12px;">
+                                            How to Configure Purolator Shipping Instance in Odoo
+                                        </h3>
+                                        <div style="margin-bottom: 30px;">
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                Go to your Odoo database dashboard. Clink “Settings”
+
+                                            </h4>
+                                            <img src="images/V1_R1.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                From settings select “Purolator Delivery Methods” under “Shipping”
+                                            </h4>
+                                            <img src="images/V1_R2.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                Select Purolator, CN
+
+                                            </h4>
+                                            <img src="images/V1_R3.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                Enter Credentials to configure Purolator Shipping Instance
+                                            </h4>
+                                            <img src="images/V1_R4.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                Select the delivery method in Quotation/ Sales Order and select “GET RATE”
+                                            </h4>
+                                            <img src="images/V1_R5.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                The rates will appear in the Quotations/Sales Order
+                                            </h4>
+                                            <img src="images/V1_R6.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                Validate the Quotation/ Sales Order by clicking “VALIDATE”
+                                            </h4>
+                                            <img src="images/V1_R7.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                                Now print the shipping label by selecting “PRINT SHIPPING LABEL” and clink “OK”
+                                            </h4>
+                                            <img src="images/V1_R8.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+
+                                            <h4 style=" margin-top:30px;margin-bottom:20px; padding:7px 20px;font-size: 18px; line-height:34px;font-family:'Roboto', arial, sans-serif; font-weight:500; background-color:#eee;">
+                                               Select “Purolator, CN” and press “Ship” button in Odoo website to complete the order
+                                            </h4>
+                                            <img src="images/V1_R9.jpg" alt="Image" class="shadow"
+                                                 style="margin:40px auto; display: block; max-width:80%; text-align: center;"/>
+
+
+                                        </div>
+                                    </div>
+
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="user_guide" role="tabpanel" aria-labelledby="user_guide_tab"
+                             style="background-color: #f7f7f7; padding:40px 30px;">
+                            <div class="mb64">
+                                <div class="mt32 mb32">
+                                    <div class="mt32 mx-auto text-center">
+                                        <h4 class="text-center mt16 mb16"
+                                            style="color:#274764; font-family: 'Roboto', arial, sans-serif; font-weight: 600;">
+                                            Create a Support Ticket</h4>
+                                    </div>
+                                    <img class="img img-responsive mb0" src="images/line.svg"
+                                         style="margin:20px auto 40px auto ; height:1px; display:block;max-width:100%;">
+                                    <h3 style="color:#2e7dda; font-family: 'Roboto', arial, sans-serif; font-weight:600; text-align:center; font-size:17px; opacity:1; margin:8px 0 16px"
+                                        class="oe_slogan">
+                                        Issue Ticket
+                                    </h3>
+
+                                    <div style="width:35%; font-weight:500; font-size:15px; margin:0 auto; border:1px solid #0074ff; display:flex; background-color:#0074ff; border-radius:10px;">
+                                        <div class="text-center"
+                                             style="color:#091E42; font-family: 'Roboto', arial, sans-serif; padding:0; min-width:100%">
+                                        <span class="bg-white position-relative shadow"
+                                              style="padding:17px 7px 0 0; color:#0f1e40; float:left; font-weight:600; width:100px; vertical-align:middle; border-bottom-left-radius:9px; border-top-left-radius:9px; font-size:12px; height:100%;">
+                                            <span class="text-left d-inline-block pl-2">COPY LINK</span>
+
+                                        </span>
+                                            <p style="vertical-align:middle; border-top-right-radius:9px; border-bottom-right-radius:9px; line-height:50px; color:#fff; font-weight:500; padding:0 15px 0 80px; margin-bottom: 0;"
+                                               class="text-center mb0">
+                                                https://app.syncoria.com/issueticket</p>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="mt32 mb32">
+                                        <p class="text-center" style="color:#0f1e40; max-width:75%; margin:0 auto">If
+                                            you face any issues while using our app and the issue is arising due to our
+                                            app, we provide you complementary support for a duration of
+                                            <b>60 days</b> from the date of purchase of the respective app.
+                                        </p>
+                                        <p class="text-center mt32"
+                                           style="color:#0f1e40; max-width:75%; margin:20px auto;">
+                                            To create a support ticket, please register on Syncoria Support Desk and
+                                            provide us necessary information to help you resolve the issue.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="faqs" role="tabpanel" aria-labelledby="faqs_tab"
+                             style="background-color: #fff; padding:40px 30px;">
+                            <section class="oe_container  px-2">
+                                <div class="s_faq mt32 mb32" style="border-radius:10px; background-color: #ffffff">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel-group" style="margin-bottom:20px;">
+                                            <div class="panel panel-default overflow-hidden" style="border-radius:10px">
+                                                <div class="panel-heading mt0"
+                                                     style="border:1px solid transparent !important; border-bottom: 1px solid #ddd!important">
+                                                    <h4 class="panel-title p-2" style="margin:0">
+                                                        <a class="collapsed"
+                                                           style="color:#454a63; font-size:18px; font-weight:600; font-family:'Roboto', arial, sans-serif; padding:15px 15px 15px 50px; "
+                                                           data-toggle="collapse" href="#faq2" aria-expanded="false">
+                                                            <span class="panelcontent">	 Do you offer help with the installation of your app?
+
+</span>
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="faq2" class="panel-collapse collapse"
+                                                     style="background-color:rgb(240, 244, 247); padding:15px">
+                                                    <div>
+                                                        <p class="mb0"
+                                                           style="height:auto; padding-left:2%; margin-left:2%; font-family:'Roboto', arial, sans-serif;">
+                                                            We're committed to ensuring your app is installed properly on the production environment. All of our apps come with 5 hours free services, so that you can be sure it works as expected in a live setting.
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-group" style="margin-bottom:20px;margin-top:20px;">
+                                            <div class="panel panel-default overflow-hidden"
+                                                 style="border-radius:10px">
+                                                <div class="panel-heading mt0"
+                                                     style="border:1px solid transparent !important; border-bottom: 1px solid #ddd!important">
+                                                    <h4 class="panel-title  p-2" style="margin:0">
+                                                        <a class="collapsed"
+                                                           style="color:#454a63; font-size:18px; font-weight:600; font-family:'Roboto', arial, sans-serif; padding:15px 15px 15px 50px;"
+                                                           data-toggle="collapse" href="#faq3"
+                                                           aria-expanded="false">
+                                    <span class="panelcontent">
+                                 	 Do you offer free upgrades and support If I purchase the app?
+
+
+                                    </span>
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="faq3" class="panel-collapse collapse"
+                                                     style="background-color:rgb(240, 244, 247); padding:15px">
+                                                    <div>
+                                                        <p class="mb0"
+                                                           style="height:auto; padding-left:2%; margin-left:2%; font-family:'Roboto', arial, sans-serif;">
+                                                            When you purchase an app from us, your satisfaction is guaranteed with 60 days of free support. All versions of the app are sold separately!
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-group" style="margin-bottom:20px">
+                                            <div class="panel panel-default overflow-hidden"
+                                                 style="border-radius:10px">
+                                                <div class="panel-heading mt0"
+                                                     style="border:1px solid transparent !important; border-bottom: 1px solid #ddd!important">
+                                                    <h4 class="panel-title  p-2" style="margin:0">
+                                                        <a class="collapsed"
+                                                           style="color:#454a63; font-size:18px; font-weight:600; font-family:'Roboto', arial, sans-serif; padding:15px 15px 15px 50px;"
+                                                           data-toggle="collapse" href="#faq4"
+                                                           aria-expanded="false">
+                                                            <span class="panelcontent"> We need an extra feature for our business, how can I request it?
+</span>
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="faq4" class="panel-collapse collapse"
+                                                     style="background-color:rgb(240, 244, 247); padding:15px">
+                                                    <div>
+                                                        <p class="mb0"
+                                                           style="height:auto; padding-left:2%; margin-left:2%; font-family:'Roboto', arial, sans-serif;">
+                                                            If you need extra features for your app, please get in touch with us through the "Contact Us" button within our app page.
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="oe_container mt32" style="padding:0;">
+        <div class="container">
+            <h2 style="text-transform:uppercase; padding-bottom: 0; color:#091E42; font-family:'Roboto', Arial, sans-serif; text-align:center; margin:0 auto;"
+                class="oe_slogan">
+                <strong>Suggested Products</strong>
+            </h2>
+            <div id="demo" class="row carousel slide mt32 mb32" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/14.0/delivery_purolator/" target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px;width: 360px;"
+                                         src="images/carousel/12.gif">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+                                        Odoo Shopify Connector
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float: left">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/14.0/payment_moneris_semi/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/9.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+                                        Moneris Credit Card Terminals (Semi-Integrated)
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/14.0/payment_moneris_checkout/" target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px;"
+                                         src="images/carousel/13.jpg">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Odoo Moneris Checkout
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/payment_moneris_hosted_interac/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/11.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Interac + Moneris Online Payments(Hosted) - Odoo Connector
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a href="https://apps.odoo.com/apps/modules/13.0/variant_website_visibility/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/2.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Variant Website Visibility
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/payment_moneris_hosted_gift/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/3.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Shippo Integration
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/payment_moneris_hosted/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/8.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Moneris Payment Acquirer (Hosted)
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/14.0/ecommerce_product_description"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/7.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        eCommerce Product Description
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/odoo_zoom_events/" target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/10.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Zoom - Odoo Events Connector
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/odoo_zoom_eLearning/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/4.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Zoom - E-Learning Connector
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/odoo_bigbluebutton/" target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/6.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Odoo BigBlueButton Connector
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/odoo_bigbluebutton_eLearning/"
+                               target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/6.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+                                        BigBlueButton with eLearning
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div style="float: left" class="col-xs-12 col-sm-4 col-md-4 mb16 mt16">
+                            <a style="text-decoration: none; color: #254a67;"
+                               href="https://apps.odoo.com/apps/modules/13.0/delivery_shippo" target="_blank">
+                                <div style="border-radius:10px" class="shadow-sm">
+                                    <img class="img img-responsive center-block"
+                                         style="border-top-left-radius:10px; border-top-right-radius:10px"
+                                         src="images/carousel/5.png">
+                                    <h4 class="mt0 text-truncate"
+                                        style="padding:6% 4%; text-align:center; width:100%; font-family:'Roboto', Arial, sans-serif; font-size: 14px; line-height: 20px;">
+
+                                        Shippo Integration
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo" data-slide="prev"
+                   style="margin-left:-30px; width:35px; color:#254a67">
+                        <span class="carousel-control-prev-icon">
+                            <i class="fa fa-chevron-left" style="font-size:24px"></i></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next"
+                   style="margin-right:-30px; width:35px; color:#254a67">
+                        <span class="carousel-control-next-icon">
+                            <i class="fa fa-chevron-right" style="font-size:24px"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

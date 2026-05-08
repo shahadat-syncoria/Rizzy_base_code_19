@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="payment_icon_via_interac" model="payment.method">
+        <field name="name">Clik2pay via Interac</field>
+        <field name="code">clik2pay</field>
+        <field name="image" type="base64"
+               file="os_payment/static/src/img/clik2pay_payment/clik2pay_via_Interac_button.png"/>
+    </record>
+    <record id="payment_icon_via_interac_icon" model="payment.method">
+        <field name="name">Clik2pay via Interac</field>
+        <field name="code">clik2pay</field>
+        <field name="image" type="base64" file="os_payment/static/src/img/clik2pay_payment/interac_logo.png"/>
+    </record>
+</odoo>

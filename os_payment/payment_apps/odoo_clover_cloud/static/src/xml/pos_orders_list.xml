@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<templates id="pos_orders_list_template" inherit_id="point_of_sale.template" xml:space="preserve">
+
+		<!-- <t t-extend="OrderReceipt">
+			<t t-jquery=".pos-receipt-order-data" t-operation="after">
+				<t t-if="env.pos.config.show_barcode">
+					<div>
+						<div style="margin:auto;margin-top:10px;" id="barcode_print"></div>
+					</div>
+				</t>
+			</t>
+		</t> -->
+	
+	
+	</templates>
+	
+	

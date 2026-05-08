@@ -1,0 +1,169 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="shopify_transactions_list">
+      <field name="name">Shopify Transactions List</field>
+      <field name="model">shopify.transactions</field>
+      <field name="arch" type="xml">
+        <list>
+           <field name="shopify_instance_id"/>
+          <field name="shopify_id"/>
+          <field name="shopify_order_id"/>
+          <field name="sale_id"/>
+          <field name="shopify_amount"/>
+          <field name="shopify_currency"/>
+        </list>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="shopify_transactions_action_window">
+      <field name="name">Shopify Transactions</field>
+      <field name="res_model">shopify.transactions</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_shopify_transactions_form" model="ir.ui.view">
+        <field name="name">Shopify Transactions Form</field>
+        <field name="model">shopify.transactions</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+          <form string="Shopify Transactions Form" create="true" delete="true" edit="true">
+              <sheet>
+                  <div class="oe_title">
+                      <label for="name" class="oe_edit_only" />
+                      <h1><field name="name" placeholder="Describe the item..." /></h1>
+                  </div>
+                  <group>
+                      <group>
+                          <field name="shopify_instance_id"/>
+                          <field name="sale_id"/>
+                          <field name="shopify_id"/>
+                          <field name="shopify_order_id"/>
+                          <field name="shopify_kind"/>
+                          <field name="shopify_gateway"/>
+                          <field name="shopify_status"/>
+                          <field name="shopify_message"/>
+                          <field name="shopify_created_at"/>
+                          <field name="shopify_test"/>
+                          <field name="shopify_authorization"/>
+                          <field name="shopify_location_id"/>
+                      </group>
+                      <group>
+                          <field name="shopify_user_id"/>
+                          <field name="shopify_parent_id"/>
+                          <field name="shopify_processed_at"/>
+                          <field name="shopify_device_id"/>
+                          <field name="shopify_error_code"/>
+                          <field name="shopify_source_name"/>
+                          <field name="shopify_receipt"/>
+                          <field name="shopify_currency_exchange_adjustment"/>
+                          <field name="shopify_amount"/>
+                          <field name="shopify_currency"/>
+                          <field name="shopify_payment_details"/>
+                      </group>
+                  </group>
+                  <group>
+                      <group>
+                          <field name="shopify_payment_details_id"/>
+                      </group>
+                      <group>
+                          <field name="shopify_payment_receipt_id"/>
+                      </group>
+                  </group>
+              </sheet>
+          </form>
+          
+            
+        </field>
+    </record>
+    
+
+    <menuitem 
+      name="Shopify Transactions" 
+      id="shopify_transactions" 
+      sequence="4" 
+      parent="syncoria_shopify.shopify_sales" 
+      action="shopify_transactions_action_window"/>
+
+
+    <!--  -->
+    <record model="ir.ui.view" id="shopify_receipt_metadata_list">
+      <field name="name">Receipt Metadata</field>
+      <field name="model">shopify.payment.receipt.metadata</field>
+      <field name="arch" type="xml">
+        <list>
+           <field name="shopify_instance_id"/>
+          <field name="sale_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="shopify_receipt_metadata_action_window">
+      <field name="name">Receipt Metadata</field>
+      <field name="res_model">shopify.payment.receipt.metadata</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_shopify_receipt_metadata_form" model="ir.ui.view">
+        <field name="name">Receipt Metadata Form</field>
+        <field name="model">shopify.payment.receipt.metadata</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+          <form string="Receipt Metadata Form" create="true" delete="true" edit="true">
+              <sheet>
+                  <div class="oe_title">
+                      <label for="name" class="oe_edit_only" />
+                      <h1><field name="name" placeholder="Describe the item..." /></h1>
+                  </div>
+                  <group>
+                      <group>
+                          <field name="company_id" 
+                          invisible="1"
+                          />
+                          <field name="shopify_instance_id"/>
+                          <field name="transaction_type"/>
+                          <field name="sale_id"/>
+                          <field name="receipt_id"/>
+                      </group>
+                      <group>
+                      </group>
+                  </group>
+                  <group>
+                      <group>
+                          <field name="email"/>
+                          <field name="manual_entry"/>
+                          <field name="order_id"/>
+                          <field name="order_transaction_id"/>
+                          <field name="payments_charge_id"/>
+                          <field name="shop_id"/>
+                          <field name="shop_name"/>
+                          <field name="transaction_fee_tax_amount"/>
+                           <field name="transaction_fee_total_amount"/>
+                      </group>
+                      <group>
+                            <field name="currency_id"/>
+                      </group>
+                  </group>
+              </sheet>
+          </form>
+          
+            
+        </field>
+    </record>
+    
+
+    <menuitem 
+      name="Shopify Payment Receipt Metadata" 
+      id="shopify_receipt_metadata" 
+      sequence="7" 
+      parent="syncoria_shopify.shopify_sales" 
+      action="shopify_receipt_metadata_action_window"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pos_payment_method_form_view_card_wise_journal" model="ir.ui.view">
+        <field name="name">pos.payment.method.view.form.card.wise.journal</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="enable_card_wise_journal"
+                       invisible="use_payment_terminal not in ['moneris_cloud', 'moneris_cloud_go', 'clover_cloud']"/>
+                <field name="test_with_demo_response"
+                       invisible="not enable_card_wise_journal or use_payment_terminal not in ['moneris_cloud', 'moneris_cloud_go', 'clover_cloud']"/>
+                <field name="demo_card_name"
+                       invisible="not test_with_demo_response or not enable_card_wise_journal or use_payment_terminal not in ['moneris_cloud', 'moneris_cloud_go', 'clover_cloud']"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

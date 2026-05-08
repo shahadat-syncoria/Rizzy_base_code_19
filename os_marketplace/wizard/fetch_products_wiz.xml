@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="products_fetch_wiz" model="ir.ui.view">
+            <field name="name">Fetch Product Wizard</field>
+            <field name="model">products.fetch.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="fetch_type" required="1"/>
+                                <field name="instance_id" options="{'no_create': True}" required="1"/>
+                            </group>
+                            <group id="range_condition">
+                                <field name="date_from" widget="date"/>
+                                <field name="date_to" widget="date"/>
+                            </group>
+                        </group>
+                        <p invisible="fetch_type == 'to_odoo'">
+                            The operation may take some time to complete. It depends on the number of records.
+                            Please wait patiently.
+                        </p>
+                        <p invisible="fetch_type != 'to_odoo'">
+                            It involves syncing the products,
+                            their variants,  product categories, product attributes and their values from Shopify.
+                            The time for this operation depends on the number of products involved. So please wait
+                            patiently.
+                        </p>
+                        <footer>
+                            <button class="btn-primary" name="fetch_products" string="Fetch Products" type="object"/>
+                            <button class="btn-default" special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form></field>
+        </record>
+        <record id="action_fetch_products" model="ir.actions.act_window">
+            <field name="name">Fetch Products</field>
+            <field name="res_model">products.fetch.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+            <field eval="[(5, 0, 0),                           (0, 0, {'view_mode': 'form', 'view_id': ref('products_fetch_wiz')})                           ]" name="view_ids"/>
+        </record>
+        <menuitem action="action_fetch_products" id="fetch_products" name="Fetch Products" parent="synchronize"/>
+    </data>
+</odoo>

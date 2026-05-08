@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_clover_device_usr,access_clover_device_usr,model_clover_device,base.group_user,1,0,0,0
+access_clover_device_man,access_clover_device_man,model_clover_device,base.group_erp_manager,1,1,1,1
+access_clover_payment_usr,access_clover_payment_usr,model_clover_payment,base.group_user,1,0,0,0
+access_clover_payment_man,access_clover_payment_man,model_clover_payment,base.group_user,1,,1,1,1
+

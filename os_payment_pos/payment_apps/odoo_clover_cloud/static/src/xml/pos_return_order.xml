@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_return_order_template" inherit_id="point_of_sale.template" xml:space="preserve">
+
+	<t t-name="RtnSeeAllOrdersScreenWidget" owl="1">
+		<span class="control-button" t-att-class="is_available()?    'highlight' : ''" id="show_pos_order" style="background-color: #7f82ac; color: #fff;">
+			<i class="fa fa-university"></i> 
+			<span> </span>
+			<span>RtnSeeAllOrdersScreenWidget</span>
+		</span>
+	</t>
+
+	<t t-extend="SeeAllOrdersButtonWidget">
+		<t t-jquery=".control-button .orders-button .highlight" t-operation="replace">
+			<span> </span>
+		</t>
+	</t>
+
+	<t t-name="PosBarcodeReturnBtn" name="POS Return Order with Barcode" owl="1">
+		<t t-if="env.pos.config.show_order">
+			<span class="control-button" t-att-class="is_available()?    'highlight' : ''">
+				<i class="fa fa-barcode"></i>
+			<span> </span>
+			<span>Return Order with Barcode</span>
+		</span>
+		</t>
+	</t>
+
+    <t t-name="TicketScreenExtend" t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('header-row')]//div[@name='delete']" position="after">
+            <div t-if="env.pos.config.show_order" class="col start wide"></div>
+        </xpath>
+        <xpath expr="//div[hasclass('order-row')]" position="inside">
+            <div t-if="env.pos.config.show_order" class="col center" name="return-order-div">
+                <button class="return-order" t-att-id='order.id' t-att-name='order.name' style="cursor: pointer; color: #fff; background-color: #7F82AC;"  t-on-click="returnOrder"><i class='fa fa-sign-in'></i> Return Order </button>
+            </div>
+        </xpath>
+    </t>
+
+	<t t-name="PosBarcodePopupWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-confirm">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Return Order Barcode</p>
+				<div class="body">
+					<div class='div-container' style="margin-top: 20px;">
+						<input id ="entered_item_barcode" type="text" class="input-field" name="code"></input>
+					</div>
+				</div>
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" t-on-click="trigger('click-back')" style="background-color: #0075AC; color: #fff;">
+						Cancel
+					</div>
+					<div class="button confirm_return" t-on-click="trigger('apply-barcode-return-order')" style="background-color: #0075AC; color: #fff;">
+						Apply
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+	<t t-name="PosReturnOrderPopupWidget" owl="1">
+		<div class="modal-dialog bi-pos-modal">
+			<div class="popup popup-confirm" style="height: 350px;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Return Products</p>
+
+				<div class="body" style="height: 205px;">
+					<div class='div-container' style="overflow-y: auto;">
+						<table class='return-product-list'>
+							<thead>
+								<tr class="return_product_header">
+									<th>Product</th>
+									<th>Return Qty</th>
+								</tr>
+							</thead>
+							<tbody class='return-product-list-contents'>
+								<tr class="return_product_body" t-foreach="props.orderlines || []" t-as="item">
+									<td><t t-esc='item.product_id[1]' /></td>
+										<td class="entered_item_qty">
+										<input id ="entered_item_qty" t-att-line-id='item.id' t-att-qty-id='item.qty' type="text" class="input-field" name="code"></input>
+										</td>
+								</tr>
+							</tbody> 
+						</table>
+					</div>
+				</div>
+
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" data-dismiss="modal" t-on-click="posreturncancel" style="background-color: #0075AC; color: #fff;">
+						Cancel
+					</div>
+					<div class="button confirm" t-on-click="applyreturnorder" id="apply_return_order" style="background-color: #0075AC; color: #fff;">
+						Apply
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</t>
+
+	
+	<t t-name="SeeOrderDetailsPopupWidget" owl="1">
+		<div role="dialog" class="modal-dialog">
+			<Draggable>
+				<div class="popup popup-confirm" style="height: 435px; width:700px">
+					<header class="title drag-handle">
+                        <t t-esc="props.title" />
+                    </header>
+					<div class="body" style="height: 300px;overflow: scroll;">
+						<t t-foreach="props.order || []" t-as="item" t-att-id="item.id">
+							<table style='width:100%'>
+								<tr style='line-height:30px; font-size:15px'>
+									<td style='width:20%; text-align:left'><strong>Order Ref:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>
+										<span t-esc="item['name']"/>
+									</td>
+									<td style='width:20%; text-align:left'><strong>Order Date:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>    
+										<span t-esc="props.current_date" />
+									</td>
+								</tr>
+
+								<tr style='line-height:30px; font-size:15px'>
+									<td style='width:20%; text-align:left'><strong>Customer:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>
+										
+										<span t-esc="item['partner_id'][1] or ''"/>
+										
+									</td>
+									<td style='width:20%; text-align:left'><strong>Total Amount:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>    
+										<span t-esc="env.pos.format_currency(item['amount_total'])" />
+									</td>
+								</tr>
+
+								<tr style='line-height:30px; font-size:15px'>
+									<td style='width:20%; text-align:left'><strong>Receipt Ref:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>
+										<span t-esc="item['pos_reference']"/>
+									</td>
+									<td style='width:20%; text-align:left'><strong>Status:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>
+										<t t-if="item['state'] == 'draft'">Draft/New</t>
+										<t t-if="item['state'] == 'invoiced'">Invoiced</t>
+										<t t-if="item['state'] == 'paid'">Paid</t>
+										<t t-if="item['state'] == 'done'">Posted</t>
+										<t t-if="item['state'] == 'cancel'">Cancelled</t>    
+									</td>
+								</tr>
+								<tr style='line-height:30px; font-size:15px'>
+									<td style='width:20%; text-align:left'><strong>Company:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>
+										<span t-esc="item['company_id'][1]"/>
+									</td>
+									<td style='width:20%; text-align:left'><strong>Session:</strong>
+									</td>
+									<td style='width:30%; text-align:left'>    
+										<span t-esc="item['session_id'][1]" />
+									</td>
+								</tr>
+							</table>
+						</t>
+						<br/>
+						<table style='width:100%'>
+							<thead>
+								<tr style="border:1px solid black; line-height:30px;">
+									<th style='width:25%; padding-left: 10px; text-align:left'>Product</th>
+									<th style='width:25%; padding-left: 10px; text-align:left'>Discount</th>
+									<th style='width:25%; padding-left: 10px; text-align:left'>Quantity</th>
+									<th style='width:25%; padding-left: 10px; text-align:left'>Price</th> 
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="border:1px solid black; line-height:30px; font-size:15px;" t-foreach="props.orderline || []" t-as="line1">
+									<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.product_id[1]' /></td>
+									<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.discount' /></td>
+									<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.qty' /></td>
+									<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.price_unit' /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<footer class="footer" style="background-color: #7f82ac; color: #fff;">
+						<div class="button cancel" t-on-click="cancel" style="background-color: #E0E0E0; color: black;">Cancel
+                        </div>
+					</footer>
+				</div>
+
+			</Draggable>
+		</div>
+	</t>
+
+
+</templates>
+
+

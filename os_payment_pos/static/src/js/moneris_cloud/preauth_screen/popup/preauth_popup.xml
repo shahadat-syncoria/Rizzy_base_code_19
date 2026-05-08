@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+  <t t-name="os_payment_pos.MonerisGoPreauthPopup">
+    <Dialog t-props="{ title: state.title }">
+      <div class="m-preauth">
+        <div class="m-card">
+
+          <!-- header -->
+          <div class="m-head">
+            <div class="m-title">
+              <i class="fa fa-credit-card" title="Payment" aria-hidden="true"></i>
+              <span t-esc="state.title"/>
+            </div>
+            <div class="m-sub">
+              Choose a customer and enter an amount. On confirm, we’ll call the backend for Moneris Go preauthorization and close this window.
+            </div>
+          </div>
+
+          <!-- body -->
+          <div class="m-body">
+            <div t-if="state.loading" class="m-spinner mb-2">
+              <i class="fa fa-spinner fa-spin" title="Loading" aria-hidden="true"></i>
+              <span>Loading customers…</span>
+            </div>
+
+            <!-- Customer -->
+            <div class="m-field">
+              <label class="m-label">Customer</label>
+
+              <!-- Responsive row: stack on small, flush on desktop -->
+              <div t-att-class="ui.isSmall ? 'd-flex flex-column gap-2' : 'd-flex align-items-stretch gap-0'">
+                <!-- Dropdown -->
+                <div class="m-dd flex-grow-1">
+                  <!-- Button shows selected name or placeholder -->
+                  <button type="button"
+                          class="m-dd-btn w-100"
+                          t-on-click="() => { state.open = !state.open; }"
+                          t-att-aria-expanded="state.open ? 'true' : 'false'">
+                    <t t-esc="(state.customers.find(c => c.id === state.customerId)?.name) || 'Select Customer'"/>
+                  </button>
+
+                  <!-- Dropdown menu -->
+                  <div class="m-dd-menu" t-att-class="state.open ? 'm-dd-menu show' : 'm-dd-menu'">
+                    <!-- Search input inside the dropdown -->
+                    <input class="m-dd-search"
+                           type="text"
+                           placeholder="Search…"
+                           t-att-disabled="state.loading"
+                           t-att-value="state.filterText || ''"
+                           t-on-input="(ev) => { state.filterText = (ev.target.value || ''); }"
+                           autofocus="autofocus"/>
+
+                    <!-- List items -->
+                    <t t-foreach="state.customers" t-as="cust" t-key="cust.id">
+                      <div class="m-dd-item"
+                           t-att-style="state.filterText &amp;&amp; cust.name &amp;&amp; cust.name.toLowerCase().indexOf(state.filterText.toLowerCase()) === -1 ? 'display:none' : ''"
+                           t-on-click="() => { state.customerId = cust.id; state.open = false; }">
+                        <t t-esc="cust.name"/>
+                      </div>
+                    </t>
+                  </div>
+                </div>
+
+                <!-- + Create Customer button -->
+                <button
+                  class="btn btn-primary"
+                  style="border-top-left-radius:0; border-bottom-left-radius:0; display:flex; align-items:center; justify-content:center; padding:0 14px;"
+                  role="img"
+                  aria-label="Add a customer"
+                  title="Add a customer"
+                  t-att-disabled="state.loading"
+                  t-on-click="() => this.editPartner()">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+
+              <div class="m-help">Click to open, then type to filter the list, or create a new one.</div>
+            </div>
+
+            <div class="m-divider"></div>
+
+            <!-- Payment Method -->
+            <div class="m-field">
+              <label class="m-label">Payment Method</label>
+
+              <select class="form-select"
+                      t-model.number="state.paymentMethodId"
+                      t-att-disabled="state.loading || !state.monerisMethods.length">
+                <option value="">Select Payment Method</option>
+                <t t-foreach="state.monerisMethods" t-as="pm" t-key="pm.id">
+                  <option t-att-value="pm.id">
+                    <t t-esc="pm.name"/>
+                  </option>
+                </t>
+              </select>
+
+              <div class="m-help">
+                Only Moneris Go Cloud payment methods are shown.
+              </div>
+            </div>
+
+            <div class="m-divider"></div>
+
+            <!-- Amount -->
+            <div class="m-field">
+              <label class="m-label">Amount</label>
+              <div class="input-group">
+                <span class="input-group-text" aria-hidden="true">
+                  <t t-esc="state.currencySymbol || '$'"/>
+                </span>
+                <input class="form-control"
+                       type="number"
+                       min="0" step="0.01"
+                       placeholder="0.00"
+                       aria-label="Amount"
+                       t-model="state.amount"
+                       t-att-disabled="state.loading"/>
+              </div>
+              <div class="m-help">
+                Enter a positive amount, e.g. <span class="m-badge"><i class="fa fa-hashtag" aria-hidden="true"></i> 100.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer -->
+          <div class="m-footer">
+            <t t-if="state.loading">
+              <div class="m-fullscreen-loader">
+                <i class="fa fa-spinner fa-spin"></i>
+                <span>Processing, please wait...</span>
+              </div>
+            </t>
+
+            <button class="btn btn-light" t-on-click="props.close" t-att-disabled="state.loading">
+              <i class="fa fa-times" aria-hidden="true"></i>
+              Cancel
+            </button>
+
+            <button class="btn btn-primary"
+                    t-on-click="confirm"
+                    t-att-disabled="state.loading || !state.customerId || !(+state.amount &gt; 0)">
+              <i class="fa fa-check" aria-hidden="true"></i>
+              Confirm
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </Dialog>
+  </t>
+</templates>

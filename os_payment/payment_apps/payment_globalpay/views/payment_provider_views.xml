@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="globalpay_payment_provider_form" model="ir.ui.view">
+        <field name="name">GlobalPay Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position='inside'>
+                <group invisible="code != 'globalpay'" name="globalpay_credentials">
+                    <!-- <field name="globalpay_user_name" attrs="{'required':[('code', '=', 'globalpay'), ('state', '!=', 'disabled')]}" password="True"/> -->
+                    <!-- <field name="globalpay_user_password" attrs="{'required':[('code', '=', 'globalpay'), ('state', '!=', 'disabled')]}" password="True"/> -->
+<!--                    <field name="globalpay_api_version" attrs="{'required':[('code', '=', 'globalpay'), ('state', '!=', 'disabled')]}"/>-->
+<!--                    <field name="globalpay_app_id" attrs="{'required':[('code', '=', 'globalpay'), ('state', '!=', 'disabled')]}" groups="base.group_no_one"/>-->
+<!--                    <field name="globalpay_app_key" attrs="{'required':[('code', '=', 'globalpay'), ('state', '!=', 'disabled')]}" groups="base.group_no_one"/>-->
+                </group>
+            </group>
+        </field>
+    </record>
+    <record id="transaction_form_globalpay" model="ir.ui.view">
+        <field name="name">acquirer.transaction.form.globalpay</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='provider_reference']" position="after">
+                <field name="globalpay_reference" readonly="1"
+                       invisible="provider_code != 'globalpay'"/>
+                <field name="demo_success_failed" invisible="provider_code != 'globalpay'" groups="base.group_no_one"/>
+            </xpath>
+            <xpath expr="//form" position="attributes">
+                <attribute name="edit">true</attribute>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="update_payment_refund_status" type="object" string="Sync Refund Status"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

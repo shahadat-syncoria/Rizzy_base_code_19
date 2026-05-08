@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="clover_auth_rcv" name="Clover Auth Receive">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h2>Clover Authroization Code Update Status</h2>
+                    <div>
+                        <t t-if="context.get('clover_id')">
+                            <div class="row">
+                                <div class="col-12" id="clover_auth_rcv_table">
+                                    <table class="table table-bordered" style="table-layout: fixed">
+                                        <tbody>
+                                            <tr>
+                                                <td>Payment Method Name</td>
+                                                <td><span t-esc="context.get('clover_id').name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Merchant Id</td>
+                                                <td><span t-esc="context.get('merchant_id')"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Employee Id</td>
+                                                <td><span t-esc="context.get('employee_id')"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Client Id</td>
+                                                <td><span t-esc="context.get('client_id')"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Authroization Code</td>
+                                                <td><span t-esc="context.get('code')"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </t>
+                        <t-else>
+                        <h3>No Clover Payment Method found in POS.</h3>
+                        </t-else>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

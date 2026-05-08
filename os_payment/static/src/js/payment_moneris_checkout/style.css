@@ -1,0 +1,79 @@
+.modal-dialog{
+    margin-top: 2%
+}
+/* 
+.moneris-content
+{
+    background-color: white !important; 
+    border: 0 !important;
+}
+
+.button.close {
+    color: #000 !important;
+    text-align: right;
+    padding-top: 0;
+    padding-right: 18px;
+    text-shadow: none;
+    opacity: 1;
+    font-size: 16px;
+} */
+
+.embed-responsive{
+    /*padding-bottom: 80%;*/
+    height: 80vh !important;
+}
+
+.moneris-delegate-card{
+    background: linear-gradient(135deg, #fff7f0 0%, #fef1e4 60%, #fdf8f2 100%);
+    border: 1px solid #f3d7c6;
+    border-radius: 14px;
+    padding: 14px 16px 12px;
+    box-shadow: 0 6px 16px rgba(69, 35, 16, 0.08);
+}
+
+.moneris-delegate-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.moneris-delegate-title{
+    font-weight: 600;
+    color: #5b2d1b;
+    letter-spacing: 0.2px;
+}
+
+.moneris-delegate-badge{
+    background: #fff2cc;
+    color: #6a4a00;
+    border: 1px solid #f1d27a;
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.moneris-delegate-input .input-group-text{
+    background: #fffaf5;
+    border-color: #f0d4c4;
+    color: #7b4a32;
+    font-weight: 600;
+}
+
+.moneris-delegate-control{
+    border-color: #f0d4c4;
+    box-shadow: none;
+}
+
+.moneris-delegate-control:focus{
+    border-color: #e5bda7;
+    box-shadow: 0 0 0 0.2rem rgba(229, 189, 167, 0.25);
+}
+
+.moneris-delegate-hint{
+    display: block;
+    margin-top: 6px;
+    color: #8a5a43;
+}

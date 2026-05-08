@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_dashboard_shopify_instance">
+        <field name="name">Shopify Dashboard</field>
+        <field name="res_model">marketplace.instance</field>
+        <field name="view_mode">kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Shopify Instance
+            </p>
+            <p>
+                You can create a new Shopify Instance, For that go into:
+            </p>
+            <p>
+                " Marketplace List > Create "
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_shopify_shopify_dashboard"
+              name="Dashboard"
+              parent="os_marketplace.syncoria_marketplace_main"
+              sequence="0"
+              action="action_dashboard_shopify_instance"/>
+
+    <record id="shopify_shopify_kanban_view" model="ir.ui.view">
+        <field name="name">Shopify Dashboard</field>
+        <field name="model">marketplace.instance</field>
+        <field name="arch" type="xml">
+            <kanban create="false">
+                <field name="color"/>
+                <field name="name"/>
+                <field name="marketplace_count_orders"/>
+                <field name="marketplace_count_products"/>
+                <field name="marketplace_count_customers"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="marketplace-box-width">
+                            <!-- Header -->
+                            <div class="marketplace-header-box">
+                                <img src="/syncoria_shopify/static/src/img/icon.png"
+                                     alt="Shopify" class="shopify_img"/>
+                                <t t-value="record.name" t-set="dashboard"/>
+                                <t t-call="WooTop"/>
+                            </div>
+
+                            <!-- Config + Logs -->
+                            <div class="dashboard_inner_section">
+                                <button type="object" class="btn btn-primary"
+                                        name="shopify_open_marketplace_configuration">
+                                    Configuration
+                                </button>
+                                <a name="shopify_open_instance_logs" type="object">
+                                    Logs
+                                </a>
+                            </div>
+
+                            <!-- Footer counts -->
+                            <div class="o_kanban_primary_right marketplace-footer-box">
+                                <div class="dashboard_card_manager">
+                                    <div class="dashboard_footer">
+                                        <a name="shopify_open_marketplace_orders" type="object">Orders</a>
+                                        <span class="marketplace-record-count">
+                                            <field name="marketplace_count_orders"/>
+                                        </span>
+                                    </div>
+                                    <div class="dashboard_footer">
+                                        <a name="shopify_open_marketplace_products" type="object">Products</a>
+                                        <span class="marketplace-record-count">
+                                            <field name="marketplace_count_products"/>
+                                        </span>
+                                    </div>
+                                    <div class="dashboard_footer">
+                                        <a name="shopify_open_marketplace_customers" type="object">Customers</a>
+                                        <span class="marketplace-record-count">
+                                            <field name="marketplace_count_customers"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                    <t t-name="WooTop">
+                        <div class="o_kanban_card_header">
+                            <div class="o_kanban_card_header_title">
+                                <div class="o_primary marketplace_name_style" t-att-title="dashboard.title">
+                                    <h3>
+                                        <span class="text-truncate d-block">
+                                            <field name="name"/>
+                                        </span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

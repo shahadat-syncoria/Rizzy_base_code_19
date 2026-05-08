@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+           <record id="view_account_move_inherit_clover" model="ir.ui.view">
+            <field name="name">account.move.form.inherited.clover</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                        <button name="button_open_payments" type="object" class="oe_stat_button" icon="fa-credit-card"
+                            attrs="{'invisible': [('reconciled_payments_count','=', 0)]}">
+                            <field name="reconciled_payments_count"/>
+                            <span attrs="{'invisible': [('reconciled_payments_count','&gt;', 1)]}">Refund</span>
+                            <span attrs="{'invisible': [('reconciled_payments_count','&lt;=', 1)]}">Refunds</span>
+                        </button>
+                </xpath>
+            
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- <record id="seq_marketplace_instance" model="ir.sequence">
+            <field name="name">Marketplace Instance</field>
+            <field name="code">marketplace.instance</field>
+            <field name="prefix">MI</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record> -->
+
+        <!-- <record id="seq_marketplace_webhooks" model="ir.sequence">
+            <field name="name">Marketplace Webhooks</field>
+            <field name="code">marketpalce.webhooks</field>
+            <field name="prefix">MW</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record> -->
+
+        <record id="seq_marketplace_logging" model="ir.sequence">
+            <field name="name">Marketplace Logging</field>
+            <field name="code">marketplace.logging</field>
+            <field name="prefix">ML</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+    </data>
+</odoo>

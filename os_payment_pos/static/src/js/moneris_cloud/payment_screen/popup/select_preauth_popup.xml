@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="os_payment_pos.SelectPreauthPopup">
+        <Dialog t-props="{ title: 'Select Preauth Order' }">
+
+            <!-- Loader Overlay -->
+            <t t-if="state.loading">
+                <div class="global-fullscreen-loader">
+                    <div class="loader-content text-center">
+                        <i class="fa fa-spinner fa-spin fa-4x mb-3 text-primary"></i>
+                        <div class="fw-bold fs-4">Loading preauth orders...</div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- Body -->
+            <div class="p-3"
+                 t-att-style="ui.isSmall ? 'min-width: 100%;' : 'min-width: 800px;'">
+
+                <!-- Orders List -->
+                <t t-if="!state.loading &amp;&amp; state.preauthOrders.length">
+                    <div class="list-group">
+                        <t t-foreach="state.preauthOrders" t-as="order" t-key="order.id">
+                            <div class="list-group-item list-group-item-action py-3 px-4"
+                                 t-att-class="state.selectedOrder?.id === order.id ? 'active' : ''"
+                                 style="cursor: pointer; transition: all 0.15s ease-in-out;"
+                                 t-on-click="() => this.selectOrder(order)">
+
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="fw-bold fs-6">
+                                        <t t-esc="order.order_id"/>
+                                    </div>
+                                    <span t-att-class="{
+                                        'badge bg-warning text-dark': order.status === 'pending',
+                                        'badge bg-success': order.status === 'confirmed',
+                                        'badge bg-danger': order.status === 'failed',
+                                        'badge bg-secondary': order.status === 'voided'
+                                    }">
+                                        <t t-esc="order.status"/>
+                                    </span>
+                                </div>
+
+                                <div class="d-flex flex-wrap justify-content-between text-muted small">
+                                    <div class="me-2">
+                                        <i class="fa fa-calendar me-1"></i>
+                                        <t t-esc="order.order_date"/>
+                                    </div>
+                                    <div class="me-2">
+                                        <strong>Txn:</strong>
+                                        <t t-esc="order.transaction_id"/>
+                                    </div>
+                                    <div class="me-2">
+                                        <strong>Total:</strong>
+                                        <span class="text-success fw-bold">
+                                            <t t-esc="order.total_amount"/> ৳
+                                        </span>
+                                    </div>
+                                    <div class="me-2">
+                                        <i class="fa fa-credit-card"></i>
+                                        <t t-esc="order.moneris_go_payment_method[1]"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+
+                <!-- Empty State -->
+                <t t-if="!state.loading &amp;&amp; !state.preauthOrders.length">
+                    <div class="text-center text-muted p-5">
+                        <i class="fa fa-credit-card fa-3x mb-3"></i>
+                        <div class="fs-5">No preauth orders found</div>
+                    </div>
+                </t>
+            </div>
+
+            <!-- Footer -->
+            <div class="d-flex justify-content-end gap-2 p-3 border-top flex-wrap">
+                <button class="btn btn-light" t-on-click="props.close">
+                    <i class="fa fa-times"></i>
+                    Cancel
+                </button>
+                <button class="btn btn-primary"
+                        t-on-click="confirmSelection"
+                        t-att-disabled="!state.selectedOrder">
+                    <i class="fa fa-check"></i>
+                    Confirm
+                </button>
+            </div>
+        </Dialog>
+    </t>
+</templates>

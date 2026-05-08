@@ -1,0 +1,16 @@
+.global-fullscreen-loader {
+    position: fixed; /* covers the entire browser window */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 20000; /* higher than dialog z-index */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global-fullscreen-loader .loader-content {
+    text-align: center;
+}

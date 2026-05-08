@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="clik2pay_webhook_urls" model="ir.config_parameter">
+            <field name="key">clik2pay.clik2pay_webhook_urls</field>
+            <field name="value" eval="True"/>
+        </record>
+    </data>
+</odoo>

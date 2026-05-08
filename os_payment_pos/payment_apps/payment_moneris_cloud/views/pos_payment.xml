@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_payment_form_inherit" model="ir.ui.view">
+        <field name="name">pos.payment.form.inherit</field>
+        <field name="model">pos.payment</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='session_id']" position="after">
+                <field invisible="True" name="is_moneris_cloud"/>
+            </xpath>
+            <xpath expr="//form//sheet" position="before">
+                <header>
+                    <!-- <button name="action_get_receipt" string="Get Moneris Receipt" type="object" context="{'is_merchant':False}" class="btn-secondary" attrs="{'invisible':['|',('is_moneriscloud_payment','=',False),('attachment_id','!=',False)]}"/> -->
+                    <!-- <button name="action_get_receipt" string="Get Merchant Moneris Receipt" type="object" context="{'is_merchant':True}" class="btn-secondary" attrs="{'invisible':['|',('is_moneriscloud_payment','=',False),('moneris_merchant_receipt','!=',False)]}"/> -->
+                </header>
+            </xpath>
+            <!-- attrs="{'invisible': [('is_moneris_cloud', '=', 'False')]} -->
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page invisible="is_moneriscloud_payment == False" string="Moneris Cloud Response">
+                        <group>
+                            <group>
+                                <field invisible="1" name="attachment_id"/>
+                                <field invisible="1" name="merchant_attachment_id"/>
+                                <field invisible="1" name="moneris_receipt_name"/>
+                                <field invisible="1" name="moneris_merchant_receipt_name"/>
+                                <field filename="moneris_receipt_name" height="64" name="moneris_receipt" widget="binary"/>
+                                <field filename="moneris_merchant_receipt_name" height="64" name="moneris_merchant_receipt" widget="binary"/>
+                                <field invisible="1" name="is_moneriscloud_payment"/>
+                                <field name="moneris_cloud_cloudticket" readonly="True"/>
+                                <field name="moneris_cloud_receiptid" readonly="True"/>
+                                <field name="moneris_cloud_completed" readonly="True"/>
+                                <field name="moneris_cloud_transtype" readonly="True"/>
+                                <field name="moneris_cloud_responsecode" readonly="True"/>
+                                <field name="moneris_cloud_pan" readonly="True"/>
+                                <!-- <field name="moneris_cloud_iso" readonly="True"/> -->
+                                <!-- <field name="moneris_cloud_error" readonly="True"/> -->
+                                <!-- <field name="moneris_cloud_cardtype" readonly="True"/> -->
+                            </group>
+                            <group>
+                                <field name="moneris_cloud_accounttype" readonly="True"/>
+                                <field name="moneris_cloud_cvmindicator" readonly="True"/>
+                                <field name="moneris_cloud_authcode" readonly="True"/>
+                                <field name="moneris_cloud_txnname" readonly="True"/>
+                                <field name="moneris_cloud_transdate" readonly="True"/>
+                                <field name="moneris_cloud_transtime" readonly="True"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="cloud_receipt_customer" readonly="True"/>
+                            <field name="cloud_receipt_merchant" readonly="True"/>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath></field>
+    </record>
+</odoo>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="clover_redirect_form">
+        <form t-att-action="api_url" method="get"></form>
+    </template>
+</odoo>

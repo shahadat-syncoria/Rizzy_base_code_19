@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Action -->
+        <record id="action_shopify_image_queue" model="ir.actions.act_window">
+            <field name="name">Shopify Image Queue</field>
+            <field name="res_model">shopify.image.queue</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No images in the queue
+                </p>
+                <p>
+                    Images fetched from Shopify will appear here for batch processing.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem
+            name="Image Queue"
+            id="shopify_image_queue_menu"
+            sequence="25"
+            parent="os_marketplace.marketplace_configuration"
+            action="action_shopify_image_queue"/>
+
+        <!-- List View -->
+        <record model="ir.ui.view" id="shopify_image_queue_view_list">
+            <field name="name">shopify.image.queue.view.list</field>
+            <field name="model">shopify.image.queue</field>
+            <field name="arch" type="xml">
+                <list string="Shopify Image Queue" decoration-danger="state=='failed'" decoration-success="state=='done'" decoration-muted="state=='pending'">
+                    <field name="shopify_instance_id"/>
+                    <field name="shopify_image_id"/>
+                    <field name="product_id"/>
+                    <field name="position"/>
+                    <field name="src"/>
+                    <field name="variant_ids"/>
+                    <field name="state"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="shopify_image_queue_view_form">
+            <field name="name">shopify.image.queue.view.form</field>
+            <field name="model">shopify.image.queue</field>
+            <field name="arch" type="xml">
+                <form string="Shopify Image Queue">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="shopify_instance_id" readonly="1"/>
+                            <field name="shopify_image_id" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="position" readonly="1"/>
+                            <field name="src" readonly="1"/>
+                            <field name="variant_ids" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

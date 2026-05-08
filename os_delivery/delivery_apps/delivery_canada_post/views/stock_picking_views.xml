@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_picking_form_inherit_canadapost" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.canadapost</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+<!--                <field invisible="1" name="message_main_attachment_id"/>-->
+                <!-- <button name="print_shipping_label" string="Print Shipping Label" groups="stock.group_stock_user" type="object"
+                    attrs="{'invisible': [ '|', ('state', 'not in', ('done')),('delivery_type','not in',('purolator','canada_post'))  ]}"/>       -->
+                <button groups="stock.group_stock_user" invisible="state not in 'done' or delivery_type not in 'canadapost'" name="canadapost_get_shipping_label" string="Get Labels" type="object"/>
+                <!--<button name="get_label_url" string="Label URL" groups="stock.group_stock_user" type="object" #}
+                    attrs="{'invisible': [ '|', ('state', 'not in', ('done')),('delivery_type','not in',('purolator'))  ]}"/>    -->
+            </xpath>
+            <xpath expr="//field[@name='carrier_id']" position="after">
+                <field invisible="1" name="connector_label_url"/>
+                <field invisible="0" name="canadapost_link_return"/>
+                <field invisible="0" name="connector_return_label_url"/>
+            </xpath></field>
+    </record>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="shopify_warehouse_fetch_wiz" model="ir.ui.view">
+            <field name="name">Fetch Warehouse Wizard</field>
+            <field name="model">shopify.warehouse.fetch.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <p>The operation may take some time to complete. It depends on the number of records.
+                            Please wait patiently.</p>
+                        <group>
+                            <group>
+                                 <field name="instance_id" required="1" options="{'no_create': True}" />
+                            </group>
+                        </group>
+                        <footer>
+                            <button string='Fetch Shopify Warehouse' name="fetch_warehouse_to_odoo"
+                                    type="object" class="btn-primary" />
+                            <button string="Cancel" class="btn-default" special="cancel"/>
+                      </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_shopify_fetch_warehouse" model="ir.actions.act_window">
+            <field name="name">Fetch Warehouse</field>
+            <field name="res_model">shopify.warehouse.fetch.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('shopify_warehouse_fetch_wiz')})
+                          ]"
+            />
+        </record>
+
+
+        <menuitem 
+            name="Fetch Warehouses" 
+            id="fetch_shopify_warehouse" 
+            sequence="4"
+            parent="os_marketplace.synchronize" 
+            action="action_shopify_fetch_warehouse"/>
+
+
+    </data>
+</odoo>

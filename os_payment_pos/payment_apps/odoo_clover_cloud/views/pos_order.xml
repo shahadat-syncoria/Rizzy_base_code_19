@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_order_inherited" model="ir.ui.view">
+        <field name="name">pos.order.form.inherit.clover</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Clover Details" >
+                    <group>
+                        <group>
+                            <field name="clover_request_id"/>
+<!--                            <field name="clover_ext_payment_ids"/>-->
+                        </group>
+<!--                        <group>-->
+<!--                            <field name="clover_last_action"/>-->
+<!--                        </group>-->
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

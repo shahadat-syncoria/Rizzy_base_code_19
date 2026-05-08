@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form_canadapost" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.canadapost</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position="before">
+                <page invisible="delivery_type != 'canadapost'" name="canadapost_config" string="Canada Post Configuration">
+                    <group>
+                        <group string="General Information" name="general_information_group">
+                            <field name="token" invisible="1" readonly="1" required="delivery_type == 'canadapost'"/>
+                            <field invisible="1" name="canadapost_country_flag"/>
+                            <field name="canadapost_service_code" required="delivery_type == 'canadapost'"/>
+                            <field name="canadapost_return_service_code" required="delivery_type == 'canadapost'"/>
+                            <field invisible="delivery_type != 'canadapost'" name="canadapost_option_type" string="Options" widget="many2many_tags"/>
+                            <field invisible="delivery_type != 'canadapost' and canadapost_country_flag == 1" name="canadapost_nondelivery_handling"/>
+                            <field name="canadapost_customer_type" required="delivery_type == 'canadapost'" string="Customer Type"/>
+                            <field invisible="canadapost_customer_type == 'counter'" name="canadapost_contract_id" required="delivery_type == 'canadapost' and canadapost_customer_type != 'counter'"/>
+                            <field invisible="delivery_type != 'canadapost'" name="canadapost_promo_code"/>
+                            <field invisible="canadapost_customer_type == 'counter'" name="canadapost_payment_method" required="canadapost_customer_type == 'commercial'"/>
+                            <field invisible="canadapost_customer_type == 'counter'" name="canadapost_mailed_on_behalf_of" required="canadapost_customer_type == 'commercial'"/>
+                            <field invisible="canadapost_customer_type == 'counter'" name="canadapost_pickup_indicator" required="delivery_type == 'canadapost'"/>
+                        </group>
+                        <group string="Package Information" name="package_information_group">
+<!--                            <h3>-->
+<!--                                Package Information-->
+<!--                            </h3>-->
+                            <field context="{'package_carrier_type': 'canadapost' }" name="canadapost_default_packaging_id" required="delivery_type == 'canadapost'"/>
+                            <field name="canadapost_weight_unit" required="delivery_type == 'canadapost'"/>
+                            <field name="canadapost_distance_unit" required="delivery_type == 'canadapost'"/>
+                            <field name="canadapost_void_shipment" required="delivery_type == 'canadapost'"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath></field>
+    </record>
+</odoo>

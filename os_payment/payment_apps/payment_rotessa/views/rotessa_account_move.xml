@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_move_form_rotessa" model="ir.ui.view">
+            <field name="name">Rotessa Account Move Form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='other_info']" position="after">
+                    <page name="rotessa_info" string="Rotessa" invisible="not is_rotessa_active">
+                        <group name="Rotessa Information" string="Information">
+                            <field name="rotessa_customer_id"/>
+                            <field name="rotessa_payment_frequency" readonly="1"/>
+                            <field name="rotessa_process_date" readonly="rotessa_transaction_state not in ['Declined', False] or rotessa_transaction_sc_id != False"/>
+                            <field name="rotessa_transaction_comment" readonly="rotessa_transaction_state not in ['Declined', False] or rotessa_transaction_sc_id != False"/>
+                        </group>
+                        <group name="Rotessa Transaction Information" string="Transactions">
+                            <field name="rotessa_transaction_sc_id"/>
+                            <field name="rotessa_transaction_state"/>
+                        </group>
+                    </page>
+                </xpath></field>
+        </record>
+        <record id="action_account_invoice_rotessa_bulk_payment" model="ir.actions.server">
+            <field name="name">Request Rotessa Payment</field>
+            <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">if records:
+                action = records.action_register_rotessa_payment()</field>
+        </record>
+    </data>
+</odoo>

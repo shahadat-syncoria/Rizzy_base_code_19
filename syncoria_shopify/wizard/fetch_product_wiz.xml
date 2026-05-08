@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ModelName_form_inherit" model="ir.ui.view">
+            <field name="name">os_marketplace.products.fetch.wizard.form</field>
+            <field name="model">products.fetch.wizard</field>
+            <field name="inherit_id" ref="os_marketplace.products_fetch_wiz"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@id='range_condition']" position="after">
+                    <group>
+                        <field name="feed_only" widget="boolean_toggle"/>
+                    </group>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

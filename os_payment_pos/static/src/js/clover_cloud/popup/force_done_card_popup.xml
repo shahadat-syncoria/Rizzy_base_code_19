@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="os_payment_pos.CloverForceDoneCardPopup">
+        <Dialog title="props.title">
+            <div class="w-100 d-flex flex-column gap-2 fs-5">
+                <div class="d-flex justify-content-center align-items-center mb-2">
+                    <span class="w-25 fw-bolder text-start">Amount</span>
+                    <span class="w-50"><t t-esc="formattedAmount"/></span>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mb-2">
+                    <span class="w-25 fw-bolder text-start">Card name</span>
+                    <select class="w-50 form-control" t-model="state.card">
+                        <option t-foreach="props.cardOptions" t-as="cardOption" t-key="cardOption.value" t-att-value="cardOption.value">
+                            <t t-esc="cardOption.label"/>
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <t t-set-slot="footer">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-secondary" t-on-click="onCancel">Cancel</button>
+                    <button class="btn btn-primary" t-on-click="onConfirm">OK</button>
+                </div>
+            </t>
+        </Dialog>
+    </t>
+</templates>
+

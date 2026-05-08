@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_force_done_card_name_view_tree" model="ir.ui.view">
+        <field name="name">pos.force.done.card.name.view.tree</field>
+        <field name="model">pos.force.done.card.name</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="terminal"/>
+                <field name="sequence"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+</odoo>
+

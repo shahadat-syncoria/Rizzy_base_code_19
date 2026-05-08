@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="stock_location_form_inherit_shopify" model="ir.ui.view">
+            <field name="name">stock.location.form.inherit.shopify</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='additional_info']" position="after">
+                    <group string="Shopify">
+                        <field name="shopify_warehouse_ids" >
+                            <list create="false" editable="bottom">
+                                <field name="shopify_instance_id" />
+                                <field name="shopify_loc_name" />
+                                <field name="shopify_invent_id" />
+                                <field name="shopify_loc_active" />
+                            </list>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+<!--        <record id="stock_warehouse_form_inherit_shopify" model="ir.ui.view">-->
+<!--            <field name="name">stock.warehouse.form.inherit.shopify</field>-->
+<!--            <field name="model">stock.warehouse</field>-->
+<!--            <field name="inherit_id" ref="stock.view_warehouse"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//notebook" position="before">-->
+<!--                    <group string="Shopify">-->
+<!--                        <group>-->
+<!--                            <field domain="[('shopify_loc_active','=',True)]" name="shopify_location_id"/>-->
+<!--                            <field name="shopify_invent_id"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </xpath></field>-->
+<!--        </record>-->
+        <record id="update_stock_wizard" model="ir.ui.view">
+            <field name="name">update.stock.wizard</field>
+            <field name="model">update.stock.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="fetch_type" required="1"/>
+                                <field name="instance_id" invisible="fetch_type == 'from_odoo'"/>
+                                <field name="source_location_ids"
+                                    widget="many2many_tags"
+                                    domain="[('shopify_warehouse_ids','!=',False)]"
+                                    invisible="fetch_type != 'from_odoo'"/>
+                            </group>
+                        </group>
+                        <p>
+                            The operation may take some time to complete. It depends on the number of records.
+                            Please wait patiently.
+                        </p>
+                        <p invisible="fetch_type != 'to_odoo'">
+                            Shopify locations must be mapped with Odoo locations in order to import stock
+                        </p>
+                        <footer>
+                            <button string='Update Price' name="shopify_update_price_item" type="object" class="btn-primary" invisible="fetch_type != 'update_price'"/>
+                            <button class="btn-primary" invisible="fetch_type == 'update_price'" name="shopify_update_stock_item" string="Update" type="object"/>
+                            <button class="btn-default" special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form></field>
+        </record>
+        <record id="update_stock_from_shopify1" model="ir.actions.act_window">
+            <field name="name">Update Stock</field>
+            <field name="res_model">update.stock.wizard</field>
+            <field name="view_mode">form,list</field>
+            <field name="view_id" ref="update_stock_wizard"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_product_product"/>
+            <field name="binding_view_types">form,list</field>
+        </record>
+        <record id="update_stock_from_shopify2" model="ir.actions.act_window">
+            <field name="name">Update Stock</field>
+            <field name="res_model">update.stock.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="update_stock_wizard"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_product_template"/>
+            <field name="binding_view_types">form,list</field>
+        </record>
+    </data>
+</odoo>

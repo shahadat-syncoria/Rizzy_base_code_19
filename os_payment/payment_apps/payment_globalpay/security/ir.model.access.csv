@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payment_clik2pay_webhook_log,payment_clik2pay.payment_clik2pay_webhook_log,model_clik2pay_webhook_log,base.group_user,1,1,1,1

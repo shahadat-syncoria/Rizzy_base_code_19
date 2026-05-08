@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="odoosync_marketplace_form_inherit" model="ir.ui.view">
+            <field name="name">odoosync_marketplace.form</field>
+            <field name="model">omni.account</field>
+            <field name="inherit_id" ref="odoosync_base.view_omni_account_form"/>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook[@name='main_notebook']" position="inside">
+                    <page string="Marketplace" name="marketplace_list">
+                        <field name="marketplace_ids" options="{'create': False}"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

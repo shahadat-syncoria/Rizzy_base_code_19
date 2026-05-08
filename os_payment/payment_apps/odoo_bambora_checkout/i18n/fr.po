@@ -1,0 +1,427 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_bambora_checkout
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-20 12:27+0000\n"
+"PO-Revision-Date: 2021-05-20 12:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/controllers/main.py:0
+#, python-format
+msgid ""
+" If you don't have any account, ask your salesperson to grant you a portal "
+"access. "
+msgstr "Si vous n'avez pas de compte, demandez à votre commercial de vous accorder un accès au portail."
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/models/bambora.py:0
+#, python-format
+msgid ""
+" is disabled for Bambora Checkout. \n"
+"Please use Payment from Odoo."
+msgstr "est désactivé pour Bambora Checkout. Veuillez utiliser le paiement d'Odoo."
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+msgid ""
+"<span class=\"close\">\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t&amp;times;\n"
+"\t\t\t\t\t\t\t\t\t\t\t</span>"
+msgstr ""
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.invoice_content_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_portal_template
+msgid ""
+"<span class=\"close\">\n"
+"\t\t\t\t\t\t\t\t\t\t\t&amp;times;\n"
+"\t\t\t\t\t\t\t\t\t\t</span>"
+msgstr ""
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_avs_result
+msgid "AVS Result"
+msgstr "Résultat AVS"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_portal_template
+msgid "Add Card"
+msgstr "Ajouter une carte"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__fees_active
+msgid "Add Extra Fees"
+msgstr "Ajoutez des frais additionnels"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Amount"
+msgstr "Montante"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_auth_code
+msgid "Auth Code"
+msgstr "code d'autorisation"
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/models/bambora.py:0
+#: model:ir.model.fields.selection,name:odoo_bambora_checkout.selection__payment_provider__bambora_order_confirmation__capture
+#, python-format
+msgid "Authorize & capture the amount and conform it"
+msgstr "Autorisez et saisissez le montant et conformez-le"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields.selection,name:odoo_bambora_checkout.selection__payment_provider__provider__bambora
+#: model:payment.provider,display_as:odoo_bambora_checkout.payment_provider_bambora
+#: model:payment.provider,name:odoo_bambora_checkout.payment_provider_bambora
+msgid "Bambora Checkout"
+msgstr "Caisse Bambora"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__bambora_profile
+msgid "Bambora Profile"
+msgstr "Profil Bambora"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__bambora_token
+msgid "Bambora Token"
+msgstr "Jeton Bambora"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_cvd_result
+msgid "CVD Result"
+msgstr "Résultat CVD"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.invoice_content_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_portal_template
+msgid "Card"
+msgstr "Carte"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.invoice_content_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_portal_template
+msgid "Card Logo"
+msgstr "Logo de la carte"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Card Number"
+msgstr "Numéro de carte"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_card_type
+msgid "Card Type"
+msgstr "Type de carte"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_created
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__display_name
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__display_name
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__display_name
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.invoice_content_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_portal_template
+msgid "Expiry"
+msgstr "Expiration"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__fees_dom_fixed
+msgid "Fixed domestic fees"
+msgstr "Frais fixes domestiques"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__fees_int_fixed
+msgid "Fixed international fees"
+msgstr "Frais fixes internationales "
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__id
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__id
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__id
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_sale_order__id
+msgid "ID"
+msgstr "Identifiant"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_last_four
+msgid "Last Four"
+msgstr "Quatre derniers"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider____last_update
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token____last_update
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction____last_update
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__bambora_merchant_id
+msgid "Merchant ID"
+msgstr "Identifiant du marchand"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Not Paid"
+msgstr "Impayé"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_sale_order__payment_transaction_count
+msgid "Number of payment transactions"
+msgstr "Nombre de transactions de paiement"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__bambora_order_confirmation
+msgid "Order Confirmation"
+msgstr ""
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_order_number
+msgid "Order Number"
+msgstr "Confirmation de commande"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Paid"
+msgstr "Payé"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.invoice_content_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_portal_template
+msgid "Pay"
+msgstr "Payer"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__bambora_payment_api
+msgid "Payment API"
+msgstr "API de paiement"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model,name:odoo_bambora_checkout.model_payment_provider
+msgid "Payment provider"
+msgstr "Intermédiaire de paiement"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_payment_method
+msgid "Payment Method"
+msgstr "Mode de paiement"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Payment Mode"
+msgstr "Mode de paiement"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model,name:odoo_bambora_checkout.model_payment_token
+msgid "Payment Token"
+msgstr "Jeton de paiement"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model,name:odoo_bambora_checkout.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transaction"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Payment Transaction Details"
+msgstr ""
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields.selection,name:odoo_bambora_checkout.selection__payment_token__bambora_token_type__permanent
+msgid "Permanent"
+msgstr "Détails de la transaction de paiement"
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/controllers/main.py:0
+#, python-format
+msgid "Please complete your profile. "
+msgstr "Veuillez compléter votre profil."
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/controllers/main.py:0
+#, python-format
+msgid "Please sign in to complete the payment."
+msgstr "Veuillez vous connecter pour terminer le paiement."
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__bambora_profile_api
+msgid "Profile API"
+msgstr "API de profil"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__provider
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__provider
+msgid "Provider"
+msgstr "Transporteur"
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/models/bambora.py:0
+#: model:ir.model.fields.selection,name:odoo_bambora_checkout.selection__payment_provider__bambora_transaction_type__purchase
+#, python-format
+msgid "Purchase"
+msgstr "Acheter"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Reference"
+msgstr "Référence"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Response Code"
+msgstr "Code de réponse"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model,name:odoo_bambora_checkout.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__save_token
+msgid "Save Cards"
+msgstr "Enregistrer les cartes"
+
+#. module: odoo_bambora_checkout
+#. openerp-web
+#: code:addons/odoo_bambora_checkout/static/src/js/payment_form.js:0
+#, python-format
+msgid "Server Error"
+msgstr "erreur du serveur"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.o_account_payment_tx_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_bambora
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_confirmation_status_payment_bambora
+msgid "Status"
+msgstr "Statut"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields.selection,name:odoo_bambora_checkout.selection__payment_token__bambora_token_type__temporary
+msgid "Temporary"
+msgstr "Temporaire"
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/controllers/main.py:0
+#, python-format
+msgid ""
+"The transaction cannot be processed because some contact details are missing"
+" or invalid: "
+msgstr "La transaction ne peut pas être traitée car certaines coordonnées sont manquantes ou non valides:"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,help:odoo_bambora_checkout.field_payment_token__save_token
+msgid ""
+"This option allows customers to save their credit card as a payment token "
+"and to reuse it for a later purchase. If you manage subscriptions (recurring"
+" invoicing), you need it to automatically charge the customer when you issue"
+" an invoice."
+msgstr ""
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_token__bambora_token_type
+msgid "Token Type"
+msgstr "Type de jeton"
+
+#. module: odoo_bambora_checkout
+#: code:addons/odoo_bambora_checkout/models/bambora.py:0
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__bambora_transaction_type
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_transaction__bambora_txn_type
+#, python-format
+msgid "Transaction Type"
+msgstr "Type de transaction"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.sale_order_view_form
+msgid "Transactions"
+msgstr "Transactions"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__fees_dom_var
+msgid "Variable domestic fees (in percents)"
+msgstr "Frais de port national variables (en pourcentage)"
+
+#. module: odoo_bambora_checkout
+#: model:ir.model.fields,field_description:odoo_bambora_checkout.field_payment_provider__fees_int_var
+msgid "Variable international fees (in percents)"
+msgstr "Frais de port international variables (en pourcentage)"
+
+#. module: odoo_bambora_checkout
+#. openerp-web
+#: code:addons/odoo_bambora_checkout/static/src/js/payment_form.js:0
+#, python-format
+msgid "We are not able to add your payment method at the moment."
+msgstr "Nous ne sommes pas en mesure d'ajouter votre mode de paiement pour le moment."
+
+#. module: odoo_bambora_checkout
+#: model_terms:payment.provider,auth_msg:odoo_bambora_checkout.payment_provider_bambora
+msgid "Your payment has been authorized."
+msgstr "Votre paiement a été autorisé."
+
+#. module: odoo_bambora_checkout
+#: model_terms:payment.provider,cancel_msg:odoo_bambora_checkout.payment_provider_bambora
+msgid "Your payment has been cancelled."
+msgstr "Votre paiement a été annulé."
+
+#. module: odoo_bambora_checkout
+#: model_terms:payment.provider,pending_msg:odoo_bambora_checkout.payment_provider_bambora
+msgid ""
+"Your payment has been successfully processed but is waiting for approval."
+msgstr "Votre paiement a été traité avec succès mais est en attente d'approbation"
+
+#. module: odoo_bambora_checkout
+#: model_terms:payment.provider,done_msg:odoo_bambora_checkout.payment_provider_bambora
+msgid "Your payment has been successfully processed. Thank you!"
+msgstr "Votre paiement a été traité avec succès. Merci!"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.transaction_form_bambora
+msgid "bambora Details"
+msgstr "Bambora Détails"
+
+#. module: odoo_bambora_checkout
+#: model_terms:ir.ui.view,arch_db:odoo_bambora_checkout.payment_tokens_list_inherit
+msgid "loading"
+msgstr "Chargement en cours"

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_transaction_gift_lines_usr,access_transaction_gift_lines_usr,model_transaction_gift_lines,base.group_user,1,0,0,0
+access_transaction_gift_lines_man,access_transaction_gift_lines_man,model_transaction_gift_lines,base.group_erp_manager,1,1,1,1
+,,,,,,
+access_moneris_fraud_lines_usr,access_moneris_fraud_lines,model_moneris_fraud_lines,base.group_user,1,0,0,0
+access_moneris_fraud_lines_man,access_moneris_fraud_lines,model_moneris_fraud_lines,base.group_erp_manager,1,0,0,0

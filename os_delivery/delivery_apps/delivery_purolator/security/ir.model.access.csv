@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purolator_service,access_purolator_service,model_purolator_service,base.group_user,1,0,0,0
+access_purolator_service_portal,access_purolator_service_portal,model_purolator_service,base.group_portal,1,0,0,0
+

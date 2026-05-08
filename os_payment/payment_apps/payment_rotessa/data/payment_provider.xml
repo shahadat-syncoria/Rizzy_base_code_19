@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_provider_rotessa" model="payment.provider">
+        <field name="name">Rotessa</field>
+        <field name="code">rotessa</field>
+        <field name="rotessa_api_key">123456</field>
+<!--        <field name="display_as">Rotessa payment gateway</field>-->
+        <field name="module_id" ref="base.module_payment_rotessa"/>
+
+    </record>
+
+</odoo>

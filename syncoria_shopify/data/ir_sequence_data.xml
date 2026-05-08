@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_shopify_feed_products" model="ir.sequence">
+            <field name="name">Shopify Feed Productss</field>
+            <field name="code">shopify.feed.products</field>
+            <field name="prefix">FP</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_shopify_feed_orders" model="ir.sequence">
+            <field name="name">Shopify Feed Orders</field>
+            <field name="code">shopify.feed.orders</field>
+            <field name="prefix">FO</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_shopify_feed_customers" model="ir.sequence">
+            <field name="name">Shopify Feed Customers</field>
+            <field name="code">shopify.feed.customers</field>
+            <field name="prefix">FC</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_shopify_transactions" model="ir.sequence">
+            <field name="name">Shopify Transactions</field>
+            <field name="code">shopify.transactions</field>
+            <field name="prefix">ST</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_shopify_payment_details" model="ir.sequence">
+            <field name="name">Shopify Payment Details</field>
+            <field name="code">shopify.payment.details</field>
+            <field name="prefix">SPD</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_shopify_payment_receipt" model="ir.sequence">
+            <field name="name">Shopify Payment Receipt</field>
+            <field name="code">shopify.payment.receipt</field>
+            <field name="prefix">SPR</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_shopify_payment_receipt_metadata" model="ir.sequence">
+            <field name="name">Shopify Payment Receipt Metadata</field>
+            <field name="code">shopify.payment.receipt.metadata</field>
+            <field name="prefix">SPRM</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- <record id="seq_marketplace_webhooks" model="ir.sequence">
+            <field name="name">Shopify Webhooks</field>
+            <field name="code">marketplace.webhooks</field>
+            <field name="prefix">MW</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record> -->
+
+    </data>
+</odoo>

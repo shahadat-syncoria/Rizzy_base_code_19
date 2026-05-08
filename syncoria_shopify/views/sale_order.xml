@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="shopify_view_sale_order_inherited" model="ir.ui.view">
+            <field name="name">view.sale.order.form.inherited.shopify</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//header" position="inside">-->
+<!--                    <button name="get_order_fullfillments" string="Fetch Shopify Fulfillment" type="object"-->
+<!--                            attrs="{ 'invisible': [('shopify_id','=',False)] }" />-->
+<!--                    <button name="process_shopify_fulfilment" string="Process Shopify Fulfillment" type="object"-->
+<!--                            attrs="{ 'invisible': [('shopify_id','=',False)] }" />-->
+<!--                    <button name="process_shopify_refunds" string="Process Shopify Refunds" type="object"-->
+<!--                            attrs="{ 'invisible': [('shopify_id','=',False)] }" />-->
+<!--                </xpath>-->
+                <xpath expr="//notebook" position="inside">
+                    <page string="Shopify">
+                        <group>
+                            <group>
+                                <field name="marketplace_type"/>
+                                <field name="marketplace_instance_id" options="{'no_open': True,'no_create': True}" readonly="1"/>
+                                <field name="shopify_id" readonly="1"/>
+                                <field name="shopify_order" readonly="1"/>
+                                <field name="shopify_carrier_service" readonly="1"/>
+                                <field name="shopify_sale_channel" readonly="1"/>
+                                <field name="shopify_tag_ids" widget="many2many_tags" readonly="1"/>
+                                <field name="coupon_ids" widget="many2many_tags" readonly="1"/>
+                                <field name="shopify_err_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            </group>
+                            <group>
+                                <field name="shopify_is_invoice" readonly="1"/>
+                                <field name="shopify_is_refund" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Shopify Transaction">
+                        <field name="shopify_transaction_ids">
+                            <list string="Transactions" create="false" delete="true" edit="false" editable="bottom">
+                                <field name="shopify_id"/>
+                                <field name="shopify_order_id"/>
+                                <field name="shopify_kind"/>
+                                <field name="shopify_gateway"/>
+                                <field name="shopify_status"/>
+                                <field name="shopify_message"/>
+                                <field name="shopify_test"/>
+                                <field name="shopify_authorization"/>
+                                <field name="shopify_location_id"/>
+                                <field name="shopify_source_name"/>
+                                <field name="shopify_amount"/>
+                                <field name="shopify_currency"/>
+                            </list>
+                        </field>
+                    </page>
+<!--                    <page string="Shopify Refunds">-->
+<!--                        <field name="shopify_refund_ids">-->
+<!--                            <list string="Refunds" create="false" delete="false" edit="false" editable="bottom">-->
+<!--                                <field name="name"/>-->
+<!--                                <field name="shopify_id"/>-->
+<!--                                <field name="shopify_order_id"/>-->
+<!--                                <field name="shopify_note"/>-->
+<!--                                <field name="shopify_user_id"/>-->
+<!--                                <field name="shopify_processed_at"/>-->
+<!--                                <field name="shopify_restock"/>-->
+<!--                                <field name="shopify_transaction_id"/>-->
+<!--                            </list>-->
+<!--                        </field>-->
+<!--                    </page>-->
+                    <page string="Shopify Refunds Transaction">
+                        <field name="shopify_refund_transaction_ids">
+                            <list string="Refunds Transaction" create="false" delete="false" edit="false" editable="bottom">
+                               <field name="shopify_refund_id"/>
+                                <field name="shopify_refund_order_id"/>
+                                <field name="shopify_refund_kind"/>
+                                <field name="shopify_refund_gateway"/>
+                                <field name="shopify_refund_status"/>
+                                <field name="shopify_refund_message"/>
+                                <field name="shopify_refund_test"/>
+                                <field name="shopify_refund_authorization"/>
+                                <field name="shopify_refund_location_id"/>
+                                <field name="shopify_refund_source_name"/>
+                                <field name="shopify_refund_amount"/>
+                                <field name="shopify_refund_currency"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Shopify Fulfilment Line">
+                        <field name="shopify_fulfilment_ids"/>
+<!--                            <list string="Fulfilment Lines">-->
+<!--                               <field name="sale_order_id"/>-->
+<!--                               <field name="name"/>-->
+<!--                            </list>-->
+<!--                        </field>-->
+                    </page>
+                </xpath>
+<!--                <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field/list" position="inside">-->
+<!--                    <field name="line_coupon_ids" readonly="1" widget="many2many_tags" optional="show"/>-->
+<!--                </xpath>-->
+            </field>
+
+        </record>
+
+
+        <record id="view_sale_order_inherited" model="ir.ui.view">
+            <field name="name">view.sale.order.list.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+            
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="shopify_id"/>
+                    <field name="shopify_order"/>
+                    <field name="marketplace_instance_id"/>
+                </xpath>
+            
+               
+            </field>
+
+        </record>
+
+
+        	
+
+    </data>
+</odoo>

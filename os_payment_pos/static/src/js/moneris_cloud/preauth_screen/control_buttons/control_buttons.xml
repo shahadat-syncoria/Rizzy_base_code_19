@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-name="monerisGoPreauthControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+         <xpath expr="//button[@t-on-click='() => this.clickRefund()']" position="before">
+             <button t-if="this.pos.config.is_moneris_go_preauth_enabled" class="btn btn-secondary btn-lg py-5"
+                    t-on-click="(e) => this.onClickPreauthView(e)">
+                    <i class="fa fa-credit-card me-1"/>Preauth List
+                </button>
+         </xpath>
+     </t>
+</templates>

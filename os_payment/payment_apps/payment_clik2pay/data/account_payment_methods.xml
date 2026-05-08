@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="payment_method_clik2pay" model="account.payment.method">
+            <field name="name">Clik2pay Payment</field>
+            <field name="code">clik2pay</field>
+            <field name="payment_type">inbound</field>
+        </record>
+    </data>
+</odoo>

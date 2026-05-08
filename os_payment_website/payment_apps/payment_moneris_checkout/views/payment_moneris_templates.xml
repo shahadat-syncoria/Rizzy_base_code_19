@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id="moneris_payment_inherit" inherit_id="website_sale.checkout_layout">
+			<xpath expr="//div[hasclass('oe_website_sale')]" position="after">
+				<div id="monerisModal" class="modal fade" role="dialog">
+					<div class="modal-dialog" >
+						<div class="modal-content moneris-content">
+							<button type="button" class="close" id="monerisBtnCncl"  data-dismiss="modal"
+								style="color:#f1f1f1 !important;text-align: right;padding-top: 2px;padding-right:12px;text-shadow:none;opacity:1;font-size:16px;border:none;">
+								<img src="/os_payment/static/src/img/cancel.png" alt="Cancel" style="width:32px;height:32px;"/>
+							</button> 
+							<section class="chkt_loading" data-name="chkt_loading">
+								<div>
+									<img src="/os_payment/static/src/img/loading.svg" alt="loading" style="margin:auto;display:block;text-align:center"/>
+								</div>
+							</section>
+							<div class="modal-body" id="monerisBody" style="dispay: none">
+								<div class="embed-responsive embed-responsive-16by9">
+									<div id="monerisCheckout"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</xpath>
+    	</template>
+		
+	</data>
+</odoo>

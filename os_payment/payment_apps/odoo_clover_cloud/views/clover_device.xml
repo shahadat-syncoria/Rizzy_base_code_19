@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="clover_device_view_form" model="ir.ui.view">
+        <field name="name">clover.device.form</field>
+        <field name="model">clover.device</field>
+        <field name="arch" type="xml">
+            <form string="Clover Devices">
+                <header>
+                    <button name="action_ping_device" string="Ping Device" type="object" class="oe_highlight" help="CLick this button to Ping Device." />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <group name="Clover Devices">
+                        <group>
+                            <field name="serial"/>
+                            <field name="device_id"/>
+                            <field name="journal_id"/>
+                            <field name="is_sale"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="model"/>
+                            <field name="secure_id"/>
+                            <field name="build_type"/>
+                            <field name="device_type_name"/>
+                        </group>
+                        <group>
+                            <field name="product_name"/>
+                            <field name="pin_disabled"/>
+                            <field name="offline_payments"/>
+                            <field name="offline_payments_all"/>
+                        </group>
+                        <group>
+                            <field name="device_status"/>
+                            <field name="x_pos_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="clover_device_view_tree" model="ir.ui.view">
+        <field name="name">clover.device.list</field>
+        <field name="model">clover.device</field>
+        <field name="arch" type="xml">
+            <list string="Clover Devices">
+                <field name="name" />
+                <field name="serial" />
+                <field name="device_id"/>
+                <field name="model" />
+                <field name="journal_id"/>
+                <field name="is_sale"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="clover_device_view_search" model="ir.ui.view">
+        <field name="name">clover.device.search.view</field>
+        <field name="model">clover.device</field>
+        <field name="arch" type="xml">
+            <search string="Clover Devices">
+                <field name="name"/>
+                <field name="serial"/>
+                <filter string="Sale Devices" name="sale_devices" domain="[('is_sale', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_clover_device_form" model="ir.actions.act_window">
+        <field name="name">Clover Devices</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clover.device</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_group_by_account': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Device
+            </p>
+            <p>
+                Fetch Device from Clover Payment Method
+            </p>
+        </field>
+    </record>
+
+
+    <!-- <menuitem action="action_clover_device_tree"
+        name="Clover Devices"
+        id="payment_clover_device_menu"
+        parent="account.root_payment_menu"
+        sequence="99"/> -->
+
+    <record id="action_clover_device_tree" model="ir.actions.act_window">
+        <field name="context">{}</field>
+        <field name="name">Payments Methods</field>
+        <field name="res_model">clover.device</field>
+        <field name="view_id" ref="clover_device_view_tree"/>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="website_sale_delivery_inherit_purolator"
+            inherit_id="website_sale.delivery_form">
+            <form id="o_delivery_form" position="inside">
+                <!-- <div class="form-group">
+                    <label for="services_id" class="control-label" id="services_name">Purolator
+                        Services</label>
+                    <select name="services_id" class="form-control link-style" id="services_id"
+                        style="display:none">
+                        <option t-esc='"PUROLATOR"' t-att-value='1' />
+                        <t t-foreach='purolator_services' t-as="service">
+                            <option t-esc='service.name' t-att-value='service.id' />
+                        </t>
+                    </select>
+                </div>
+                <div class="card" id="purolator_card">
+                    <div id="purolator_table" class="card-body">
+                        <div id="table_load">
+
+                        </div>
+                        <table id="estimate_table" cellspacing="0" cellpadding="0" border="0"
+                            style="border-collapse:collapse;">
+                            <tbody>
+                                <tr style="border-bottom:1pt solid black;">
+                                    <th align="left" scope="col"
+                                        style="minWidth:150px; height:20px;background-color:#274898;color:white;">Deliver
+                                        By</th>
+                                    <th align="left" scope="col"
+                                        style="minWidth:150px;height:20px;background-color:#274898;color:white;">Delivery
+                                        Service</th>
+                                    <th class="thcenter" align="center" scope="col"
+                                        style="height:20px;width:350px;background-color:#274898;;color:white;">Estimated
+                                        Cost</th>
+                                    <th align="left" valign="middle" scope="col"
+                                        style="display:none;"></th>
+                                    <th align="left" valign="middle" scope="col"
+                                        style="height:20px;width:350px;background-color:#274898;;color:white;">
+                                        &#160;</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> -->
+                <div id="purolator" class="py-2" name="canadalator">
+                </div>
+            </form>
+        </template>
+
+    </data>
+</odoo>

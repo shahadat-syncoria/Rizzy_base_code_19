@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate='0'>
+
+        <record id="cnpost_packaging_YOUR_PACKAGING" model="stock.package.type">
+            <field name="name">CNPOST_YOUR_PACKAGING</field>
+            <field name="shipper_package_code">YOUR_PACKAGING</field>
+            <field name="package_carrier_type">canadapost</field>
+            <field name="height">10</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="max_weight">20</field>
+        </record>
+
+        <record id="cnpost_packaging_PACKAGING_1" model="stock.package.type">
+            <field name="name">PACKAGING_1</field>
+            <field name="shipper_package_code">PACKAGING_1</field>
+            <field name="package_carrier_type">canadapost</field>
+            <field name="height">10</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="max_weight">5</field>
+        </record>
+        <record id="base.group_user" model="res.groups">
+            <field name="name">Packaging</field>
+            <field name="user_ids" eval="[Command.link(ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('stock.group_tracking_lot'))]"></field>
+        </record>
+
+    </data>
+</odoo>

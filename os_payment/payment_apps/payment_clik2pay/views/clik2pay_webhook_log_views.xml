@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define a list view for the webhook log -->
+        <record id="view_clik2pay_webhook_log_list" model="ir.ui.view">
+            <field name="name">clik2pay.webhook.log.list</field>
+            <field name="model">clik2pay.webhook.log</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="resource_id"/>
+                    <field name="event_type"/>
+                    <field name="message"/>
+                    <field name="resource_type"/>
+                    <field name="invoice_number"/>
+                    <field name="payment_method"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_clik2pay_webhook_log_form" model="ir.ui.view">
+            <field name="name">clik2pay.webhook.log.form</field>
+            <field name="model">clik2pay.webhook.log</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="resource_id"/>
+                            <field name="event_type"/>
+                            <field name="message"/>
+                            <field name="resource_type"/>
+                            <field name="invoice_number"/>
+                            <field name="payment_method"/>
+                            <field name="json_data" widget="html" options="{'mode': 'readonly'}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Define an action to open the webhook log view -->
+        <record id="action_clik2pay_webhook_log" model="ir.actions.act_window">
+            <field name="name">Clik2Pay Webhook Log</field>
+            <field name="res_model">clik2pay.webhook.log</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Define a menu item for the webhook log -->
+        <menuitem
+            id="menu_clik2pay_webhook_log"
+            name="Clik2Pay Webhook Log"
+            parent="base.menu_administration"
+            sequence="20"
+            groups="base.group_no_one"
+            action="action_clik2pay_webhook_log"
+        />
+        
+        <!-- Define an action to open the webhook log view -->
+        <record id="action_clik2pay_webhook_log" model="ir.actions.act_window">
+            <field name="name">Clik2Pay Webhook Log</field>
+            <field name="res_model">clik2pay.webhook.log</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
+</odoo>

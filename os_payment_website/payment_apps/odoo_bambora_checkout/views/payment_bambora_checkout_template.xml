@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id="bambora_payment_inherit" inherit_id="website_sale.checkout_layout">
+			<xpath expr="//div[hasclass('oe_website_sale')]" position="after">
+				<div id="bamboraModal" class="modal fade bambora-modal" role="dialog">
+					<div class="modal-dialog bambora-dialog">
+						<div class="modal-content bambora-modal-content">
+							<div class="row" style="row-gap: 10px;">
+								<div class="col-11">
+								</div>
+								<div class="col-1">
+									<button type="button float-right" id="bamboraCancel" data-dismiss="modal" style="text-align: right;padding-top: 5px;padding-right:10px;font-size:16px;">
+										<span class="close">
+											&amp;times;
+										</span>
+									</button>
+<!--									<button type="button" class="dropdown-item" t-on-click="_onImportClickTest">-->
+<!--										Import records-->
+<!--									</button>-->
+								</div>
+							</div>
+							<div class="modal-body">
+								<div class="container-bambora" id="container_bambora">
+									<form id="checkout-form" class="form-inline  text-center">
+										<div class="row">
+											<div class="col-1" >
+												<img id="card_logo" src="/os_payment/static/src/img/bambora_checkout/card.png" alt="Card" style="width:32px;height:32px;margin-top:4px;" />
+											</div>
+											<div class="col-11" style="width:100%;padding-bottom:20px;">
+												<div class="form-group col-xs-6 has-feedback .card-number-class" id="card-number-bootstrap">
+													<div id="card-number" class="form-control" style="width:100%;">
+													</div>
+												</div>
+											</div>
+											<div class="col-1">
+												<img id="cvv_logo" src="/os_payment/static/src/img/bambora_checkout/cvv.png" alt="Card Logo" style="width:32px;height:32px;margin-top:4px;" />
+											</div>
+											<div class="col-5">
+												<div class="form-group col-xs-2 has-feedback" id="card-cvv-bootstrap">
+													<div id="card-cvv" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="col-1">
+												<img id="expiry_logo" src="/os_payment/static/src/img/bambora_checkout/expiry.png" alt="Expiry" style="width:26px;height:26px;margin-top:4px;" />
+											</div>
+											<div class="col-5">
+												<div class="form-group col-xs-2 has-feedback" id="card-expiry-bootstrap">
+													<div id="card-expiry" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="text-center">
+													<button id="pay-button" class="btn btn-primary disabled" disabled="true" style="width: 100%; margin-top: 20px;">
+														<t t-if="'/my/payment_method' in request.httprequest.url">
+															Add Card
+														</t>
+														<t t-if="'/shop/payment' in request.httprequest.url or '/my/orders' in request.httprequest.url">
+															Pay
+														</t>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-12 text-center">
+												<div id="feedback">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</xpath>
+    	</template>
+
+	</data>
+</odoo>

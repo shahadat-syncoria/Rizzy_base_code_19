@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_shopify_feed_products_tree" model="ir.ui.view">
+            <field name="name">view.shopify.feed.products.list</field>
+            <field name="model">shopify.feed.products</field>
+            <field name="arch" type="xml">
+                <list string="Feed Products Tree">
+                    <field name="name"/>
+                    <field name="instance_id"/>
+                    <field name="title"/>
+                    <field name="shopify_id"/>
+<!--                    <field name="inventory_id" invisible="1"/>-->
+<!--                    <field name="barcode" invisible="1"/>-->
+<!--                    <field name="default_code" invisible="1"/>-->
+<!--                    <field name="product_id" invisible="1"/>-->
+                    <field name="product_tmpl_id"/>
+                    <field name="state"/>
+                </list></field>
+        </record>
+        <record id="view_shopify_feed_products_form" model="ir.ui.view">
+            <field name="name">view.shopify.feed.products.form</field>
+            <field name="model">shopify.feed.products</field>
+            <field name="arch" type="xml">
+                <form create="true" delete="true" edit="true" string="Shopify Feed Products">
+                    <header>
+                        <button class="btn btn-primary" invisible="state in 'queue'" name="process_feed_product" string="Process Feed Product" type="object"/>
+                        <button class="btn btn-primary" invisible="product_id == False" name="update_product_product" string="Update Product Variant" type="object"/>
+                        <button class="btn btn-primary" invisible="product_tmpl_id == False" name="update_product_template" string="Update Product Template" type="object"/>
+                        <field name="state" statusbar_visible="draft,queue,processed,failed" widget="statusbar"/>
+                        <field invisible="1" name="feed_variant_count"/>
+                    </header>
+                    <sheet name="Shopify Feed Products">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" icon="fa-inventory" invisible="feed_variant_count == 0" name="action_view_feed_variant" type="object">
+                                <div class="o_stat_info">
+                                    <field class="o_stat_value" name="feed_variant_count"/>
+                                    <span class="o_stat_text" invisible="feed_variant_count == 0">
+                                        Feed Child Products
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name"/>
+                            <h1>
+                                <field class="oe_inline" name="name" placeholder="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="instance_id"/>
+                                <field name="shopify_id"/>
+                                <field name="inventory_id" invisible="1"/>
+                                <field name="barcode" invisible="1"/>
+                                <field name="default_code" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="parent"/>
+                                <field invisible="parent == True" name="parent_id"/>
+                                <field invisible="parent == False" name="parent_title"/>
+                                <field name="title"/>
+                                <field name="product_id" invisible="1"/>
+                                <field name="product_tmpl_id"/>
+                                <field invisible="parent == False" name="feed_variant_count"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="product_data"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+
+                </form></field>
+        </record>
+        <record id="view_shopify_feed_products_search" model="ir.ui.view">
+            <field name="name">view.shopify.feed.products.search</field>
+            <field name="model">shopify.feed.products</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <search string="shopify_feed_products_search">
+                    <field name="title"/>
+                    <field name="name"/>
+                </search></field>
+        </record>
+        <record id="action_shopify_feed_products" model="ir.actions.act_window">
+            <field name="name">Shopify Feed Produtcs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shopify.feed.products</field>
+            <field name="view_id" ref="syncoria_shopify.view_shopify_feed_products_tree"/>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Shopify Feed Product.
+                </p></field>
+        </record>
+        <menuitem id="shopify_feed_views" name="Feed" parent="os_marketplace.syncoria_marketplace_main" sequence="8"/>
+        <menuitem action="action_shopify_feed_products" id="shopify_feed_products" name="Feed Products" parent="shopify_feed_views" sequence="1"/>
+    </data>
+</odoo>

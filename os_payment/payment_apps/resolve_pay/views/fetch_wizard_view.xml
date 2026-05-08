@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="resolvepay_customers_fetch_wiz" model="ir.ui.view">
+            <field name="name">Fetch Customer Wizard</field>
+            <field name="model">resolvepay.fetch.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <p>The operation may take some time to complete. It depends on the number of records.
+                            Please wait patiently.</p>
+                        <group>
+                            <group>
+                                <field name="instance_id" required="1" options="{'no_open': True,'no_create': True}" />
+                                <field name="create_new"/>
+                                <field name="status"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button string='Fetch Customers' name="fetch_customers_resolvepay"
+                                    type="object" class="btn-primary" />
+                            <button string="Cancel" class="btn-default" special="cancel"/>
+                      </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_resolvepay_fetch_customers" model="ir.actions.act_window">
+            <field name="name">Fetch Customers</field>
+            <field name="res_model">resolvepay.fetch.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('resolvepay_customers_fetch_wiz')})
+                          ]"
+            />
+        </record>
+
+        <menuitem
+            id="menu_instance_resolvepay_fetch_customer"
+            name="Fetch Customers"
+            parent="menu_resolvepay_main"
+            groups="os_payment.group_resolvepay_active"
+            action="action_resolvepay_fetch_customers"
+            sequence="5"/>
+
+    </data>
+</odoo>

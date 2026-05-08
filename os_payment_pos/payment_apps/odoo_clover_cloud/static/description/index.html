@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Odoo POS - Clover Cloud Integration</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 0 auto; padding: 15px 15px 0 15px;box-sizing: border-box;">
+        <h1 class="oe_slogan text-center"
+            style="font-size: 34px; line-height: 45px; color:#000000; font-weight:700; font-family:Lato, arial, sans-serif;margin:0; padding: 20px 0 34px 0;">
+            Clover Cloud Integration with Odoo POS</h1>
+        <div class="oe_row" style="background: #f2f2f2; padding: 40px; border:1px solid #ddd;">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <p
+                        style="font-size: 17px; line-height: 28px; margin:0; color:#000; padding-top: 10px; padding-bottom: 20px; padding-right: 30px;">
+                        Clover is the fastest-growing point-of-sale (POS) platform backed by Fiserv, a market leader
+                        processing over 50% of global card transactions.
+                        With this app, adds Clover Cloud Integration as a
+                        payment acquirer for
+                        Odoo POS and Invoice.
+                    </p>
+                    <p
+                        style="font-size: 17px; line-height: 28px;margin:0; color:#000; padding-bottom: 0; padding-top: 0; padding-right: 30px;">
+                        Clover Cloud Integration is an Integration that allows you to easily integrate your Clover
+                        terminal with your point of sale (POS) and Invoice application in the Odoo creating a secure and
+                        convenient
+                        payment environment for merchant and customers. </p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <img src="banner.png" alt="images"
+                        style="max-width:100%; padding:1px; background-color: #ddd; box-shadow: 0 0 25px #cdcbd6;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Firefox Broswer
+
+    1. In Firefox, you need to change:
+
+    In the "Awesome Bar," type "about:config". 
+    
+    Find security.mixed_content.block_active_content. Set its value to false. 
+
+    Chrome Broswer
+    1 Click the lock button next to the URL
+    2. Click Site settings on the popup box
+    3. At the bottom of the list is "Insecure content", change this to Allow
+    4 Go back to the site and Refresh the page -->
+
+    <section class="oe_container" style="background-color: #1b3b58; padding:50px 0; margin: auto;">
+        <div style="max-width: 1040px; margin:0 auto; padding: 0 15px;box-sizing: border-box;">
+            <div class="oe_row">
+                <h3 class="oe_slogan"
+                    style="color:#fff; opacity:1; padding: 0 0 34px 0; margin:0; font-size: 32px; line-height: 45px; font-weight: 700;font-family: 'Lato', arial, sans-serif; text-align: center">
+                    Features</h3>
+                <div class="row">
+                    <div class="col-12 col-sm-7 col-md-7 col-lg-7">
+                        <div class="row">
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12"
+                                style="position: relative; margin-bottom: 15px;">
+                                <div
+                                    style="position: relative; height: 100%; border-bottom: 1px solid #254c6f; padding: 0 20px 20px 20px;display: block; ">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> Purchase in POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Verifies funds on the customer’s card, removes the funds and prepares them for
+                                        deposit into
+                                        the
+                                        merchant’s account</p>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="position: relative;">
+                                <div style="position: relative; height: 100%; padding:0 20px;display: block;">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> Refund in POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Restores all or part of the funds from a Purchase to the cardholder's card.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 col-md-5 col-lg-5">
+                        <img src="images/img7.png" alt="image" style="max-width: 100%">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="oe_container" style="padding:50px 0; margin: auto;">
+        <div style="max-width: 1040px; margin:0 auto; padding: 0 15px;box-sizing: border-box;">
+            <div class="oe_row">
+                <h3 class="oe_slogan"
+                    style="color:#fff; opacity:1; padding: 0 0 34px 0; margin:0; font-size: 32px; line-height: 45px; font-weight: 700;font-family: 'Lato', arial, sans-serif; text-align: center">
+                    Cloud Pay Display</h3>
+                <div class="row">
+                    <div class="col-12 col-sm-7 col-md-7 col-lg-7">
+                        <div class="row">
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12"
+                                style="position: relative; margin-bottom: 15px;">
+                                <div
+                                    style="position: relative; height: 100%; border-bottom: 1px solid #254c6f; padding: 0 20px 20px 20px;display: block; ">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <!-- <img src="images/thik.png" alt="preview">  -->
+                                        Advantages
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #050505; font-size: 15px; line-height: 22px;">
+                                    <ul>
+                                        <li>Flexibility – Cloud connections support connecting to devices that are not
+                                            on the same network as the POS</li>
+                                        <li>No certificate requirements – The application connects to the device through
+                                            Clover’s servers, which eliminates the need for browsers running the POS to
+                                            install and trust the Clover device server certificate</li>
+                                    </ul>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="position: relative;">
+                                <div style="position: relative; height: 100%; padding:0 20px;display: block;">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <!-- <img src="images/thik.png" alt="preview"> -->
+                                        Disadvantages
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                    <ul>
+                                        <li>Performance – Because the cloud proxies requests through Clover’s servers,
+                                            it may not perform as well as a direct connection to the Clover device</li>
+                                        <li>More complex connection configuration – The connection configuration for the
+                                            cloud is more complex than the configuration for a direct connection</li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 0 auto; padding:30px 15px 15px  15px; box-sizing: border-box; border: 1px solid #ddd;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+                <h2
+                    style="padding:0.75rem 1.25rem; text-align: center; background-color:#F0F4F7;border-radius:10px; margin:0 0 20px 0; font-size: 25px; line-height: 32px; color: #212121; opacity: 1;  font-family:Lato, arial, sans-serif; font-weight: 400;">
+                    The steps for Clover Pay Cloud Setup</h2>
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <ul>
+                            <li>Physical setup of Clover Device</li>
+                            <li>Setting up your Clover Account</li>
+                            <li>Associate Clover Device</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul>
+                            <li>Activating your Dev Kit</li>
+                            <li>Setting the CORS domain</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <h3
+                    style=" text-align: center; background-color:#F0F4F7;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                    1. Physical setup of Clover Device</h3>
+                <h4
+                    style="font-size: 22px; line-height:34px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:0; padding: 0 0 15px 0;">
+                    Connect your Clover device to a network
+                </h4>
+
+
+                <p>
+                    After your device powers on, the Connect to Network screen helps get you connected.
+                </p>
+
+                <b>Connect to the network with an Ethernet cable</b><br>
+                <p>
+                    Because wireless can be unreliable or spotty (which is often out of your control),
+                    we recommend connecting your Clover devices to the internet via Ethernet.
+                    This method ensures that your Clover device is connected and online even when
+                    your wireless connection is not responding.
+                </p>
+                <p>
+                    If your Ethernet cable is already plugged into the hub, your device automatically tries to
+                    connect to the internet. If your Ethernet is not connected, follow the instructions to plug
+                    in your Ethernet cable to your device.
+                </p>
+
+
+                <b>To connect your device via Ethernet:</b><br>
+
+                <p>
+                    Plug one end of your Ethernet cable into the device hub.
+                    Plug the other end into your modem, router, or switch.
+                    Your device will automatically try to connect to the internet.
+                    You will see Successfully Connected to Server when connected.
+                    If your device does not automatically connect,
+                    Tap Check Connection. If this fails, wait two minutes and tap Check Connection button again. If you
+                    receive an Error connecting to the network message:
+                    Check that the router used is connected to the internet by plugging in your laptop or mobile device.
+                    Check that the Ethernet cable is plugged all the way into the Printer.
+                    Tap Check Connection.
+                    You will see Successfully Connected to Server when connected
+                </p>
+
+                <b>Connect your Clover device to a Wi-Fi network</b><br></br>
+
+                <b>To connect to a Wi-Fi network:</b><br></br>
+
+
+                <p>
+                    Tap Configure next to the Wi-Fi option.
+                    From the list of available wireless networks, tap the name of your wireless network.
+                    (If your network doesn't appear, tap Add a New Network and then tap the network by name.)
+                    Enter the network password.
+                    Tap Done.
+                    Tap Check Connection.
+                    When the connection is successful, you will be taken through the activation process.
+                    If not, you'll be asked to select a different network or re-enter the Wi-Fi password.
+                </p>
+
+                <note><strong>
+                        It is preferred to connect the Clover Device using Ethernet Cable.
+                    </strong>
+
+                </note>
+
+
+                <!-- Step 2 -->
+                <h3
+                    style=" text-align: center; background-color:#F0F4F7;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                    2. Setting up your Clover Account</h3>
+                <p>
+                    <b>For Sandbox: </b>
+                </p>
+                <p>
+                    <b>Setting up a sandbox account </b>
+                </p>
+                <p>
+                    <b>Create a sandbox developer account </b>
+                </p>
+                <p>
+                    To create your sandbox developer account:
+                </p>
+                <ol>
+                    <li>
+                        On the sandbox <a href="https://sandbox.dev.clover.com/developer-home/create-account">account
+                            creation page</a>, enter your email address.
+                    </li>
+                    <li>
+                        In the confirmation email you receive, follow the instructions to verify your email address. You
+                        are redirected to the Developer Dashboard to complete your account information.
+                    </li>
+                    <li>
+                        Fill in the following information about your account:
+                    </li>
+                    <ul>
+                        <li><strong>Full Name</strong>: Your identification information in the sandbox environment</li>
+                        <li><strong>Public Developer Name</strong>: Either your developer name or company name. The
+                            developer name is displayed to users when viewing your app on the <a
+                                href="https://www.clover.com/appmarket" target="_blank" title="">Clover App Market</a>.
+                        </li>
+                        <li><strong>Create your Test Merchant</strong>: Your first test merchant. You can edit this
+                            information at a later point and also create more test merchants in the Developer Dashboard.
+                            Use the following table to complete the test merchant information.</li>
+                    </ul>
+
+                </ol>
+
+                <!-- Step 3 -->
+                <h3
+                    style=" text-align: center; background-color:#F0F4F7;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                    3. Associate Clover Device</h3>
+
+                <p>
+                    For Sandbox, please follow these steps:
+
+                <p>After setting up your Clover sandbox account, you can associate your Clover Dev Kit with your test
+                    merchant account:</p>
+                </p>
+
+                <ol>
+                    <li>Unbox and power on your Dev Kit.</li>
+                    <li>On the <a href="https://sandbox.dev.clover.com/developer-home/login" target="_blank"
+                            title="">sandbox Developer Dashboard</a>, click <strong>Dev Kits</strong> on the side-nav.
+                    </li>
+                    <li>On the <strong>Dev Kits</strong> page, click <strong>ASSOCIATE DEV KIT</strong>.</li>
+                    <li>On the <strong>Associate Dev Kit</strong> modal that appears, enter the serial number for your
+                        development kit found on the sticker attached to your Dev Kit's box (for example, <code
+                            class="rdmd-code lang-" data-lang=""
+                            name=""><button class="rdmd-code-copy fa"></button><span class="cm-s-neo">C012UQ12345678</span></code>).
+                    </li>
+                    <li>Select your test merchant account from the <strong>Test Merchant</strong> list.</li>
+                    <li>Click <strong>Associate Dev Kit</strong>. An activation code appears. Clover also sends you an
+                        email with a code to your development account. You will need this code to activate your Dev Kit.
+                    </li>
+                </ol>
+                <!-- Step 4 -->
+                <h3
+                    style=" text-align: center; background-color:#F0F4F7;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                    4. Activating your Dev Kit</h3>
+                <p>After you've associated your Dev Kit, complete the setup and activation steps for your Dev Kit.</p>
+
+
+                <note>
+                    <p>NOTE</p>
+
+                    The Clover Flex Dev Kit includes a hub with ports for power, USB type B, and Ethernet to aid in
+                    development and testing. This hub replaces the charging cradle that is shipped with merchant
+                    devices.
+                </note>
+
+                <br></br>
+                <ul>
+                    <li><a href="https://www.clover.com/us/en/help/connect-and-activate-my-clover-station/" target=""
+                            title="">Clover Station</a></li>
+                    <li><a href="https://www.clover.com/us/en/help/connect-and-activate-my-clover-mini/" target=""
+                            title="">Clover Mini (2nd generation) &amp; Clover Mini</a></li>
+                    <li><a href="https://www.clover.com/us/en/help/connect-and-activate-my-clover-mobile/" target=""
+                            title="">Clover Mobile</a></li>
+                    <li><a href="https://www.clover.com/us/en/help/connect-and-activate-my-clover-flex/" target=""
+                            title="">Clover Flex</a></li>
+                    <li><a href="https://www.clover.com/us/en/help/connect-and-activate-my-clover-station-2018/"
+                            target="" title="">Clover Station 2018</a></li>
+                </ul>
+
+
+                <note>
+                    <p>NOTE</p>
+                    <p>As part of your on-screen Dev Kit setup, you are not charged for selecting a merchant service
+                        plan.</p>
+                    <p>The activation process takes a few minutes. Once the Dev Kit is activated, you see an update on
+                        the <strong>Dev Kits</strong> page on the Developer Dashboard.</p>
+                </note>
+
+
+
+
+                <div class="heading-text">
+                    <div id="section-reassociating-or-disassociating-your-dev-kit"
+                        class="heading-anchor_backwardsCompatibility"></div>Reassociating or disassociating your Dev Kit
+                </div>
+                <p>As part of your app development in sandbox, you can create multiple test merchants with different
+                    configurations. To reassociate your Dev Kit with another test merchant:</p>
+
+                <ol>
+                    <li>On the <a href="https://sandbox.dev.clover.com/developer-home/login" target="_blank"
+                            title="">sandbox Developer Dashboard</a>, click <strong>Dev Kits</strong> on the side-nav.
+                    </li>
+                    <li>On the <strong>Dev Kits</strong> page, click <strong>Reassociate Dev Kit</strong> from the
+                        overflow menu of your associated Dev Kit.</li>
+                    <li>On the <strong>Reassociate Dev Kit</strong> modal that appears, select the new test merchant
+                        from the <strong>Test Merchant</strong> list.</li>
+                    <li>Click <strong>Reassociate Dev Kit</strong>. An activation code appears. Clover also sends you an
+                        email with a code to your development account. You will need this code to activate your Dev Kit.
+                    </li>
+                    <li>Complete the process of <a href="/docs/setting-up-your-devkit#section--activating-your-dev-kit-"
+                            target="" title="" class="doc-link"
+                            data-sidebar="setting-up-your-devkit#section--activating-your-dev-kit-">activating the Dev
+                            Kit</a> for the new test merchant account.</li>
+                </ol>
+
+                <p>To disassociate your Dev Kit:</p>
+                <ol>
+                    <li>On the <a href="https://sandbox.dev.clover.com/developer-home/login" target="_blank"
+                            title="">sandbox Developer Dashboard</a>, click <strong>Dev Kits</strong> on the side-nav.
+                    </li>
+                    <li>On the <strong>Dev Kits</strong> page, click <strong>Disassociate Dev Kit</strong> from the
+                        overflow menu of your associated Dev Kit.</li>
+                    <li>On the <strong>Disassociate Dev Kit</strong> modal that appears, click <strong>Disassociate Dev
+                            Kit</strong>. The Dev Kit is disassociated. You can associate your Dev Kit with another test
+                        merchant account.</li>
+                </ol>
+
+
+                <b><h3>For Production:</h3></b>
+                <p>
+
+                    Add Domain to Clover App
+                    The Cloud Pay Display app must be installed and running on the Clover device before you can connect.
+                </p>
+
+
+                <!-- Step 5 -->
+                <h3
+                style=" text-align: center; background-color:#F0F4F7;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                5. Setting the CORS domain</h3>
+                <p>To establish a connection between your app and the Clover device, 
+                    you must configure the CORS domain using the developer dashboard.</p>
+                    <p>
+                        Log on to the developer dashboard (sandbox or production).
+                    </p>
+                    <img src="images/login_clover.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px;">
+                    
+                    <p>
+                        On the Your Apps tab, find your app and click Settings.
+                    </p>
+                    <img src="images/clover_app.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px;">
+                    <img src="images/app_settings.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px;">
+                    
+                   
+                    On the Settings page, click Web Configuration.
+                    <img src="images/edit_rest_config.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px;">
+                    
+                    <p>
+                        In the CORS Domain field, type your app's URL.
+                    </p>
+                    <p>
+                        Click Save.
+                    </p>
+
+                    <!-- Step 6 -->
+                    <h3
+                    style=" text-align: center; background-color:#F0F4F7;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                    7. CLover Pay Cloud Installation and Configuration</h3>
+                    <h4>
+                        Installation
+                    </h4>
+                    <p>
+                        <ol>
+                            <li>Go to Odoo Database</li>
+                            <li>Go to Apps.Remove the filter and search by "Clover"</li>
+                            <li>Install App "Clover Cloud Integration with Odoo POS"</li>
+                        </ol>
+                    </p>
+
+                    <h4>
+                        Configuration
+                    </h4>
+                    <p>
+                        <ol>
+                            <li>Go to Point of Sale</li>
+                            <li>Go to Configuration --> payment Methods</li>
+                            <li>Create a new payment method</li>
+                            <li>Select "CLover Cloud"</li>
+                            <img src="images/odoo_config.png" alt="preview"
+                            style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px;">
+                            <li>Select "CLover Cloud"</li>
+                        </ol>
+                    </p>
+
+                    <!-- TO DO---------- -->
+                 
+
+                    On the Settings page, click Webhooks.
+                    <img src="images/webhook_url.png" alt="preview"
+                        style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px;">
+                        <p>
+                            Add the URL:
+                            "https://YOUR_SERVER/clover/webhook"  eg: "https://cloverpayments.odoo.com/clover/webhook" 
+                        </p>
+                        <p>
+                           Click on "SEND VERIFICATION CODE"
+                        </p>
+                        <p>
+                            Login to your Odoo Database. Go to Point of Sale App, Configuration --> Payment Methods.
+                         </p>
+                    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+            
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 50px auto 30px auto; padding: 0 15px; box-sizing: border-box;">
+        <div class="row justify-content-center">
+
+            <div style="border: 1px solid #ddd; padding: 0 15px 15px 15px; background-color:#f7f7f7;">
+
+
+                <h3
+                    style="border: 1px solid #ddd; text-align: center; background-color:#fff;border-radius:10px; padding:0.55rem 1.25rem; font-size: 20px; line-height:28px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 600;margin:25px auto 15px auto;">
+                    Purchase in Odoo POS</h3>
+
+                <p>Open a new session <strong>“New Session”</strong>.</p>
+
+                <img src="images/131.png" alt="image" style="max-width: 50%; margin:  30px auto; display: block">
+
+                <!-- <p>Now add products in the POS.</p>
+            <img src="images/96.png" alt="image"
+                 style="max-width: 85%; margin:  30px auto; display: block">
+            <p>Now click on Payment.</p>
+            <img src="images/33.png" alt="image"
+                 style="max-width: 85%; margin:  30px auto; display: block">
+            <p>Now select on “clover clover”
+            </p>
+            <img src="images/32.png" alt="image"
+                 style="max-width: 85%; margin:  30px auto; display: block">
+            <p>Click on “Send”.
+            </p>
+            <img src="images/34.png" alt="image"
+                 style="max-width: 85%; margin:  30px auto; display: block"> -->
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select Products from POS and click on Payment
+                </p>
+                <img src="images/35.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select clover clover as Payment in Odoo POS
+                </p>
+
+
+                <img src="images/36.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Press "Send" Button
+                </p>
+                <img src="images/37.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;  ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Status will changes from "Payment request Pending" to "Waiting for Card". At the same time, a sound
+                    beep will be heard
+                    in the clover Terminal.
+                </p>
+                <img src="images/38.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;  ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Insert the card in the clover Terminal.
+                </p>
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    If payment is successful, the status message will change from "Waiting for Card" to "Payment
+                    Successful".
+                </p>
+                <img src="images/39.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;  ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Now click on "Validate".
+                </p>
+                <img src="images/40.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;  ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    You can see the receipt here. Now click on "Next Order".
+                </p>
+                <img src="images/41.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;  ">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Backend View of Payment for Odoo POS.
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    From POS Module, go to Order -- > Payment
+                </p>
+                <img src="images/24.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on the record
+                </p>
+                <img src="images/25.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Payment Details in Odoo POS.
+                </p>
+                <img src="images/26.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

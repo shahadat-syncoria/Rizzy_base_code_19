@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_return_order_template" inherit_id="point_of_sale.template" xml:space="preserve">
+
+	<t t-name="RtnSeeAllOrdersScreenWidget" owl="1">
+		<span class="control-button" t-att-class="is_available()?    'highlight' : ''" id="show_pos_order" style="background-color: #7f82ac; color: #fff;">
+			<i class="fa fa-university"></i> 
+			<span> </span>
+			<span>RtnSeeAllOrdersScreenWidget</span>
+		</span>
+	</t>
+
+	<t t-extend="SeeAllOrdersButtonWidget">
+		<t t-jquery=".control-button .orders-button .highlight" t-operation="replace">
+			<span> </span>
+		</t>
+	</t>
+
+	<!-- <t t-name="POSBarcodeReturnWidget" name="POS Return Order with Barcode" owl="1">
+		<t t-if="env.pos.config.show_order">
+			<div class="control-button button confirm" id="create_barcode_return" style="background-color: #7f82ac; color: #fff;">
+				<i class="fa fa-barcode"></i> Return Order with Barcode
+			</div>
+		</t>
+	</t> -->
+	
+
+	<!-- OrdersLine -->
+	<t t-extend="OrdersLine">
+		<!-- -->
+		<!-- <t t-jquery="tr" t-operation="append">
+			<td>
+				<button class="return-order" t-att-id='order.id' style="cursor: pointer; color: #fff; background-color: #7F82AC;"><i class='fa fa-sign-in'></i> Return Order </button>
+			</td>
+		</t> -->
+
+	</t>
+	
+	<t t-name="PosBarcodePopupWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-confirm">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Return Order Barcode</p>
+
+				<div class="body">
+					<div class='div-container' style="margin-top: 20px;">
+						<input id ="entered_item_barcode" type="text" class="input-field" name="code"></input>
+						
+					</div>
+				</div>
+
+
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" t-on-click="trigger('click-back')" style="background-color: #0075AC; color: #fff;">
+						Cancel
+					</div>
+					<div class="button confirm_return" t-on-click="trigger('apply-barcode-return-order')" style="background-color: #0075AC; color: #fff;">
+						Apply
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+
+	<!-- PosReturnOrderPopupWidget -->
+	<t t-name="PosReturnOrderPopupWidget" owl="1">
+		<div class="modal-dialog bi-pos-modal">
+			<div class="popup popup-confirm" style="height: 350px;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Return Products</p>
+
+				<div class="body" style="height: 205px;">
+					<div class='div-container' style="overflow-y: auto;">
+						<table class='return-product-list'>
+							<thead>
+								<tr class="return_product_header">
+									<th>Product</th>
+									<th>Return Qty</th>
+								</tr>
+							</thead>
+							<tbody class='return-product-list-contents'>
+								<tr class="return_product_body" t-foreach="props.orderlines || []" t-as="item">
+									<td><t t-esc='item.product_id[1]' /></td>
+										<td class="entered_item_qty">
+										<input id ="entered_item_qty" t-att-line-id='item.id' t-att-qty-id='item.qty' type="text" class="input-field" name="code"></input>
+										</td>
+								</tr>
+							</tbody> 
+						</table>
+					</div>
+				</div>
+
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" data-dismiss="modal" t-on-click="posreturncancel" style="background-color: #0075AC; color: #fff;">
+						Cancel
+					</div>
+					<div class="button confirm" t-on-click="applyreturnorder" id="apply_return_order" style="background-color: #0075AC; color: #fff;">
+						Apply
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</t>
+
+</templates>

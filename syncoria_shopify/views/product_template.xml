@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="product_template_form_inherited_shopify" model="ir.ui.view">
+            <field name="name">product.template.form inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet" position="before">
+                    <header>
+                        <button
+                            string="Create/Update Shopify Product"
+                            type="action"
+                            groups="base.group_erp_manager"
+                            name="%(action_shopify_products_wiz)d"
+                    />
+                    </header>
+
+<!--                    <button-->
+<!--                            string="Update Shopify Cost to Odoo"-->
+<!--                            type="object"-->
+<!--                            groups="base.group_no_one"-->
+<!--                            name="action_update_odoo_cost_product"-->
+<!--                            attrs="{'invisible': [ '|', ('marketplace_type', '!=', 'shopify'),('shopify_id', '=', False) ]}"/>-->
+<!--                    <button string="Delete Product on Shopify" type="object"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="shopify_delete_product"-->
+<!--                            attrs="{'invisible': [('shopify_id', '=', False)]}"-->
+<!--                            confirm="Do you want to proceed?"/>-->
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="shopify_tags" string="Tags"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Shopify">
+                        <group>
+                            <group>
+<!--                                <field name="shopify_id"/>-->
+<!--                                <field name="marketplace_type"/>-->
+<!--                                <field name="marketplace_instance_id" options="{'no_open': True,'no_create': True}"-->
+<!--                                       attrs="{ 'required' : [('marketplace_type','==','shopify')] }"/>-->
+<!--                                <field name="shopify_inventory_id"/>-->
+<!--                                <field name="shopify_product_template_mapping_ids" readonly="1">-->
+<!--                                    <list>-->
+<!--                                        <field name="shopify_instance_id" />-->
+<!--                                        <field name="shopify_id"/>-->
+<!--                                        <field name="shopify_parent_id" />-->
+<!--                                        <field name="shopify_inventory_id" />-->
+<!--                                    </list>-->
+<!--                                </field>-->
+                                <field name="shopify_categ_ids" widget="many2many_tags"/>
+                                <field name="shopify_type"/>
+                                <field name="custom_option" readonly="True"/>
+                                <field name="shopify_vendor"/>
+                                <field name="shopify_published_scope" string="Published Scope" readonly="True"/>
+<!--                                <field name="shopify_tags" string="Tags"/>-->
+                                <field name="shopify_template_suffix" string="Template Suffix" readonly="True"/>
+                                <field name="shopify_variants" string="Variants" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="shopify_compare_price"/>
+                                <field name="shopify_charge_tax"/>
+                                <!--                                <field name="shopify_track_qty"/>-->
+                                <field name="shopify_product_status" widget="radio"/>
+                            </group>
+                            <group string="Currency Information">
+                                <field name="currency_id"/>
+                                <field name="shopify_currency_id"/>
+                                <field name="list_price"/>
+                                <field name="shopify_price"/>
+<!--                                <field name="shopify_update_variants"/>-->
+<!--                                <button name="compute_shopify_price"-->
+<!--                                        string="Compute Shopify Price"-->
+<!--                                        type="object"-->
+<!--                                        class="btn btn-primary"/>-->
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+                <xpath expr="//field[@name='hs_code']" position="after">
+                    <field name="shopify_origin_country_id"/>
+                    <field name="shopify_province_origin_id"/>
+                </xpath>
+
+
+            </field>
+        </record>
+
+
+         <record id="product_template_only_form_view_inherit_shopify" model="ir.ui.view">
+            <field name="name">product.template.form inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='variants']//field[@name='attribute_line_ids']/list/field[@name='value_ids']"
+                       position="after">
+                    <field name="shopify_value_ids" widget="many2many_tags"
+                           options="{'no_create_edit': True, 'color_field': 'color'}"
+                           context="{'default_attribute_id': attribute_id, 'show_attribute': False}"
+                           domain="[('attribute_id', '=', attribute_id), ('id', 'in', value_ids)]"/>
+                </xpath>
+            </field>
+         </record>
+
+<!--        <record id="product_template_tree_inherited" model="ir.ui.view">-->
+<!--            <field name="name">product.template.list inherited</field>-->
+<!--            <field name="model">product.template</field>-->
+<!--            <field name="inherit_id" ref="product.product_template_tree_view"/>-->
+<!--            <field name="type">list</field>-->
+<!--            <field name="arch" type="xml">-->
+
+
+<!--                <xpath expr="//field[@name='name']" position="after">-->
+<!--                    <field name="shopify_id"/>-->
+<!--                    <field name="marketplace_instance_id"/>-->
+
+<!--                </xpath>-->
+
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="product_normal_form_view_shopify" model="ir.ui.view">-->
+<!--            <field name="name">product.product.form shopify</field>-->
+<!--            <field name="model">product.product</field>-->
+<!--            <field name="inherit_id" ref="product.product_normal_form_view"/>-->
+<!--            <field name="type">form</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//header" position="inside">-->
+<!--&lt;!&ndash;                    <button string="Get Shopify Inventory Id" type="object"&ndash;&gt;-->
+<!--&lt;!&ndash;                            groups="base.group_erp_manager"&ndash;&gt;-->
+<!--&lt;!&ndash;                            name="shopify_get_inventory_id"&ndash;&gt;-->
+<!--&lt;!&ndash;                            attrs="{'invisible': [('shopify_id', '=', False)]}"/>&ndash;&gt;-->
+<!--                    <button-->
+<!--                            string="Create/Update Shopify Variant"-->
+<!--                            type="action"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="%(action_shopify_products_wiz)d"-->
+<!--                            context="{'default_product_id': active_id}"/>-->
+<!--&lt;!&ndash;                    <button string="Delete Variant on Shopify" type="object"&ndash;&gt;-->
+<!--&lt;!&ndash;                            groups="base.group_erp_manager"&ndash;&gt;-->
+<!--&lt;!&ndash;                            name="shopify_delete_variant"&ndash;&gt;-->
+<!--&lt;!&ndash;                            attrs="{'invisible': [('shopify_id', '=', False)]}"&ndash;&gt;-->
+<!--&lt;!&ndash;                            confirm="Do you want to proceed?"/>&ndash;&gt;-->
+
+<!--                </xpath>-->
+<!--                <xpath expr="//notebook" position="inside">-->
+<!--                    <page string="Shopify">-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="shopify_product_mapping_ids" readonly="1">-->
+<!--                                    <list>-->
+<!--                                        <field name="shopify_instance_id" />-->
+<!--                                        <field name="shopify_id"/>-->
+<!--                                        <field name="shopify_parent_id" />-->
+<!--                                        <field name="shopify_inventory_id" />-->
+<!--                                    </list>-->
+<!--                                </field>-->
+<!--                                <field name="shopify_categ_ids"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="shopify_type"/>-->
+<!--                                <field name="custom_option"/>-->
+<!--                                <field name="shopify_vendor"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="shopify_published_scope" string="Published Scope"/>-->
+<!--&lt;!&ndash;                                <field name="shopify_tags" string="Tags"/>&ndash;&gt;-->
+<!--                                <field name="shopify_template_suffix" string="Template Suffix"/>-->
+<!--                                <field name="shopify_variants" string="Variants"/>-->
+<!--                            </group>-->
+<!--                            <group string="Currency Information">-->
+<!--                                <field name="currency_id"/>-->
+<!--                                <field name="shopify_currency_id"/>-->
+<!--                                <field name="list_price"/>-->
+<!--                                <field name="shopify_price"/>-->
+<!--                                <button name="compute_shopify_price"-->
+<!--                                        string="Compute Shopify Price"-->
+<!--                                        type="object"-->
+<!--                                        class="btn btn-primary"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+<!--                <xpath expr="//field[@name='hs_code']" position="after">-->
+<!--                    <field name="shopify_origin_country_id"/>-->
+<!--                    <field name="shopify_province_origin_id"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="product_normal_tree_view_shopify" model="ir.ui.view">-->
+<!--            <field name="name">product.product.list shopify</field>-->
+<!--            <field name="model">product.product</field>-->
+<!--            <field name="inherit_id" ref="product.product_product_tree_view"/>-->
+<!--&lt;!&ndash;            <field name="type">form</field>&ndash;&gt;-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='name']" position="after">-->
+<!--                    <field name="shopify_id"/>-->
+<!--                    <field name="marketplace_instance_id"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="product_variant_easy" model="ir.ui.view">
+            <field name="name">product.product.view.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="arch" type="xml">
+                  <xpath expr="//div[@class='oe_button_box']" position="inside">
+<!--                    <button-->
+<!--                            string="Update Hscode and Cost to Shopify"-->
+<!--                            type="object"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="action_update_inventory_item"-->
+<!--                            attrs="{'invisible': [('shopify_id', '=', False)]}"/>-->
+<!--                    <button-->
+<!--                            string="Create Variant on Shopify"-->
+<!--                            type="object"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="action_create_shopify_product"-->
+<!--                            attrs="{'invisible': ['|',('marketplace_type', '!=', 'shopify'),('shopify_id', '!=', False)]}"/>-->
+<!--                    <button string="Delete Variant on Shopify" type="object"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="shopify_delete_variant"-->
+<!--                            attrs="{'invisible': [('shopify_id', '=', False)]}"-->
+<!--                            confirm="Do you want to proceed?"/>-->
+                    <button
+                            string="Create/Update Shopify Variant"
+                            type="action"
+                            groups="base.group_erp_manager"
+                            name="%(action_shopify_products_wiz)d"
+                            context="{'default_product_id': id}"/>
+<!--                    <button-->
+<!--                            string="Update on Shopify"-->
+<!--                            type="object"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="action_update_shopify_product"-->
+<!--                            attrs="{'invisible': [('shopify_id', '=', False)]}"-->
+<!--                            confirm="This will not update Stock"/>-->
+<!--                    <button-->
+<!--                            string="Update Cost on Shopify"-->
+<!--                            type="object"-->
+<!--                            groups="base.group_erp_manager"-->
+<!--                            name="action_update_shopify_cost_product"-->
+<!--                            attrs="{'invisible': [('shopify_id', '=', False)]}"/>-->
+                </xpath>
+                <xpath expr="//group[@name='weight']" position="after">
+                    <group string="Shopify">
+<!--                        <field name="marketplace_type"/>-->
+<!--                        <field name="marketplace_instance_id" options="{'no_open': True,'no_create': True}"-->
+<!--                               attrs="{ 'required' : [('marketplace_type','==','shopify')] }"/>-->
+<!--                        <field name="shopify_id" readonly="True"/>-->
+<!--                        <field name="shopify_parent_id" readonly="True"/>-->
+<!--                        <field name="shopify_inventory_id" readonly="True"/>-->
+<!--                        <field name="shopify_image_id" readonly="True"/>-->
+                        <field name="shopify_product_mapping_ids" readonly="1">
+                            <list>
+                                <field name="shopify_instance_id" />
+                                <field name="shopify_id"/>
+                                <field name="shopify_parent_id" />
+                                <field name="shopify_inventory_id" />
+                            </list>
+                        </field>
+                        <field name="shopify_origin_country_id"/>
+                        <field name="shopify_province_origin_id"/>
+                        <field name="currency_id"/>
+                        <field name="shopify_currency_id"/>
+                        <field name="list_price"/>
+                        <field name="shopify_price"/>
+<!--                        <button name="compute_shopify_price"-->
+<!--                                string="Compute Shopify Price"-->
+<!--                                type="object"-->
+<!--                                class="btn btn-primary"/>-->
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--    =============================== Server Actions ========================================-->
+<!--        <record id="action_create_update_shopify_product" model="ir.actions.server">-->
+<!--            <field name="name">Create or Update Product in Shopify</field>-->
+<!--            <field name="model_id" ref="product.model_product_template"/>-->
+<!--            <field name="binding_model_id" ref="product.model_product_template"/>-->
+<!--            <field name="binding_view_types">list</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--                if records:-->
+<!--                action = records.server_action_shopify_create_update_product()-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <!--        <record id="action_stock_update" model="ir.actions.server">-->
+        <!--            <field name="name">Update Odoo Stock</field>-->
+        <!--            <field name="model_id" ref="product.model_product_template" />-->
+        <!--            <field name="binding_model_id" ref="product.model_product_template" />-->
+        <!--            <field name="binding_view_types">list</field>-->
+        <!--            <field name="state">code</field>-->
+        <!--            <field name="code">-->
+        <!--                if records:-->
+        <!--                    action = records.server_action_shopify_update_stock()-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        <record id="fetch_image_shopify" model="ir.actions.server">-->
+        <!--            <field name="name">Fetch Images from Shopify</field>-->
+        <!--            <field name="model_id" ref="product.model_product_template" />-->
+        <!--            <field name="binding_model_id" ref="product.model_product_template" />-->
+        <!--            <field name="binding_view_types">list,form</field>-->
+        <!--            <field name="state">code</field>-->
+        <!--            <field name="code">-->
+        <!--                if records:-->
+        <!--                    action = records.fetch_images_from_shopify()-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <record id="shopify_get_inventory_id_product_template" model="ir.actions.server">
+            <field name="name">Fetch Shopify Inventory ID</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.shopify_get_inventory_id_batch()
+            </field>
+        </record>
+
+        <record id="shopify_get_inventory_id_product_product" model="ir.actions.server">
+            <field name="name">Fetch Shopify Inventory ID</field>
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="binding_model_id" ref="product.model_product_product"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records.shopify_get_inventory_id_batch()
+            </field>
+        </record>
+
+    </data>
+</odoo>

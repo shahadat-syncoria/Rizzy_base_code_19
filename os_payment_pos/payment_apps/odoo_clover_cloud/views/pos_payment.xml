@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_payment_inherited" model="ir.ui.view">
+        <field name="name">pos.payment.form.inherit.clover</field>
+        <field name="model">pos.payment</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet" position="inside">
+                <notebook>
+                    <page string="Clover Details" invisible="is_clover_payment==False">
+                        <group >
+                            <group>
+                                <field name="is_clover_payment" invisible="1"/>
+                                <field name="clover_success"/>
+                                <field name="clover_result"/>
+                                <field name="clover_payment_id"/>
+                                <field name="clover_order_id"/>
+                                <field name="clover_tender_id"/>
+                                <field name="clover_amount"/>
+                                <field name="clover_ext_id"/>
+                                <field name="clover_emp_id"/>
+                                <field name="clover_created_time"/>
+                                <field name="clover_payment_result"/>
+                            </group>
+                            <group>
+                                <field name="clover_entry_type"/>
+                                <field name="clover_type"/>
+                                <field name="clover_auth_code"/>
+                                <field name="clover_reference_id"/>
+                                <field name="clover_transaction_no"/>
+                                <field name="clover_state"/>
+                                <field name="clover_last_digits"/>
+                                <field name="clover_expiry_date"/>
+                                <field name="clover_token"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>

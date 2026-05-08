@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="website_sale_delivery_purolator_table">
+         <div>
+            <h1>Purolator Service</h1>
+        </div>
+    </t>
+</templates>

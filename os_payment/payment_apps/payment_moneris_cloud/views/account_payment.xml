@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_payment_form_moneris" model="ir.ui.view">
+            <field name="name">account.payment.form inherited</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <!--            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">-->
+                <!--                &lt;!&ndash; Payment stat button &ndash;&gt;-->
+                <!--                <button name="button_open_payments" type="object" class="oe_stat_button" icon="fa-credit-card"-->
+                <!--                    attrs="{'invisible': [('reconciled_payments_count','=', 0)]}">-->
+                <!--                    <field name="reconciled_payments_count"/>-->
+                <!--                    <span attrs="{'invisible': [('reconciled_payments_count','&gt;', 1)]}">Refund</span>-->
+                <!--                    <span attrs="{'invisible': [('reconciled_payments_count','&lt;=', 1)]}">Refunds</span>-->
+                <!--                </button>-->
+                <!--            </xpath>-->
+                <xpath expr="//form//sheet" position="inside">
+                    <!--                <field name="moneris_transaction_id" invisible="1"/>-->
+<!--                    <field invisible="1" name="moneris_transaction_id"/>-->
+                    <!--                <field name="moneris_cloud_receiptid"/>-->
+                    <field invisible="1" name="moneris_cloud_transid"/>
+                    <field invisible="1" name="currency_id"/>
+                    <notebook>
+                        <page invisible="moneris_cloud_transid == False" string="Moneris Cloud Details">
+                            <group>
+                                <group>
+                                    <field name="is_moneris_refunded" readonly="1"/>
+                                    <field name="moneris_refundable_amount" readonly="1"/>
+                                    <field invisible="moneris_cloud_transid == False and payment_type == 'inbound'" name="cloud_is_samecard"/>
+                                    <field name="cloud_request_id"/>
+                                    <field name="moneris_cloud_completed"/>
+                                    <field name="moneris_cloud_transtype"/>
+                                    <field name="moneris_cloud_error"/>
+                                    <field name="moneris_cloud_initrequired"/>
+                                    <field name="moneris_cloud_safindicator"/>
+                                    <field name="moneris_cloud_responsecode"/>
+                                    <field name="moneris_cloud_iso"/>
+                                    <field name="moneris_cloud_pan"/>
+                                    <field name="moneris_cloud_cardtype"/>
+                                </group>
+                                <group>
+                                    <field name="moneris_cloud_cardname"/>
+                                    <field name="moneris_cloud_accounttype"/>
+                                    <field name="moneris_cloud_cvmindicator"/>
+                                    <field name="moneris_cloud_transdate"/>
+                                    <field name="moneris_cloud_transtime"/>
+                                    <field name="moneris_cloud_amount"/>
+                                    <field name="moneris_cloud_referencenumber"/>
+                                    <field name="moneris_cloud_receiptid"/>
+                                    <field name="moneris_cloud_transid"/>
+                                    <field name="moneris_cloud_timeout"/>
+                                    <field name="moneris_cloud_cloudticket"/>
+                                    <field name="moneris_cloud_txnname"/>
+                                    <field name="moneris_cloud_authcode"/>
+                                </group>
+                                <group>
+                                    <field name="purchase_cloud_ticket"/>
+                                    <field name="payment_provider_name"/>
+                                    <field name="cloud_val_message"/>
+                                    <field name="cloud_val_completed"/>
+                                    <field name="cloud_val_error"/>
+                                    <field name="cloud_val_timeout"/>
+                                    <field name="cloud_val_postbackurl"/>
+                                    <field name="cloud_val_cloudticket"/>
+                                    <field name="moneris_cloud_languagecode"/>
+                                    <field name="moneris_cloud_partailauthamount"/>
+                                    <field name="moneris_cloud_availablebalance"/>
+                                    <field name="moneris_cloud_tipamount"/>
+                                    <field name="moneris_cloud_emvcashbackamount"/>
+                                    <field name="moneris_cloud_foreigncurrencyamount"/>
+                                    <field name="moneris_cloud_baserate"/>
+                                    <field name="moneris_cloud_exchangerate"/>
+                                    <field name="moneris_cloud_reservedfield1"/>
+                                    <field name="moneris_cloud_reservedfield2"/>
+                                    <field name="moneris_cloud_swipeindicator"/>
+                                    <field name="moneris_cloud_formfactor"/>
+                                    <field name="moneris_cloud_invoicenumber"/>
+                                </group>
+                                <group>
+                                    <field name="moneris_cloud_emvechodata"/>
+                                    <field name="moneris_cloud_reservedfield3"/>
+                                    <field name="moneris_cloud_reservedfield4"/>
+                                    <field name="moneris_cloud_aid"/>
+                                    <field name="moneris_cloud_applabel"/>
+                                    <field name="moneris_cloud_apppreferredname"/>
+                                    <field name="moneris_cloud_arqc"/>
+                                    <field name="moneris_cloud_tvrarqc"/>
+                                    <field name="moneris_cloud_tcacc"/>
+                                    <field name="moneris_cloud_tvrtcacc"/>
+                                    <field name="moneris_cloud_tsi"/>
+                                    <field name="moneris_cloud_tokenresponsecode"/>
+                                    <field name="moneris_cloud_token"/>
+                                    <field name="moneris_cloud_logonrequired"/>
+                                    <field name="moneris_cloud_cncryptedcardinfo"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath></field>
+        </record>
+<!--        <record id="account_payment_view_moneris" model="ir.ui.view">-->
+<!--            <field name="name">account.payment.list.moneris</field>-->
+<!--            <field name="model">account.payment</field>-->
+<!--            <field name="type">list</field>-->
+<!--            <field eval="16" name="priority"/>-->
+<!--            <field eval="True" name="active"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <list create="true" delete="true" edit="true" string="Account Payment Moneris">-->
+<!--                    <field name="date"/>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="journal_id"/>-->
+<!--                    <field name="payment_method_id"/>-->
+<!--                    <field name="partner_id"/>-->
+<!--                    <field name="cloud_is_samecard"/>-->
+<!--                    <field name="amount"/>-->
+<!--                    <field name="state"/>-->
+<!--                    <field name="has_payments"/>-->
+<!--                    <field name="reconciled_payments_count"/>-->
+<!--                </list></field>-->
+<!--        </record>-->
+    </data>
+</odoo>

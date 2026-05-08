@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+<!--    <record id="payment_icon_via_interac" model="payment.icon">-->
+<!--        <field name="name">Clik2pay via Interac</field>-->
+<!--        <field name="image" type="base64" file="payment_clik2pay/static/description/clik2pay_via_Interac_button.png"/>-->
+<!--    </record>-->
+
+    <record id="payment_method_for_global" model="payment.method">
+        <field name="name">Global Payment</field>
+        <field name="code">globalpay</field>
+        <field name="image" type="base64" file="os_payment/static/src/img/global_payment/icon.png"/>
+    </record>
+</odoo>

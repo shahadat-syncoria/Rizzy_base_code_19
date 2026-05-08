@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="rotessa_transaction_tracking_form" model="ir.ui.view">
+            <field name="name">rotessa.transaction.tracking.form</field>
+            <field name="model">rotessa.transaction.tracking</field>
+            <field name="arch" type="xml">
+                <form create="0" edit="0" delete="1">
+                    <sheet>
+                        <group>
+                            <group>
+                                <group>
+                                    <field name="transaction_schedule_id" />
+                                </group>
+                                <group/>
+
+                                <group name="invoice_info" string="Invoice Information">
+                                    <field name="invoice_no" />
+                                    <field name="invoice_ref" />
+                                    <field name="amount" />
+                                    <field name="invoice_partner_id" />
+                                    <field name="invoice_date" />
+                                    <field name="transaction_id" />
+                                    <field name="provider_id" />
+                                    <field name="provider_id" />
+
+                                </group>
+                                <group name="transaction_info" string="Transaction Information">
+                                    <field name="process_date" />
+                                    <field name="state" />
+                                    <field name="status_reason" />
+                                    <field name="transaction_request_date" />
+                                    <field name="remain_settle_day" />
+                                    <field name="last_cron_update" />
+
+                                </group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="rotessa_transaction_tracking_list" model="ir.ui.view">
+            <field name="name">rotessa.transaction.tracking.list</field>
+            <field name="model">rotessa.transaction.tracking</field>
+            <field name="arch" type="xml">
+                <list create="0" edit="0" delete="0">
+                    <field name="transaction_schedule_id" />
+                    <field name="invoice_no" />
+                    <field name="invoice_partner_id" />
+                    <field name="process_date" />
+                    <field name="state" />
+
+                </list>
+            </field>
+        </record>
+
+        <record id="action_rotessa_transaction_tracking" model="ir.actions.act_window">
+            <field name="name">Rotessa Transaction Tracking Payments</field>
+            <field name="res_model">rotessa.transaction.tracking</field>
+            <field name="view_mode">list,form</field>
+            <!-- <field name="search_view_id" ref="view_account_type_search"/> -->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Rotessa Transaction Tracking from Rotessa are tracked here
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+      id="rotessa_transaction_tracking_configuration_menu"
+      action="action_rotessa_transaction_tracking"
+      parent="account.menu_finance_payables"
+      sequence="30"
+    />
+
+
+    </data>
+</odoo>

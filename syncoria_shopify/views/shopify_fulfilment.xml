@@ -1,0 +1,69 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="shopify_fulfilment_list">
+      <field name="name">Shopify Fulfilment List</field>
+      <field name="model">shopify.fulfilment</field>
+      <field name="arch" type="xml">
+        <list>
+           <field name="shopify_instance_id"/>
+          <field name="sale_order_id"/>
+          <field name="shopify_fulfilment_id"/>
+        </list>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="shopify_fulfilment_action_window">
+      <field name="name">Shopify Fulfilments</field>
+      <field name="res_model">shopify.fulfilment</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_shopify_fulfilment_form" model="ir.ui.view">
+        <field name="name">Shopify Fulfilment Form</field>
+        <field name="model">shopify.fulfilment</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+          <form string="Shopify Fulfilment Form">
+              <sheet>
+                  <group>
+                      <group>
+                          <field name="shopify_fulfilment_id"/>
+                          <field name="shopify_instance_id"/>
+                          <field name="sale_order_id"/>
+                          <field name="shopify_fulfilment_tracking_number"/>
+                          <field name="shopify_fulfilment_service"/>
+                          <field name="shopify_fulfilment_status"/>
+                          <field name="shopify_status"/>
+
+                      </group>
+
+                  </group>
+                  <group>
+                      <group>
+                          <field name="shopify_fulfilment_line"/>
+                      </group>
+                  </group>
+              </sheet>
+          </form>
+          
+            
+        </field>
+    </record>
+    
+
+    <menuitem 
+      name="Shopify Fulfilment"
+      id="shopify_fulfilment"
+      sequence="15"
+      parent="syncoria_shopify.shopify_sales" 
+      action="shopify_fulfilment_action_window"/>
+
+
+  </data>
+</odoo>

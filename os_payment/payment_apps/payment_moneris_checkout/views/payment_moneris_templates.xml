@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id="moneris_inline_form">
+            <div class="moneris_form">
+				<input type="hidden" name="sale_order_id" t-att-value="request.session.get('sale_order_id')" />
+				<input type="hidden" name="website_routing" t-att-value="request.website_routing" />
+				<input type="hidden" name="sale_last_order_id" t-att-value="request.session.get('sale_last_order_id')" />
+				<input type="hidden" name="website_sale_current_pl" t-att-value="request.session.get('website_sale_current_pl')" />
+				<input type="hidden" name="provider_id" t-att-value="provider_id" />
+				<input type="hidden" name="provider_state" t-att-value="provider_state" />
+				<t t-set="acq" t-value="request.env['payment.provider'].sudo().browse(provider_id)" />
+				<input type="hidden" name="state" t-att-value="acq.state" />
+				<input type="hidden" name="provider" t-att-value="acq.code" />
+				<input type="hidden" id="window_href" name="window_href" t-att-value="request.httprequest" />
+				<input type="hidden" id="move_id" name="move_id" t-att-value="acq.monerischeckout_url_info(window_href)" />
+				<input type="hidden" name="data_set" value="/payment/monerischeckout/s2s/create_json_3ds"/>
+				<input type="hidden" id="mon_provider_id" name="provider_id" t-att-value="id" />
+				<input type="hidden" id="mon_provider_state" name="provider_state" t-att-value="acq.state" />
+				<input type="hidden" name="request" t-att-value="request" />
+				<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+				<input t-if="return_url" type="hidden" name="return_url" t-att-value="return_url" />
+				<input t-if="partner_id" type="hidden" name="partner_id" t-att-value="partner_id" />
+				<t t-if="'/my/payment_method' in request.httprequest.url and acq.sudo()._check_internal_user(partner_id)">
+					<t t-set="partners_list" t-value="request.env['res.partner'].sudo().search([])"/>
+					<div class="moneris-delegate-card mt-3">
+						<div class="moneris-delegate-header">
+							<span class="moneris-delegate-title">Add card on behalf of</span>
+							<span class="moneris-delegate-badge">Staff</span>
+						</div>
+						<label for="moneris_partner_search" class="form-label mb-1">Customer</label>
+						<div class="input-group moneris-delegate-input">
+							<span class="input-group-text">Search</span>
+							<input id="moneris_partner_search"
+								   class="form-control moneris-delegate-control"
+								   list="moneris_partner_datalist"
+								   placeholder="Type a customer name" />
+						</div>
+						<small class="moneris-delegate-hint">Start typing to find a customer.</small>
+						<datalist id="moneris_partner_datalist">
+							<option value="Select Partner to Register Card" data-id="0"/>
+							<option t-foreach="partners_list or []" t-as="partner"
+									t-att-value="partner.name" t-att-data-id="partner.id" t-key="partner">
+								<t t-esc="partner.name"/>
+							</option>
+						</datalist>
+						<input type="hidden" name="moneris_partner_id" id="moneris_partner_id" value="0"/>
+					</div>
+				</t>
+				<input type="hidden" id="store_id" name="store_id" t-att-value="acq.sudo().moneris_store_id" />
+				<input type="hidden" id="api_token" name="api_token" t-att-value="acq.sudo().moneris_api_token" />
+				<input type="hidden" id="order_id" name="order_id" t-att-value="request.session.get('sale_order_id')" />
+				<t t-if="order_id">
+					<t t-set="order" t-value="request.env['sale.order'].sudo().browse(order_id)" />
+					<input type="hidden" id="access_token" name="access_token" t-att-value="order.access_token" />
+				</t>
+				<input type="hidden" name="ticket_no"/>
+				<input type="hidden" name="data_key"/>
+				<t t-if="acq.state == 'enabled'">
+					<script src="https://gateway.moneris.com/chkt/js/chkt_v1.00.js"/>
+				</t>
+				<t t-if="acq.state == 'test'">
+					<script src="https://gatewayt.moneris.com/chkt/js/chkt_v1.00.js"/>
+				</t>
+            </div>
+		</template>
+
+		<template id="payment_moneris_redirect" name="Payment Moneris">
+            <script type="text/javascript">
+                window.location.href = '<t t-esc="return_url"/>';
+            </script>
+		</template>
+
+		<!-- <template id="payment_inherit" inherit_id="website_sale.payment">
+			<xpath expr="//div[hasclass('container')]" position="inside">
+				<div id="monerisModal" class="modal fade" role="dialog">
+					<div class="modal-dialog" >
+						<div class="modal-content moneris-content">
+							<button type="button" class="close" id="monerisBtnCncl" onClick="monerisCancel()" data-dismiss="modal"
+								style="color:#f1f1f1 !important;text-align: right;padding-top: 2px;padding-right:12px;text-shadow:none;opacity:1;font-size:16px;">
+								<img src="/omni_sync/static/src/img/cancel.png" alt="Cancel" style="width:32px;height:32px;"/>
+							</button>
+							<section class="chkt_loading" data-name="chkt_loading">
+								<div>
+									<img src="/omni_sync/static/src/img/loading.svg" alt="loading" style="margin:auto;display:block;text-align:center"/>
+								</div>
+							</section>
+							<div class="modal-body" id="monerisBody" style="dispay: none">
+								<div class="embed-responsive embed-responsive-16by9">
+									<div id="monerisCheckout"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</xpath>
+    	</template> -->
+
+		<template id="payment_tokens_list_inherit_moneirs" name="Payment Token Inherit" inherit_id="payment.form">
+			<xpath expr="//form[hasclass('o_payment_form')]" position="before">
+				<t t-if="'/my/payment_method' in request.httprequest.url or '/my/orders/' in request.httprequest.url or '/my/invoices' in request.httprequest.url or '/payment/pay' in request.httprequest.url" >
+					<div class="float-right mt-2">
+<!--						<button name="o_payment_submit_button"-->
+<!--								type="submit"-->
+<!--								class="btn btn-primary btn-lg mb8 mt8"-->
+<!--								disabled="true"-->
+<!--								t-att-data-icon-class="icon_class">-->
+<!--							<i t-attf-class="fa {{icon_class}}"/> <t t-esc="label"/>-->
+<!--						</button>-->
+					</div>
+
+					<div id="monerisModal" class="modal fade" role="dialog">
+						<div class="modal-dialog moneris-dialog">
+							<div class="modal-content moneris-content">
+								<button type="button" class="close" id="monerisBtnCncl"  data-dismiss="modal" style="color:#f1f1f1 !important;text-align: right;padding-top: 2px;padding-right:12px;text-shadow:none;opacity:1;font-size:16px;border:none;">
+									<img src="/os_payment/static/src/img/cancel.png" alt="Cancel" style="width:32px;height:32px;"/>
+								</button>
+								<section class="chkt_loading" data-name="chkt_loading">
+									<div>
+										<img src="/os_payment/static/src/img/loading.svg" alt="loading" style="margin:auto;display:block;text-align:center"/>
+									</div>
+								</section>
+
+								<div class="modal-body" id="monerisBody" style="dispay: none">
+									<div class="embed-responsive embed-responsive-16by9">
+										<div id="monerisCheckout"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</t>
+			</xpath>
+
+			<!-- <xpath expr="//form//div[hasclass('float-right')]//button[@id='o_payment_form_pay']" position="replace">
+
+					<button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
+						<t t-if="submit_txt">
+							<i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
+							<t t-esc="submit_txt"/>
+							<i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
+						</t>
+						<t t-else="">
+							<i class="fa fa-lock"/> Pay
+						</t>
+					</button>
+					<div id="monerisModal" class="modal fade" role="dialog">
+						<div class="modal-dialog moneris-dialog">
+							<div class="modal-content moneris-content">
+								<button type="button" class="close" id="monerisBtnCncl" onClick="monerisCancel()" data-dismiss="modal" style="color:#f1f1f1 !important;text-align: right;padding-top: 2px;padding-right:12px;text-shadow:none;opacity:1;font-size:16px;">
+									<img src="/payment_moneris_checkout/static/src/img/cancel.png" alt="Cancel" style="width:32px;height:32px;"/>
+								</button>
+								<section class="chkt_loading" data-name="chkt_loading">
+									<div>
+										<img src="/payment_moneris_checkout/static/src/img/loading.svg" alt="loading" style="margin:auto;display:block;text-align:center"/>
+									</div>
+								</section>
+
+								<div class="modal-body" id="monerisBody" style="dispay: none">
+									<div class="embed-responsive embed-responsive-16by9">
+										<div id="monerisCheckout"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+			</xpath>  -->
+
+    	</template>
+
+		<template id="portal_invoice_page_inherit_moneris" name="Invoice Portal Template Inherit" inherit_id="account.portal_invoice_page">
+			<xpath expr="//div[hasclass('o_portal_invoice_sidebar')]" position="inside">
+
+				<div id="monerisModal" class="modal fade" role="dialog">
+					<div class="modal-dialog" >
+						<div class="modal-content moneris-content">
+							<button type="button" class="close" id="monerisBtnCncl" data-dismiss="modal" style="color:#f1f1f1 !important;text-align: right;padding-top: 2px;padding-right:12px;text-shadow:none;opacity:1;font-size:16px;border:none;">
+								<img src="/os_payment/static/src/img/cancel.png" alt="Cancel" style="width:32px;height:32px;"/>
+							</button>
+							<section class="chkt_loading" data-name="chkt_loading">
+								<div>
+									<img src="/os_payment/static/src/img/loading.svg" alt="loading" style="margin:auto;display:block;text-align:center"/>
+								</div>
+							</section>
+
+							<div class="modal-body" id="monerisBody" style="dispay: none">
+								<div class="embed-responsive embed-responsive-16by9">
+									<div id="monerisCheckout"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</xpath>
+    	</template>
+
+		<template id="sale_order_portal_template_moneris" inherit_id="sale.sale_order_portal_template">
+			<xpath expr="//div[hasclass('o_portal_sale_sidebar')]" position="inside">
+
+				<div id="monerisModal" class="modal fade" role="dialog">
+					<div class="modal-dialog" >
+
+						<div class="modal-content moneris-content">
+							<button type="button" class="close test" id="monerisBtnCncl"  data-dismiss="modal" style="color:#f1f1f1 !important;text-align: right;padding-top: 2px;padding-right:12px;text-shadow:none;opacity:1;font-size:16px;border:none;">
+								<img src="/os_payment/static/src/img/cancel.png" alt="Cancel" style="width:32px;height:32px;"/>
+							</button>
+							<section class="chkt_loading" data-name="chkt_loading">
+								<div>
+									<img src="/os_payment/static/src/img/loading.svg" alt="loading" style="margin:auto;display:block;text-align:center"/>
+								</div>
+							</section>
+
+							<div class="modal-body" id="monerisBody" style="dispay: none">
+								<div class="embed-responsive embed-responsive-16by9">
+									<div id="monerisCheckout"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</xpath>
+    	</template>
+		
+	</data>
+</odoo>

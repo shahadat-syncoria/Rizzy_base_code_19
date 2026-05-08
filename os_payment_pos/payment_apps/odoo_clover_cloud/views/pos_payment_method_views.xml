@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_inherit_pos_clover" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit.clover</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <div name="button_box" class="oe_button_box" invisible="use_payment_terminal not in ('clover_cloud')">
+                 <button class="oe_stat_button" type="action"
+                        name="%(os_payment.clover_device_view_tree_all)d" icon="fa-mobile" string="Clover Devices"
+                        context="{}"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <button name="fetch_clover_device" string="Fetch Devices" type="object" class="oe_highlight fetch_clover_device"
+                       invisible="use_payment_terminal!= 'clover_cloud'"
+                        help="CLick this button to get Device Id." />
+                <!-- <button name="send_welcome_message" string="Send Welcome" type="object" class="oe_highlight fetch_clover_device" attrs="{'invisible': [('use_payment_terminal', '!=', 'clover_cloud')] }" help="CLick this button to send Show Welcome Message." /> -->
+            </xpath>
+            <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <field name="clover_server_url"
+                       invisible="use_payment_terminal!= 'clover_cloud'"
+                       required="use_payment_terminal == 'clover_cloud'"/>
+                <field name="clover_config_id"
+                       invisible="use_payment_terminal!= 'clover_cloud'"
+                       required="use_payment_terminal == 'clover_cloud'"/>
+                <field name="clover_jwt_token"
+                        invisible="use_payment_terminal!= 'clover_cloud'"
+                       required="use_payment_terminal == 'clover_cloud'"/>
+                <field name="clover_merchant_id" readonly="1"
+                        invisible="use_payment_terminal!= 'clover_cloud'"
+                       required="use_payment_terminal == 'clover_cloud'"/>
+                <field name="clover_device_id" placeholder="Eg: 003XXXXXXXXXX"
+                        invisible="use_payment_terminal!= 'clover_cloud'"/>
+<!--                <field name="clover_device_name" attrs="{'invisible': True}"/>-->
+                <field name="clover_x_pos_id"
+                       invisible="use_payment_terminal!= 'clover_cloud'"
+                       required="use_payment_terminal == 'clover_cloud'"/>
+                <field name="clover_x_pos_id" invisible="1"/>
+<!--                <field name="cloud_cloud_paired"-->
+<!--                       attrs="{'invisible': [('use_payment_terminal', '!=', 'clover_cloud')]}"/>-->
+                     <field name="account_id"
+                           invisible="use_payment_terminal!= 'clover_cloud'"/>
+                     <field name="token"
+                             invisible="use_payment_terminal!= 'clover_cloud'"/>
+                     <field name="omnisync_active"
+                             invisible="use_payment_terminal!= 'clover_cloud'"/>
+            </xpath>
+            <xpath expr="//form//sheet" position="inside">
+                <notebook>
+                    <page string="Clover Logs" invisible="use_payment_terminal not in ('clover_cloud')">
+                        <field name="clover_log_ids">
+                            <list string="Clover Logs List" create="false" delete="true" edit="false" editable="bottom">
+                                <field name="name"/>
+                                <field name="create_date"/>
+                                <field name="level"/>
+                                <field name="func"/>
+                                <field name="message"/>
+                                <field name="payment_method_id"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Force Done Card Names" invisible="use_payment_terminal not in ('clover_cloud')">
+                        <field name="force_done_card_name_ids" widget="many2many" context="{'default_terminal': 'clover_cloud', 'tree_view_ref': 'os_payment_pos.pos_force_done_card_name_view_tree'}">
+                            <list editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="terminal" readonly="1"/>
+                            </list>
+                            <form>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="terminal"/>
+                                    <field name="sequence"/>
+                                    <field name="active"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>

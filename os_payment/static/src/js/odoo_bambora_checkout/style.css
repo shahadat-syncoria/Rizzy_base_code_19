@@ -1,0 +1,73 @@
+ /* .bambora-dialog{
+    margin-top: 15%;
+    width: 80%;
+} */
+
+.bambora-modal-content{
+    margin-top: 35%;
+}
+.button.close {
+    color: #f1f1f1 !important;
+    text-align: right;
+    padding-top: 0;
+    padding-right: 18px;
+    text-shadow: none;
+    opacity: 0;
+    font-size: 16px;
+}
+
+.container-bambora  {
+    margin: 10px auto;
+    width: 90%;
+    border: none;
+    border-radius: 4px;
+    
+}
+
+#checkout-form {
+    margin: 10px;
+}
+
+#card-number {
+    background-image: none;
+    background-origin: content-box;
+    background-position: calc(100% + 40px) center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#feedback {
+    position: relative;
+    left: 15px;
+    display: inline-block;
+    background-color: transparent;
+    border: 0px solid rgba(200, 200, 200, 1);
+    border-radius: 4px;
+    transition: all 100ms ease-out;
+    padding: 11px;
+}
+
+#feedback.error {
+    color: red;
+    border: 1px solid;
+}
+
+#feedback.success {
+    color: seagreen;
+    border: 1px solid;
+}
+
+#pay-button {
+    width: 100%;
+    opacity: .65;
+    border-radius: 5px;
+}
+
+.bambora-modal {
+    border-radius: 5px !important; 
+}
+
+.card-number-class{
+    width: 100%;
+}
+

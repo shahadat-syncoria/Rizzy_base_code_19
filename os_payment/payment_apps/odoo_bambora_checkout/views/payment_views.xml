@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+       <record id="provider_form_bamborachk" model="ir.ui.view">
+            <field name="name">payment.provider.form.inherit.bamborachk</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment.payment_provider_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[@name="provider_credentials"]' position='inside'>
+                    <group invisible="code != 'bamborachk'">
+                        <group>
+                            <field name="bamborachk_transaction_type" readonly="1"/>
+<!--                            <field name="bamborachk_merchant_id"  />-->
+<!--                            <field name="bamborachk_payment_api"  />-->
+<!--                            <field name="bamborachk_profile_api" />-->
+                        </group>
+
+                        <!-- <group>
+                         <h2>Creating A Test Account</h2>
+
+                        Fill out our sign up form to instantly get a developer account with access to a sandbox.
+                        <h3>Merchant ID</h3>
+
+                        All transactions through the API require your Merchant ID. It is permanently displayed at the top right corner of your Member Area.
+
+                        You can also find your Merchant ID by clicking on administration and then Company Info.
+
+                        <h3>Finding Passcodes</h3>
+                        <h3>Payment API Passcode</h3>
+
+                        Depending on which API you intend to use for your business, you'll need a passcode to complete the call.
+
+                        After logging into the Member Area, select administration, then account settings, and finally order settings.
+
+                        On the Order Settings page, you'll find the Payment Gateway section with the sub-header Security/Authentication. Here you can set an API access code by clicking the Generate New Code button. Once you have a new code, click Update at the bottom of the page.
+
+                         <h3>Payment Profile passcode</h3>
+                        To set a Payment Profile passcode, you'll need to navigate to configuration, then payment profile configuration from the left. Under Security Settings, you can click Generate New Code.
+                        </group> -->
+                    </group>
+                   
+                </xpath>
+            </field>
+        </record>
+
+        <record id="transaction_form_bamborachk" model="ir.ui.view">
+            <field name="name">provider.transaction.form.bamborachk</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.payment_transaction_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="Bambora Details" id="bamborachk_details" invisible="provider_code != 'bamborachk' ">
+                            <group>
+                                <group>
+                                    <field name="bamborachk_auth_code"/>
+                                    <field name="bamborachk_created"/>
+                                    <field name="bamborachk_order_number"/>
+                                    <field name="bamborachk_txn_type"/>
+                                    <field name="bamborachk_payment_method"/>
+                                </group>
+                                <group>
+                                    <field name="bamborachk_card_type"/>
+                                    <field name="bamborachk_last_four"/>
+                                    <field name="bamborachk_avs_result"/>
+                                    <field name="bamborachk_cvd_result"/>
+                                </group>
+                            </group>
+
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

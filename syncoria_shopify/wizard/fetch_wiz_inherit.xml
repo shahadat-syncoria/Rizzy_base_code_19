@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="orders_fetch_wiz_inherit" model="ir.ui.view">
+            <field name="name">order.fetch.wizard.inherit</field>
+            <field name="model">order.fetch.wizard</field>
+            <field name="inherit_id" ref="os_marketplace.orders_fetch_wiz"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@id='range_condition']" position="inside">
+                    <field name="shopify_order_no"/>
+                     <field name="feed_only" widget="boolean_toggle"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="products_fetch_wiz_inherit" model="ir.ui.view">
+            <field name="name">products.fetch.wizard.inherit</field>
+            <field name="model">products.fetch.wizard</field>
+            <field name="inherit_id" ref="os_marketplace.products_fetch_wiz"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='instance_id']" position="after">
+                    <field name="shopify_product_id"/>
+                    <field name="mappings_only"/>
+                    <field name="images_only"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="customer_fetch_wiz_inherit" model="ir.ui.view">
+            <field name="name">customer.fetch.wizard.inherit</field>
+            <field name="model">customer.fetch.wizard</field>
+            <field name="inherit_id" ref="os_marketplace.customers_fetch_wiz"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@id='range_condition']" position="inside">
+                    <field name="shopify_customer_no"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

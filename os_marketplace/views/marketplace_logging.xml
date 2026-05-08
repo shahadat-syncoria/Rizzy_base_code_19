@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <record model="ir.ui.view" id="view_marketplace_logging_tree">
+            <field name="name">view.marketplace.logging.list</field>
+            <field name="model">marketplace.logging</field>
+            <field name="arch" type="xml">
+                <list string="Marketplace Logging List">
+                    <field name="name" />
+                    <field name="create_uid" />
+                    <field name="marketplace_instance_id" />
+                    <field name="type" />
+                </list>
+            </field>
+        </record>
+
+        <record id="view_marketplace_logging_form" model="ir.ui.view">
+            <field name="name">view.marketplace.logging.form</field>
+            <field name="model">marketplace.logging</field>
+            <field name="arch" type="xml">
+                <form string="Marketplace Logging" create="false" delete="true" edit="false">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="marketplace_type" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="marketplace_instance_id" widget="radio"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Summary" >
+                                <group>
+                                    <field name="summary" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Error" >
+                                <group>
+                                        <field name="error" readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_marketplace_logging_search" model="ir.ui.view">
+            <field name="name">view.marketplace.logging.search</field>
+            <field name="model">marketplace.logging</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <search string="marketplace_logging_search">
+                    <field name="name" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_marketplace_logging" model="ir.actions.act_window">
+            <field name="name">Marketplace Logging</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">marketplace.logging</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Marketplace Logging.
+                </p>
+            </field>
+        </record>
+
+        <menuitem 
+            name="Marketplace Logging" 
+            id="menu_marketplace_logging" 
+            sequence="10"
+            parent="os_marketplace.marketplace_configuration" 
+            action="action_marketplace_logging"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="moneris_device_view_form" model="ir.ui.view">
+        <field name="name">moneris.device.form</field>
+        <field name="model">moneris.device</field>
+        <field name="arch" type="xml">
+            <form string="moneris Devices">
+
+                <sheet>
+<!--                    <div class="oe_title">-->
+<!--                        <label for="Name" class="oe_edit_only"/>-->
+<!--                        <h1>-->
+<!--                            <field name="name" class="oe_inline"/>-->
+<!--                        </h1>-->
+<!--                    </div>-->
+                    <group name="moneris Devices">
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="moneris_device_view_tree" model="ir.ui.view">
+        <field name="name">moneris.device.list</field>
+        <field name="model">moneris.device</field>
+        <field name="arch" type="xml">
+            <list string="moneris Devices">
+                <field name="name" />
+                <field name="code"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="moneris_device_view_search" model="ir.ui.view">
+        <field name="name">moneris.device.search.view</field>
+        <field name="model">moneris.device</field>
+        <field name="arch" type="xml">
+            <search string="moneris Devices">
+                <field name="name"/>
+                <field name="code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_moneris_device_form" model="ir.actions.act_window">
+        <field name="name">moneris Devices</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">moneris.device</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_group_by_account': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Device
+            </p>
+            <p>
+                Fetch Device from moneris Payment Method
+            </p>
+        </field>
+    </record>
+
+
+    <!-- <menuitem action="action_moneris_device_tree"
+        name="moneris Devices"
+        id="payment_moneris_device_menu"
+        parent="account.root_payment_menu"
+        sequence="99"/> -->
+
+    <record id="action_moneris_device_tree" model="ir.actions.act_window">
+        <field name="context">{}</field>
+        <field name="name">Payments Methods</field>
+        <field name="res_model">moneris.device</field>
+        <field name="view_id" ref="moneris_device_view_tree"/>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="moneris_device_view_tree_all" model="ir.actions.act_window">
+            <field name="context">{}</field>
+            <field name="name">moneris Devices</field>
+            <field name="res_model">moneris.device</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="moneris_device_view_tree"/>
+            <field name="view_mode">list,form</field>
+        </record>
+</odoo>

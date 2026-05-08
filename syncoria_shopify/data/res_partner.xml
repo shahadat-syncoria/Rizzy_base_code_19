@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="1">
+        <record id="shopify_tag" model="res.partner.category">
+            <field name="name">Shopify Tag</field>
+            <field name="color">1</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        ============================ Shopify Warehouse ============================-->
+        <record id="shopify_warehouse_view_form" model="ir.ui.view">
+            <field name="name">shopify_warehouse_view_form</field>
+            <field name="model">shopify.warehouse</field>
+            <field name="arch" type="xml">
+                <form string="shopify_warehouse_form">
+                    <sheet name="Shopify Inventory Location Information">
+                        <group name="main">
+                            <group>
+                                <field name="shopify_invent_id"/>
+                                <field name="shopify_loc_name"/>
+                                <field name="shopify_loc_add_one"/>
+                            </group>
+                            <group>
+                                <field name="shopify_loc_add_two"/>
+                                <field name="shopify_loc_city"/>
+                                <field name="shopify_loc_zip"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+
+                                <field name="shopify_loc_province"/>
+                                <field name="shopify_loc_country"/>
+                                <field name="shopify_loc_phone"/>
+                                <field name="shopify_loc_country_code"/>
+                            </group>
+                            <group>
+                                <field name="shopify_loc_created_at"/>
+                                <field name="shopify_loc_updated_at"/>
+
+                                <field name="shopify_loc_country_name"/>
+                                <field name="shopify_loc_country_province_code"/>
+                            </group>
+
+                            <group>
+                                <field name="shopify_loc_legacy"/>
+                                <field name="shopify_loc_active"/>
+                                <field name="shopify_loc_localized_country_name"/>
+                                <field name="shopify_loc_localized_province_name"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="shopify_warehouse_view_tree" model="ir.ui.view">
+            <field name="name">shopify_warehouse_view_tree</field>
+            <field name="model">shopify.warehouse</field>
+            <field name="arch" type="xml">
+                <list string="shopify_warehouse_tree">
+                    <field name="shopify_invent_id"/>
+                            <field name="shopify_loc_name"/>
+<!--                            <field name="shopify_loc_add_one"/>-->
+<!--                            <field name="shopify_loc_add_two"/>-->
+                            <field name="shopify_loc_city"/>
+<!--                            <field name="shopify_loc_zip"/>-->
+<!--                            <field name="shopify_loc_province"/>-->
+                            <field name="shopify_loc_country"/>
+                            <field name="shopify_loc_phone"/>
+<!--                            <field name="shopify_loc_created_at"/>-->
+<!--                            <field name="shopify_loc_updated_at"/>-->
+<!--                            <field name="shopify_loc_country_code"/>-->
+<!--                            <field name="shopify_loc_country_name"/>-->
+<!--                            <field name="shopify_loc_country_province_code"/>-->
+                            <field name="shopify_loc_legacy"/>
+                            <field name="shopify_loc_active"/>
+<!--                            <field name="shopify_loc_localized_country_name"/>-->
+<!--                            <field name="shopify_loc_localized_province_name"/>-->
+                </list>
+            </field>
+        </record>
+        <record id="shopify_warehouse_view_search" model="ir.ui.view">
+           <field name="name">shopify_warehouse_view_search</field>
+           <field name="model">shopify.warehouse</field>
+            <field name="arch" type="xml">
+                <search string="Shopify Warehouses">
+              <field name="shopify_invent_id"/>
+                            <field name="shopify_loc_name"/>
+                            <field name="shopify_loc_add_one"/>
+                            <field name="shopify_loc_add_two"/>
+                            <field name="shopify_loc_city"/>
+                            <field name="shopify_loc_zip"/>
+                            <field name="shopify_loc_province"/>
+                            <field name="shopify_loc_country"/>
+                            <field name="shopify_loc_phone"/>
+                            <field name="shopify_loc_created_at"/>
+                            <field name="shopify_loc_updated_at"/>
+                            <field name="shopify_loc_country_code"/>
+                            <field name="shopify_loc_country_name"/>
+                            <field name="shopify_loc_country_province_code"/>
+                            <field name="shopify_loc_legacy"/>
+                            <field name="shopify_loc_active"/>
+                            <field name="shopify_loc_localized_country_name"/>
+                            <field name="shopify_loc_localized_province_name"/>
+            </search>
+           </field>
+        </record>
+
+        <record id="shopify_warehouse_action" model="ir.actions.act_window">
+            <field name="name">Shopify Warehouse</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shopify.warehouse</field>
+            <field name="view_id" ref="syncoria_shopify.shopify_warehouse_view_tree"/>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Shopify Warehouse.
+                </p>
+            </field>
+        </record>
+
+<!--                      `Server Actions for warehouse-->
+<!--        <record id="action_create_warehouse_server_act" model="ir.actions.server">-->
+<!--            <field name="name">Create or Update Warehouse Partner for Shopify</field>-->
+<!--            <field name="model_id" ref="syncoria_shopify.model_shopify_warehouse" />-->
+<!--            <field name="binding_model_id" ref="syncoria_shopify.model_shopify_warehouse" />-->
+<!--            <field name="binding_view_types">list</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--                if records:-->
+<!--                    action = records.create_update_warehouse_to_odoo()-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem  name="Shopify Warehouse Management" id="shopify_warehouse_configurations" parent="os_marketplace.marketplace_configuration" sequence="15" />
+        <menuitem action="shopify_warehouse_action" id="shopify_warehouse" name="Warehouse" parent="shopify_warehouse_configurations" sequence="1"/>
+
+<!--                ============================== xxxxxxxxxx ===========================-->
+<!--        <record id="inherited_view_warehouse" model="ir.ui.view">-->
+<!--            <field name="name">inherited_view_warehouse_form</field>-->
+<!--            <field name="model">stock.warehouse</field>-->
+<!--            <field name="inherit_id" ref="stock.view_warehouse"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                 <xpath expr="//field[@name='partner_id']" position="after">-->
+<!--                    <field name="shopify_warehouse_id"/>-->
+<!--                    <field name="shopify_warehouse_active"/>-->
+<!--                    <field name="shopify_warehouse" options="{'no_create': True}"/>-->
+<!--                 </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+    </data>
+</odoo>

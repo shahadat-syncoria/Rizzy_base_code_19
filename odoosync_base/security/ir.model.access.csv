@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_omni_account_usr,access_omni_account_usr,model_omni_account,base.group_user,1,0,0,0
+access_omni_account_man,access_omni_account_man,model_omni_account,base.group_erp_manager,1,1,1,1
+,,,,,,
+access_omni_logging_usr,access_omni_logging,model_omni_logging,base.group_user,1,0,0,0
+access_omni_logging_man,access_omni_logging,model_omni_logging,base.group_erp_manager,1,1,1,1
+,,,,,,

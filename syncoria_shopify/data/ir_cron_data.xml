@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="ir_cron_fetch_orders" model="ir.cron">
+            <field name="name">Shopify: Fetch Orders</field>
+            <field name="cron_name">Shopify: Fetch Orders</field>
+            <field name="model_id" ref="os_marketplace.model_order_fetch_wizard"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_shopify_fetch_orders()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+<!--            <field name="numbercall">-1</field>-->
+<!--            <field name="doall" eval="False"/>-->
+            <field name="active">True</field>
+        </record>
+
+<!--        <record id="ir_cron_update_orders" model="ir.cron">-->
+<!--            <field name="name">Shopify: Export Orders</field>-->
+<!--            <field name="model_id" ref="os_marketplace.model_order_fetch_wizard"/>-->
+<!--            <field name="interval_number">3</field>-->
+<!--            <field name="interval_type">hours</field>-->
+<!--            <field name="numbercall">-1</field>-->
+<!--            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />-->
+<!--            <field name="doall" eval="False"/>-->
+<!--            <field name="code">model.shopify_export_orders()</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="active">False</field>-->
+<!--        </record>-->
+
+        <record id="ir_cron_fetch_products" model="ir.cron">
+            <field name="name">Shopify: Fetch Products</field>
+            <field name="model_id" ref="os_marketplace.model_products_fetch_wizard"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_fetch_products()</field>
+            <field name="active">False</field>
+            <field name="interval_number">6</field>
+            <field name="interval_type">hours</field>
+        </record>
+      
+        <record id="ir_cron_fetch_customer" model="ir.cron">
+            <field name="name">Shopify: Fetch Customers</field>
+            <field name="model_id" ref="os_marketplace.model_customer_fetch_wizard"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_shopify_fetch_customers()</field>
+            <field name="active">False</field>
+            <field name="interval_number">6</field>
+            <field name="interval_type">hours</field>
+        </record>
+
+<!--        <record id="ir_cron_update_tracking" model="ir.cron">-->
+<!--            <field name="name">Shopify: Update Delivery Tracking</field>-->
+<!--            <field name="model_id" ref="os_marketplace.model_order_fetch_wizard"/>-->
+<!--            <field name="interval_number">1</field>-->
+<!--            <field name="interval_type">days</field>-->
+<!--            <field name="numbercall">-1</field>-->
+<!--            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />-->
+<!--            <field name="doall" eval="True"/>-->
+<!--            <field name="code">model.shopify_push_tracking()</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="active">False</field>-->
+<!--        </record>-->
+
+<!--        <record id="ir_cron_update_product_quantity" model="ir.cron">-->
+<!--            <field name="name">Shopify: Update Stock Qty and Price</field>-->
+<!--            <field name="model_id" ref="os_marketplace.model_update_stock_wizard"/>-->
+<!--            <field name="interval_number">1</field>-->
+<!--            <field name="interval_type">days</field>-->
+<!--            <field name="numbercall">-1</field>-->
+<!--            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />-->
+<!--            <field name="doall" eval="True"/>-->
+<!--            <field name="code">model.action_update_stock_item()</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="active">False</field>-->
+<!--        </record>-->
+
+        <record id="ir_cron_need_sync_stock" model="ir.cron">
+            <field name="name">Update Shopify Need Sync Stock</field>
+            <field name="model_id" ref="syncoria_shopify.model_update_stock_wizard"/>
+            <field name="state">code</field>
+            <!-- Pass a stock.location id that has shopify_warehouse_ids mapped -->
+            <field name="code">model.ir_cron_need_sync_stock(location_id=1)</field>
+            <field name="active" eval="True"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+        </record>
+
+        <record id="ir_cron_process_image_queue" model="ir.cron">
+            <field name="name">Shopify: Process Image Queue</field>
+            <field name="model_id" ref="syncoria_shopify.model_shopify_image_queue"/>
+            <field name="state">code</field>
+            <field name="code">model.process_image_queue_cron(batch_size=50)</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+        </record>
+
+    </data>
+</odoo>

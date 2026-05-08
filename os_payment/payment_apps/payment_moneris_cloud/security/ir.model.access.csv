@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_moneris_device_usr,access_moneris_device_usr,model_moneris_device,base.group_user,1,0,0,0
+access_moneris_device_man,access_moneris_device_man,model_moneris_device,base.group_erp_manager,1,1,1,1
+
+

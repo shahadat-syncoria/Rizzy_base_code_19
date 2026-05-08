@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_canadapost_service_code,access_canadapost_service_code,model_canadapost_service_code,base.group_user,1,0,0,0
+access_service_type_man,access_service_type_man,model_canadapost_service_code,base.group_erp_manager,1,1,1,1
+access_canadapost_payment_method,access_canadapost_payment_method,model_canadapost_payment_method,base.group_user,1,0,0,0
+access_payment_method_man,access_payment_method_man,model_canadapost_payment_method,base.group_erp_manager,1,1,1,1
+access_canadapost_option_type,access_canadapost_option_type,model_canadapost_option_type,base.group_user,1,0,0,0
+access_option_type_man,access_option_type_man,model_canadapost_option_type,base.group_erp_manager,1,1,1,1
+access_canadapost_service_usr,access_canadapost_service_usr,model_canadapost_service,base.group_user,1,0,0,0
+access_canadapost_service_man,access_canadapost_service_man,model_canadapost_service,base.group_erp_manager,1,1,1,1
+
+

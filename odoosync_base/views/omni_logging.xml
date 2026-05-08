@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_omni_logging_tree" model="ir.ui.view">
+            <field name="name">view.omni_logging.list</field>
+            <field name="model">omni.logging</field>
+            <field name="type">list</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <list string="omni_logging_tree" create="true" delete="true" edit="true">
+                    <field name="name" />
+        
+                </list>
+            </field>
+        </record>
+        
+        <record id="view_omni_logging_form" model="ir.ui.view">
+            <field name="name">view.omni_logging.form</field>
+            <field name="model">omni.logging</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form string="Omni Account Form" create="true" delete="true" edit="true">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" class="oe_inline"
+                                    placeholder="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_id" />
+                                <field name="function" />
+                                <field name="model" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Messages" >
+                                <group>
+                                    <field name="messages" />
+                                </group>
+                            </page>
+                            <page string="Error Messages" >
+                                <group>
+                                    <field name="error_messages" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_omni_logging_search" model="ir.ui.view">
+            <field name="name">view.omni_logging.search</field>
+            <field name="model">omni.logging</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <search string="omni_logging_search">
+                    <field name="name" />
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_omni_logging_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Omni Account</field>
+            <field name="res_model">omni.logging</field>
+            <field name="view_mode">list,form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="target">current</field>
+            <field name="domain">[]</field>
+            <field name="context">\{}</field>
+            <field name="search_view_id" ref="view_omni_logging_search" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add new omni account
+                </p><p>
+                    Something about omni_logging
+                </p>
+            </field>
+        </record>
+        
+        <record id="menu_omni_logging" model="ir.ui.menu" >
+            <field name="name">Omni Account</field>
+            <field name="sequence" eval="10" />
+            <field name="action" ref="action_omni_logging_act_window" />
+            <field name="parent_id" ref="base.menu_custom" />
+        </record>
+        
+        <menuitem action="odoosync_base.action_omni_logging_act_window" id="omnisync_logging" name="Logging" parent="odoosync_base.config" sequence="2"/>
+
+    </data>
+</odoo>

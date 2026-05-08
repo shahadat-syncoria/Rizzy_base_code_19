@@ -1,0 +1,162 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="shopify_refunds_list">
+      <field name="name">Shopify Refunds List</field>
+      <field name="model">shopify.refunds</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="shopify_instance_id"/>
+          <field name="shopify_id"/>
+          <field name="shopify_order_id"/>
+          <field name="sale_id"/>
+          <field name="shopify_amount"/>
+          <field name="shopify_transaction_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="shopify_refunds_action_window">
+      <field name="name">Shopify Refunds</field>
+      <field name="res_model">shopify.refunds</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record id="view_shopify_refunds_form" model="ir.ui.view">
+      <field name="name">Shopify Refunds Form</field>
+      <field name="model">shopify.refunds</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Shopify Refunds Form" create="true" delete="true" edit="true">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1>
+                <field name="name" placeholder="Describe the item..." />
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="shopify_instance_id"/>
+                <field name="shopify_id"/>
+                <field name="shopify_transaction_id"/>
+                <field name="shopify_order_id"/>
+              </group>
+              <group>
+                <field name="shopify_note"/>
+                <field name="shopify_user_id"/>
+                <field name="shopify_processed_at"/>
+                <field name="shopify_restock"/>
+              </group>
+            </group>
+            
+          </sheet>
+        </form>
+
+
+      </field>
+    </record>
+
+
+
+    <menuitem 
+      name="Shopify Refunds" 
+      id="shopify_refunds" 
+      sequence="5" 
+      parent="syncoria_shopify.shopify_sales" 
+      action="shopify_refunds_action_window"/>
+
+
+
+<!--    ========================= Refund Transaction ======================-->
+<record model="ir.ui.view" id="shopify_refund_transactions_list">
+      <field name="name">Shopify Transactions List</field>
+      <field name="model">shopify.refunds.transaction</field>
+      <field name="arch" type="xml">
+        <list>
+           <field name="shopify_instance_id"/>
+          <field name="shopify_refund_id"/>
+          <field name="shopify_refund_order_id"/>
+          <field name="sale_id"/>
+          <field name="shopify_refund_amount"/>
+          <field name="shopify_refund_currency"/>
+        </list>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="shopify_refund_transactions_action_window">
+      <field name="name">Shopify Refund Transactions</field>
+      <field name="res_model">shopify.refunds.transaction</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_shopify_refundtransactions_form" model="ir.ui.view">
+        <field name="name">Shopify Refund Transactions Form</field>
+        <field name="model">shopify.refunds.transaction</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+          <form string="Shopify Refund Transactions Form" create="true" delete="true" edit="true">
+              <sheet>
+                  <div class="oe_title">
+                      <label for="name" class="oe_edit_only" />
+                      <h1><field name="name" placeholder="Describe the item..." /></h1>
+                  </div>
+                  <group>
+                      <group>
+                          <field name="shopify_instance_id"/>
+                          <field name="sale_id"/>
+                          <field name="shopify_refund_id"/>
+                          <field name="shopify_refund_order_id"/>
+                          <field name="shopify_refund_kind"/>
+                          <field name="shopify_refund_gateway"/>
+                          <field name="shopify_refund_status"/>
+                          <field name="shopify_refund_message"/>
+                          <field name="shopify_refund_created_at"/>
+                          <field name="shopify_refund_test"/>
+                          <field name="shopify_refund_authorization"/>
+                          <field name="shopify_refund_location_id"/>
+                      </group>
+                      <group>
+                          <field name="shopify_refund_user_id"/>
+                          <field name="shopify_refund_parent_id"/>
+                          <field name="shopify_refund_processed_at"/>
+                          <field name="shopify_refund_device_id"/>
+                          <field name="shopify_refund_error_code"/>
+                          <field name="shopify_refund_source_name"/>
+                          <field name="shopify_refund_receipt"/>
+                          <field name="shopify_refund_currency_exchange_adjustment"/>
+                          <field name="shopify_refund_amount"/>
+                          <field name="shopify_refund_currency"/>
+                          <field name="shopify_refund_payment_details"/>
+                      </group>
+                  </group>
+                  <group>
+                      <group>
+                          <field name="shopify_refund_payment_details_id"/>
+                      </group>
+                      <group>
+                          <field name="shopify_refund_payment_receipt_id"/>
+                      </group>
+                  </group>
+              </sheet>
+          </form>
+
+
+        </field>
+    </record>
+
+
+    <menuitem
+      name="Shopify Refund Transactions"
+      id="shopify_refund_transactions"
+      sequence="6"
+      parent="syncoria_shopify.shopify_sales"
+      action="shopify_refund_transactions_action_window"/>
+      
+  </data>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="clover_device_view_tree_all" model="ir.actions.act_window">
+            <field name="context">{}</field>
+            <field name="name">Clover Devices</field>
+            <field name="res_model">clover.device</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="clover_device_view_tree"/>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <record id="view_account_journal_form_clover" model="ir.ui.view">
+            <field name="name">account.journal.form.inherit.clover</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" type="action"
+                        name="%(clover_device_view_tree_all)d" icon="fa-mobile" string="Clover Devices"
+                        context="{}" invisible="use_clover_terminal != True"/>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="use_clover_terminal" invisible="type != 'bank'"/>
+                </xpath>
+                <xpath expr="//notebook[last()]" position="inside">
+                    <page string="Clover Configuration" invisible="use_clover_terminal != True">
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                                <field name="clover_server_url"
+                                    invisible="use_clover_terminal != True" required="use_clover_terminal == True"/>
+                                <field name="clover_config_id"
+                                    invisible="use_clover_terminal != True" required="use_clover_terminal == True"/>
+                                <field name="clover_jwt_token"
+                                            invisible="use_clover_terminal != True" required="use_clover_terminal == True"/>
+                                <field name="clover_merchant_id" invisible="use_clover_terminal != True" required="use_clover_terminal == True"/>
+                                <field name="clover_device_id" placeholder="Eg: 003XXXXXXXXXX" invisible="1"/>
+                                <field name="clover_device_name"  invisible="1"/>
+
+                                <button name="fetch_clover_device"
+                                    string="Fetch Devices"
+                                    type="object"
+                                    class="oe_highlight fetch_clover_device"
+                                    invisible="use_clover_terminal !=True"
+                                    help="CLick this button to get Device Id." />
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Clover Logs" invisible="use_clover_terminal !=True">
+                        <field name="clover_log_ids">
+                            <list string="Clover Logs Tree" create="false" delete="true" edit="false" editable="bottom">
+                                <field name="name"/>
+                                <field name="create_date"/>
+                                <field name="level"/>
+                                <field name="func"/>
+                                <field name="message"/>
+                                <field name="journal_id"/>
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

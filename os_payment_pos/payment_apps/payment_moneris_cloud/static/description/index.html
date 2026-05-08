@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moneris Cloud Invoice and POS Integration</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 0 auto; padding: 15px 15px 0 15px;box-sizing: border-box;">
+        <h1 class="oe_slogan text-center"
+            style="font-size: 34px; line-height: 45px; color:#000000; font-weight:700; font-family:Lato, arial, sans-serif;margin:0; padding: 20px 0 34px 0;">
+            Integration of Moneris Cloud with Odoo Invoice and POS</h1>
+        <div class="oe_row" style="background: #f2f2f2; padding: 40px; border:1px solid #ddd;">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <p
+                        style="font-size: 17px; line-height: 28px; margin:0; color:#000; padding-top: 10px; padding-bottom: 20px; padding-right: 30px;">
+                        Moneris is Canada's largest financial technology company
+                        that specializes in payment processing. With this app, adds Moneris Cloud as a payment acquirer
+                        for
+                        Odoo POS.</p>
+                    <p
+                        style="font-size: 17px; line-height: 28px;margin:0; color:#000; padding-bottom: 0; padding-top: 0; padding-right: 30px;">
+                        Merchants can use Moneris Cloud payment processing
+                        solution to accept payments for their POS on Odoo. </p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <img src="banner.png" alt="images"
+                        style="max-width:100%; padding:1px; background-color: #ddd; box-shadow: 0 0 25px #cdcbd6;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 50px auto; padding: 0 15px; box-sizing: border-box;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700;margin:0; padding: 0 0 34px 0;">
+                    Moneris Cloud Platform</h2>
+
+                <div class="small-24 medium-16 large-19 columns medium-up-column-divider">
+                    <h3 style="font-family: AvenirLT-Roman, Bangla104, sans-serif;">Overview</h3>
+                    <h4 style="font-family: AvenirLT-Roman, Bangla104, sans-serif;">Moneris Cloud Platform</h4>
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;">Designed for flexibility and ease,
+                        the Moneris Cloud Platform will store the newest payment software in the Cloud and deliver it
+                        directly to your device. It will offer a seamless experience, so you will always be up to date
+                        with the latest software, no updates required. The Moneris Cloud Platform is currently
+                        compatible with the Moneris® P400 PIN Pad and the Moneris® e355 PIN Pad.</p>
+
+
+                    <h4 style="font-family: AvenirLT-Roman, Bangla104, sans-serif;">How It Works</h4>
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;">To learn more about the Moneris Cloud
+                        and how it works, watch the below videos:</p>
+
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"><strong
+                            style="font-family: TheSansLPLight, Bangla104, sans-serif;">EN - An Overview</strong></p>
+                    Video Links:
+                    <p>
+                        <a
+                            href="https://www.youtube.com/embed/NUHHj5DYZhU?rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fdeveloper.moneris.com">EN
+                            - An Overview</a>
+                    </p>
+                    <!-- <iframe width="560" height="315"
+                        src=""
+                        ;="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""
+                        data-gtm-yt-inspected-1_12="true" id="602860396" data-gtm-yt-inspected-10918928_42="true"
+                        data-gtm-yt-inspected-10918928_43="true" data-gtm-yt-inspected-10918928_44="true"></iframe> -->
+                    <!-- <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"><strong
+                            style="font-family: TheSansLPLight, Bangla104, sans-serif;">EN - How it Works</strong></p> -->
+                    <!-- <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/4P6E3yBTX6A?rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fdeveloper.moneris.com"
+                        ;="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""
+                        data-gtm-yt-inspected-1_12="true" data-gtm-yt-inspected-10918928_42="true"
+                        data-gtm-yt-inspected-10918928_43="true" id="711850554"
+                        data-gtm-yt-inspected-10918928_44="true"></iframe> -->
+                    <p>
+                        <a
+                            href="https://www.youtube.com/embed/4P6E3yBTX6A?rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fdeveloper.moneris.com">EN
+                            - How it Works</a>
+                    </p>
+                    <h4 style="font-family: AvenirLT-Roman, Bangla104, sans-serif;">Benefits</h4>
+
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"><strong
+                            style="font-family: TheSansLPLight, Bangla104, sans-serif;">Simple set-up:</strong> Easier
+                        device installation, set-up and troubleshooting. No plug-ins or device drivers required</p>
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"><strong
+                            style="font-family: TheSansLPLight, Bangla104, sans-serif;">Secure:</strong> Transactions
+                        occur in the Cloud; sensitive data does not enter merchants’ payment applications</p>
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"><strong
+                            style="font-family: TheSansLPLight, Bangla104, sans-serif;">Compatible:</strong> Will work
+                        with different vendors’ platforms, including Ingenico and VeriFone devices. Allows for
+                        contactless transactions</p>
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"><strong
+                            style="font-family: TheSansLPLight, Bangla104, sans-serif;">Flexible:</strong> Browser,
+                        operating system, and device agnostic</p>
+                    <ul style="list-style-type: none;">
+                        <li style="font-family: TheSansLPLight, Bangla104, sans-serif;">Browsers: IE, Chrome, Safari
+                            etc.</li>
+                        <li style="font-family: TheSansLPLight, Bangla104, sans-serif;">Operating Systems: Windows, MAC
+                            OS, Chrome OS, iOS, Android, Linux etc.</li>
+                        <li style="font-family: TheSansLPLight, Bangla104, sans-serif;">Devices: PC, Mac computer,
+                            iPhone, tablet, etc.</li>
+                    </ul>
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;"></p>
+
+                    <p style="font-family: TheSansLPLight, Bangla104, sans-serif;">For information relating to our
+                        retail card-present integration methods, please contact <a
+                            href="mailto:clientintegrations@moneris.com">clientintegrations@moneris.com</a>.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 50px auto; padding: 0 15px; box-sizing: border-box;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700;margin:0; padding: 0 0 34px 0;">
+                    Moneris Cloud Transaction Flow</h2>
+                <img src="images/0.png" alt="image"
+                    style="max-width: 100%; border: 1px solid #ddd; border-bottom:6px solid #ddd; margin: auto; display: block">
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container" style="background-color: #1b3b58; padding:50px 0; margin: auto;">
+        <div style="max-width: 1040px; margin:0 auto; padding: 0 15px;box-sizing: border-box;">
+            <div class="oe_row">
+                <h3 class="oe_slogan"
+                    style="color:#fff; opacity:1; padding: 0 0 34px 0; margin:0; font-size: 32px; line-height: 45px; font-weight: 700;font-family: 'Lato', arial, sans-serif; text-align: center">
+                    Features</h3>
+                <div class="row">
+                    <div class="col-12 col-sm-7 col-md-7 col-lg-7">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12"
+                                style="position: relative; margin-bottom:15px;">
+                                <div
+                                    style="position: relative; height: 100%; border-bottom: 1px solid #254c6f; padding: 0 20px 20px 20px;display: block;">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> PINpad Pairing in Odoo Invoice and POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif; padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Pair your PINpad with Moneris Cloud</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12"
+                                style="position: relative; margin-bottom: 15px;">
+                                <div
+                                    style="position: relative; height: 100%;  border-bottom: 1px solid #254c6f; padding: 0 20px 20px 20px;display: block;">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> PINpad Initialization in Odoo Invoice
+                                        and POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Downloads the merchant account configuration to the PINpad device.</p>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12"
+                                style="position: relative; margin-bottom: 15px;">
+                                <div
+                                    style="position: relative; height: 100%; border-bottom: 1px solid #254c6f; padding: 0 20px 20px 20px;display: block;">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> PINpad Un-Pairing in Odoo Invoice and
+                                        POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Unpair your PINpad with Moneris Cloud</p>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12"
+                                style="position: relative; margin-bottom: 15px;">
+                                <div
+                                    style="position: relative; height: 100%; border-bottom: 1px solid #254c6f; padding: 0 20px 20px 20px;display: block; ">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> Purchase in POS in Odoo Invoice and
+                                        POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Verifies funds on the customer’s card, removes the funds and prepares them for
+                                        deposit into
+                                        the
+                                        mer-
+                                        chant’s account</p>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="position: relative;">
+                                <div style="position: relative; height: 100%; padding:0 20px;display: block;">
+                                    <h4
+                                        style="position: relative;  margin:  0 auto; color: #fff; font-family: 'Lato', arial, sans-serif; font-weight: 700; font-size: 20px; line-height: 32px; padding: 5px 0 0 0; ">
+                                        <img src="images/thik.png" alt="preview"> Refund in POS in Odoo Invoice and POS
+                                    </h4>
+                                    <p
+                                        style="font-family: 'Lato', arial, sans-serif;  padding: 10px 0 0 40px; margin:0; color: #bcc6d0; font-size: 15px; line-height: 22px;">
+                                        Restores all or part of the funds from a Purchase to the cardholder's card.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5 col-md-5 col-lg-5">
+                        <img src="images/img7.png" alt="image" style="max-width: 100%">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="oe_container"
+        style="max-width: 1040px; margin:50px auto 0 auto; padding: 0 15px; box-sizing: border-box;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 700;margin:0; padding: 0 0 34px 0;">
+                    Technical Requirements for Merchants </h2>
+                <h3
+                    style="font-size: 22px; line-height: 28px; font-weight: 400;font-family:Lato, arial, sans-serif; padding-bottom: 10px;">
+                    In order to use the Moneris Cloud Solution, a merchant is required to have:</h3>
+
+                <ul>
+                    <li
+                        style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                        On-location internet access
+                    </li>
+                    <li
+                        style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                        At least one Moneris Cloud PINpad
+                    </li>
+                    <li
+                        style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                        Access to an Ethernet port to plug the pinpad into, or access to a wireless network with
+                        internet access (e355 only)
+                    </li>
+                    <li
+                        style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                        An outbound firewall rule enabling access to https://iptermtest.moneris.com
+                        (testing) https://ipterm.moneris.com (production) and the integrator's site
+                    </li>
+                </ul>
+                <h3
+                    style="font-size: 22px; line-height: 28px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                    If using the HTTPS polling method to integrate with the Moneris Cloud Solution, <br>the following
+                    are
+                    also
+                    required:</h3>
+                <ul>
+                    <li
+                        style="font-size: 15px; line-height: 24px; font-weight: 400;font-family:Lato, arial, sans-serif;padding-bottom: 15px;">
+                        Outbound firewall for https://ippostest.moneris.com (testing) and https://ippos.moneris.com
+                        (production) to issue the command, and
+                    </li>
+                    <li
+                        style="font-size: 16px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif;padding-bottom: 15px;">
+                        https://cloudreceipt.moneris.com to receive the response
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="oe_container" style="background-color: #f1f1f1; padding: 50px 0; margin:50px auto;">
+        <div style="max-width: 1040px; margin: 0 auto 30px auto; padding: 0 15px; box-sizing: border-box;">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h4 class="text-center"
+                        style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 700;margin:0; padding: 0 0 34px 0;">
+                        Obtain your Merchant Credentials from Moneris
+                    </h4>
+                    <p
+                        style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                        To configure Moneris Cloud as a payment processor in Odoo, you must first obtain your Merchant
+                        Credentials from Moneris.
+                        The Merchant Credentials are usually sent by Moneris in an email and have the following
+                        information:</p>
+                    <ul>
+                        <li
+                            style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                            Store ID
+                        </li>
+                        <li
+                            style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                            API Token
+                        </li>
+                        <li
+                            style="font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                            PINpad Id
+                        </li>
+                    </ul>
+                    <p style="padding: 0; margin: 0;">If you had not received these information, please communicate with
+                        Moneris.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- 
+<section class="oe_container"
+         style="max-width: 1040px; margin: 50px auto 30px auto; padding: 0 15px; box-sizing: border-box;">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <p style="font-size: 15px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                You can also obtain credentials by logging to Moneris Store Site:</p>
+            <h5 style="font-size:20px; line-height: 34px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 700;margin:0; padding: 0 0 10px 0;">
+                For Production
+            </h5>
+            <div style="font-size: 16px; line-height: 28px; font-weight: 400;font-family:Lato, arial, sans-serif; padding-bottom:30px;">
+                Login to Moneris Site:
+                <a href="https://www3.moneris.com/mpg/" target="_blank">www3.moneris.com/mpg</a> using your
+                Username, Store
+                ID and Password.
+            </div>
+            <h5 style="font-size: 20px; line-height:34px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 700;margin:0; padding: 0 0 10px 0;">
+                For Testing
+            </h5>
+            <div style="font-size:16px; line-height: 28px; font-weight: 400;font-family:Lato, arial, sans-serif; padding-bottom:0">
+                Login to Moneris Site:
+                <a href="https://esqa.moneris.com/mpg/" target="_blank">www.esqa.moneris.com</a> using your
+                Username, Store
+                ID and Password.
+            </div>
+
+        </div>
+    </div>
+</section> -->
+    <section class="oe_container" style="background-color: #f1f1f1; padding: 50px 0; margin:50px auto;">
+        <div style="max-width: 1040px; margin: 0 auto 30px auto; padding: 0 15px; box-sizing: border-box;">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h4 class="text-center"
+                        style="font-size: 32px; line-height: 42px; color: #212121; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 700;margin:0; padding: 0 0 34px 0;">
+                        Connect your Moneris Cloud Supported Device
+                    </h4>
+                    <div class="text-left"
+                        style="font-size: 20px; line-height: 28px; font-weight: 300;font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                        For PINpad to process payment, it must be connected to the internet.
+                    </div>
+                    <h3 class="text-left"
+                        style="font-size: 20px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight: 400;margin:0; padding: 0 0 25px 0;">
+                        To ensure the device is connected to the internet and powered on, verify the following:
+                    </h3>
+                    <ol
+                        style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                        <li
+                            style="font-size: 15px; line-height: 24px; font-weight: 400;font-family:Lato, arial, sans-serif;   padding-bottom: 15px;">
+                            An ethernet cord is connected to:
+                            <ul>
+                                <li
+                                    style="font-size: 15px; line-height: 24px; font-weight: 400;  padding-top: 15px; padding-bottom: 15px; font-family:Lato, arial, sans-serif;">
+                                    An ethernet port - at the back of your terminal or on your terminal's utility
+                                    cable.
+                                </li>
+                                <li
+                                    style="font-size: 16px; line-height: 24px; font-weight: 400; padding-bottom: 15px; font-family:Lato, arial, sans-serif;">
+                                    A port on your router.
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                            style="font-size: 15px; line-height: 24px; font-weight: 400;font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                            An AC adapter is connected to:
+                            <ul>
+                                <li
+                                    style="font-size: 15px; line-height: 24px; font-weight: 400;padding-top: 15px; padding-bottom: 15px; font-family:Lato, arial, sans-serif;">
+                                    An AC adapter - at the back of your terminal or on your terminal's utility cable.
+                                </li>
+                                <li
+                                    style="font-size: 15px; line-height: 24px; font-weight: 400;font-family:Lato, arial, sans-serif;  padding-bottom: 15px;">
+                                    A wall outlet.
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                            style="font-size: 15px; line-height: 24px; font-weight: 400;font-family:Lato, arial, sans-serif; padding-bottom: 15px;">
+                            After the device boots, a Pairing Token displays on the screen.
+                            <p
+                                style="margin:0; padding:15px 0 0 0; font-size: 15px; line-height: 24px; font-weight: 400; font-family:Lato, arial, sans-serif;">
+                                Make a note of the Pairing Token. You will need it when you are adding the device in the
+                                Odoo POS Moneris Integration. </p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 50px auto 30px auto; padding: 0 15px; box-sizing: border-box;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h4 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700; margin:0; padding: 0 0 34px 0;">
+                    App Installation
+                </h4>
+                <ol>
+                    <li>Download the zipped folder you have received. </li>
+                    <li>Extract it and put it to your addons path.</li>
+                    <li>Restart your server.</li>
+                    <li>Now go to Apps. Click on "Update Apps List".</li>
+                    <li>Remove the filter and search by "moneris cloud"</li>
+                    <li>Install the app "Moneris Cloud Integration".</li>
+                </ol>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="oe_container"
+        style="max-width: 1040px; margin: 50px auto 30px auto; padding: 0 15px; box-sizing: border-box;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+                <h4 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700; margin:0; padding: 0 0 34px 0;">
+                    Odoo Invoice Configuration
+                </h4>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Go to Invoice -> Configuration -> Journals
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Create a New Journal
+                </p>
+                <img src="images/journal_config1.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Add:
+                <ul>
+                    <li>Journal Name</li>
+                    <li>Journal Type: Select Bank</li>
+                    <li>Activate Use Cloud Terminal</li>
+                    <li>Add Short Code</li>
+                </ul>
+                </p>
+                <img src="images/journal_config2.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Under Moneris Cloud Configuration, Add Informations:</p>
+                <ul>
+                    <li>Moneris Store ID</li>
+                    <li>Moneris API Token</li>
+                    <li>Moneris Terminal ID</li>
+                    <li>Cloud Pairing Token</li>
+                    <li>Select Cloud HTTPS Polling for Cloud Integration Method</li>
+                    <li>Select Moneris Cloud Environment according to your need</li>
+                </ul>
+                <p>Note: Currently, we only support Cloud HTTPS Polling</p>
+
+
+                <img src="images/journal_config3.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <h5 class="oe_slogan text-center"
+                    style="opacity: 1; font-weight: 400; margin: 0; font-size: 25px; line-height: 40px; padding:0 0 34px 0;">
+                    Pairing PINpad with Moneris Cloud
+                </h5>
+                <img src="images/journal_config4.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Error Message if Terminal cannot be located.
+                </p>
+                <img src="images/journal_config5.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/journal_config6.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <h5 class="oe_slogan text-center"
+                    style="opacity: 1; font-weight: 400; margin: 0; font-size: 25px; line-height: 40px; padding:0 0 34px 0;">
+                    Initialization PINpad with Moneris Cloud
+                </h5>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    3. Click "INITIALIZATION" Button
+                </p>
+                <img src="images/journal_config7.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+                <img src="images/journal_config8.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+                <img src="images/journal_config9.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+
+                <h5 class="oe_slogan text-center"
+                    style="opacity: 1; font-weight: 400; margin: 0; font-size: 25px; line-height: 40px; padding:0 0 34px 0;">
+                    Un-Pairing PINpad with Moneris Cloud
+                </h5>
+
+                <img src="images/journal_config10.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+
+
+                <h4 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700; margin:0; padding: 0 0 34px 0;">
+                    Purchase in Odoo Invoice
+                </h4>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Go to "Invoicing" Module
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase1.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Create a New Invoice
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase2.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <img src="images/INVOICE_PURCHASE/invoice_purchase3.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on "Save"
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase4.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on "Confirm"
+                </p>
+
+                <img src="images/INVOICE_PURCHASE/invoice_purchase5.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on "Register Payment"
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase6.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select "Moneris Cloud" as Journal
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase7.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on "Send"
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase8.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <img src="images/INVOICE_PURCHASE/invoice_purchase9.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Invoice is Successfully paid.
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase10.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <h4>Backend View of Customer Payment</h4>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Go to Customers => Payments
+                </p>
+                <img src="images/INVOICE_PURCHASE/invoice_purchase11.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <img src="images/INVOICE_PURCHASE/invoice_purchase12.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+                <img src="images/INVOICE_PURCHASE/invoice_purchase13.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <h4 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700; margin:0; padding: 0 0 34px 0;">
+                    Refund in Odoo Invoice
+                </h4>
+                <img src="images/INVOICE_REFUND/invoice_refund1.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/INVOICE_REFUND/invoice_refund2.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/INVOICE_REFUND/invoice_refund3.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/INVOICE_REFUND/invoice_refund4.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/INVOICE_REFUND/invoice_refund5.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/INVOICE_REFUND/invoice_refund6.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <img src="images/INVOICE_REFUND/invoice_refund7.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+
+
+                <h4 class="text-center"
+                    style="font-size: 32px; line-height: 42px; color: #000; opacity: 1; font-family:Lato, arial, sans-serif; font-weight:700; margin:0; padding: 0 0 34px 0;">
+                    Odoo POS Configuration
+                </h4>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    1. Point of Sale -> Configuration -> Payment Methods
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    2. Create a new Payment Method
+                </p>
+                <img src="images/9_1.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select "Moneris Cloud" in Use a Payment Terminal
+                </p>
+                <img src="images/9_2.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Add Informations:</p>
+                <ul>
+                    <li>Moneris Store ID</li>
+                    <li>Moneris API Token</li>
+                    <li>Moneris Terminal ID</li>
+                    <li>Cloud Pairing Token</li>
+                    <li>Select Cloud HTTPS Polling for Cloud Integration Method</li>
+                    <li>Select Moneris Cloud Environment according to your need</li>
+                </ul>
+                <p>Note: Currently, we only support Cloud HTTPS Polling</p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    3. Add Payment Method to Shop
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Go to Point of Sale -> Configuration -> Point of Sale
+                </p>
+                <img src="images/15.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Add Moneris Cloud inside Payment Methods
+                </p>
+                <img src="images/16.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <h5 class="oe_slogan text-center"
+                    style="opacity: 1; font-weight: 400; margin: 0; font-size: 25px; line-height: 40px; padding:0 0 34px 0;">
+                    Pairing PINpad with Moneris Cloud
+                </h5>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    1. Point of Sale -> Configuration -> Payment Methods
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    2. Open Moneris Cloud
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    3. Click "PAIR" Button
+                </p>
+                <img src="images/10.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center;  ">
+
+                <img src="images/11.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+
+                <img src="images/12.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <h5 class="oe_slogan text-center"
+                    style="opacity: 1; font-weight: 400; margin: 0; font-size: 25px; line-height: 40px; padding:0 0 34px 0;">
+                    Initialization PINpad with Moneris Cloud
+                </h5>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    3. Click "INITIALIZATION" Button
+                </p>
+                <img src="images/13.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+                <img src="images/14.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 40px auto; text-align: center; ">
+
+                <h5 class="oe_slogan text-center"
+                    style="opacity: 1; font-weight: 400; font-size: 25px; margin: 0; line-height: 40px; padding:0 0 30px 0;">
+                    Purchase in Odoo POS
+                </h5>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Open a Shop Session on Points of Sale
+                </p>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Add Product to POS Order
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt1.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on Payment
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt2.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select Moneris Cloud as Payment in Odoo POS
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt3.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on Send Button
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt4.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    You will see 'Waiting for Card' Message. Customer will prompted to make payment on Moneris Cloud
+                    Terminal.
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt5.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    'Payment Successfull' message will be shown.
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt6.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on 'Validate' Button
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt7.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on 'New Order' Button
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt9.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Close the POS Session
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt10.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Finally close the POS Session by clicking on Close Button
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt11.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on 'Close Session & POST Entries'.
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt12.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Backend View of 'Payments'
+                </p>
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Go to Point of Sale --> Orders --> Payments
+                </p>
+                <img src="images/POS_PURCHASE/pos_paymenrt13.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <img src="images/POS_PURCHASE/pos_paymenrt14.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    POS RETURN FLOW
+                </p>
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on Orders
+                </p>
+                <img src="images/POS_RETURN/pos_return1.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select an order and click on "Return Order"
+                </p>
+                <img src="images/POS_RETURN/pos_return2.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select quantity
+                </p>
+                <img src="images/POS_RETURN/pos_return3.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Click on Payment
+                </p>
+                <img src="images/POS_RETURN/pos_return4.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    Select Moneris Cloud as Payment in Odoo POS
+                </p>
+                <img src="images/POS_RETURN/pos_return5.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+                <p style="font-size: 16px; line-height: 24px; font-weight: 700;font-family:Lato, arial, sans-serif;">
+                    'Payment Successfull' message will be shown.
+                </p>
+                <img src="images/POS_RETURN/pos_return6.png" alt="preview"
+                    style="max-width: 100%; display: block; margin:auto auto 34px auto; text-align: center; ">
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

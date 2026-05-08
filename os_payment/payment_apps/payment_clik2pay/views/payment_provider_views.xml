@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Clik2Pay Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position='inside'>
+                <group invisible="code!='clik2pay'" name="clik2pay_credentials">
+<!--                    <field name="clik2pay_user_name" attrs="{'required':[('code', '=', 'clik2pay'), ('state', '!=', 'disabled')]}" password="True"/>-->
+<!--                    <field name="clik2pay_user_password" attrs="{'required':[('code', '=', 'clik2pay'), ('state', '!=', 'disabled')]}" password="True"/>-->
+<!--                    <field name="clik2pay_api_key" attrs="{'required':[('code', '=', 'clik2pay'), ('state', '!=', 'disabled')]}" password="True"/>-->
+                        <field name="clik2pay_tampered_payment" required="(code == 'clik2pay') and (state !='disabled')" groups="base.group_no_one"/>
+
+                </group>
+            </group>
+        </field>
+    </record>
+    <record id="transaction_form_clik2pay" model="ir.ui.view">
+        <field name="name">acquirer.transaction.form.clik2pay</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='provider_reference']" position="after">
+                <field name="clik2pay_reference" readonly="1"
+                       invisible="provider_code!='clik2pay'"/>
+                <field name="clik2pay_merchant_transaction_id" readonly="1"
+                       invisible="provider_code!='clik2pay'"/>
+                <field name="clik2pay_merchant_id" readonly="1"
+                       invisible="provider_code!='clik2pay'"/>
+                <field name="demo_success_failed" invisible="provider_code!='clik2pay'" groups="base.group_no_one"/>
+            </xpath>
+<!--            <xpath expr="//form" position="attributes">-->
+<!--                <attribute name="edit">true</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+</odoo>

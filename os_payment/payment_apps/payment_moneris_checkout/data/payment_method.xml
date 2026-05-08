@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="payment_method_moneris_checkout" model="payment.method">
+            <field name="name">Moneris Checkout</field>
+            <field name="code">monerischeckout</field>
+            <field name="image" type="base64"
+                   file="os_payment/static/src/img/moneris_checkout/moneris_checkout.png"/>
+        </record>
+    </data>
+</odoo>
