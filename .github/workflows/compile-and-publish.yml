@@ -1,0 +1,68 @@
+name: Compile and Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Checkout compiled repository
+        uses: actions/checkout@v4
+        with:
+          repository: shahadat-syncoria/Rizzy_compiled_19
+          ref: main
+          path: compiled-repo
+          token: ${{ secrets.COMPILED_REPO_TOKEN }}
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rsync
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run compile pipeline
+        run: |
+          OUTPUT_DIR="$RUNNER_TEMP/rizzy-compiled-output"
+          rm -rf "$OUTPUT_DIR"
+          scripts/run_odoo_sync_pipeline.sh "$GITHUB_WORKSPACE/source" "$OUTPUT_DIR"
+          rsync -a --delete --exclude '.git' "$OUTPUT_DIR"/ "$GITHUB_WORKSPACE/compiled-repo"/
+
+      - name: Publish compiled code
+        working-directory: compiled-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No compiled changes to publish."
+            exit 0
+          fi
+
+          git add -A
+          git commit -m "Compile source ${GITHUB_SHA::7}"
+          git push origin main
