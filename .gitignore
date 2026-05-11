@@ -1,0 +1,14 @@
+# Local pipeline output folders.
+Odoo_sync_*_script/
+out/
+dist/
+tmp/
+
+# Python runtime cache.
+__pycache__/
+*.py[cod]
+
+# Local editor and OS files.
+.idea/
+.vscode/
+.DS_Store
