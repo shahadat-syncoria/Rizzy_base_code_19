@@ -45,10 +45,14 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Make scripts executable
+        run: chmod +x scripts/*.sh
+
       - name: Run compile pipeline
         run: |
           OUTPUT_DIR="$RUNNER_TEMP/rizzy-compiled-output"
           rm -rf "$OUTPUT_DIR"
+          mkdir -p "$OUTPUT_DIR"
           scripts/run_odoo_sync_pipeline.sh "$GITHUB_WORKSPACE/source" "$OUTPUT_DIR"
           rsync -a --delete --exclude '.git' "$OUTPUT_DIR"/ "$GITHUB_WORKSPACE/compiled-repo"/
 
@@ -64,5 +68,5 @@ jobs:
           fi
 
           git add -A
-          git commit -m "Compile source ${GITHUB_SHA::7}"
+          git commit -m "🔄 Auto-compile from ${GITHUB_REPOSITORY} → 🔖 Source: ${GITHUB_SHA::7} → ⏱️ Compiled: $(date '+%Y-%m-%d %H:%M:%S UTC') → 🆔 Run: ${GITHUB_RUN_ID}"
           git push origin main
