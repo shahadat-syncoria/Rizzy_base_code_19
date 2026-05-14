@@ -376,7 +376,7 @@ class PaymentTransaction(models.Model):
             "amount": int(float(self.amount) * 10 ** self.currency_id.decimal_places),
             "currency": currency,
             "reference": f'{self.token_id.payment_details}-token-{self.reference}',
-            "country": 'US',
+            "country": self.env.company.country_id.code,
             "payment_method": {
                 "id": self.token_id.global_shopper_reference,
                 "entry_mode": 'ECOM'
@@ -406,8 +406,8 @@ class PaymentTransaction(models.Model):
             #     'token_id': token,
             #     'tokenize': False,
             # })
-            tx_sudo._handle_notification_data(
-                'globalpay', dict(response, payment_ref=self.token_id),  # Match the transaction
+            tx_sudo._process(
+                'globalpay', dict(response, payment_ref=self.token_id)  # Match the transaction
             )
             return json.dumps(response)
         except requests.exceptions.RequestException:

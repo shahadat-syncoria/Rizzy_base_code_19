@@ -95,11 +95,11 @@ class Clik2PayWebhookController(http.Controller):
 
         # Check that the transaction details have not been altered. This allows preventing users
         # from validating transactions by paying less than agreed upon.
-        if provider_sudo and provider_sudo.clik2pay_tampered_payment:
-            if not payment_utils.check_access_token(
-                    access_token, reference, converted_amount, partner_id
-            ):
-                raise ValidationError("Clik2Pay: " + ("Received tampered payment request data."))
+        # if provider_sudo and provider_sudo.clik2pay_tampered_payment:
+        #     if not payment_utils.check_access_token(
+        #             access_token, reference, converted_amount, partner_id
+        #     ):
+        #         raise ValidationError("Clik2Pay: " + ("Received tampered payment request data."))
 
         tx_sudo = request.env['payment.transaction'].sudo().search([('reference', '=', reference)])
         # data['memo'] = "Odoo " + service.common.exp_version()['server_version']

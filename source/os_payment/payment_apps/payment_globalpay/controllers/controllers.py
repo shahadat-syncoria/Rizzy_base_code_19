@@ -112,7 +112,7 @@ class GlobalPayWebhookController(http.Controller):
             "amount": int(float(amount or 0.01) * 10 ** currency.decimal_places),
             "currency": currency.name,
             "reference": f'{partner_name}-token-{reference}'[:50],
-            "country": 'US',
+            "country": request.env.user.company_id.country_id.code,
             "payment_method": {
                 "id": payment_ref,
                 "entry_mode": 'ECOM'
