@@ -67,6 +67,11 @@ jobs:
             exit 0
           fi
 
+          LOCAL_TIME=$(TZ=Asia/Dhaka date '+%Y-%m-%d %H:%M:%S %Z')
           git add -A
-          git commit -m "🔄 Auto-compile from ${GITHUB_REPOSITORY} → 🔖 Source: ${GITHUB_SHA::7} → ⏱️ Compiled: $(date '+%Y-%m-%d %H:%M:%S UTC') → 🆔 Run: ${GITHUB_RUN_ID}"
+          git commit -m "🔄 Auto-compile from ${GITHUB_REPOSITORY} → 🔖 Source: ${GITHUB_SHA::7} → ⏱️ Compiled: ${LOCAL_TIME} → 🆔 Run: ${GITHUB_RUN_ID}"
           git push origin main
+
+      - name: Log compile time (Asia/Dhaka)
+        run: |
+          echo "⏱️ Compiled at: $(TZ=Asia/Dhaka date '+%Y-%m-%d %H:%M:%S %Z')"
