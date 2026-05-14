@@ -69,7 +69,7 @@ jobs:
 
           LOCAL_TIME=$(TZ=Asia/Dhaka date '+%Y-%m-%d %H:%M:%S %Z')
           git add -A
-          git commit -m "🔄 Auto-compile from ${GITHUB_REPOSITORY} → Source Commit Id: ${GITHUB_SHA} → Compiled: ${LOCAL_TIME} → Run Action Id: ${GITHUB_RUN_ID}"
+          git commit -m "Auto-compile from ${GITHUB_REPOSITORY} → Source Commit Id: ${GITHUB_SHA} → Compiled: ${LOCAL_TIME} → Run Action Id: ${GITHUB_RUN_ID}"
           git push origin main
 
       - name: Log compile time (Asia/Dhaka)
